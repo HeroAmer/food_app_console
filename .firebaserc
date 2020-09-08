@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "zeljofoodapp": {
+      "hosting": {
+        "food-app-console": [
+          "zeljofoodapp"
+        ]
+      }
+    }
+  }
+}

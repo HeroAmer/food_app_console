@@ -117,8 +117,13 @@
               "devServerTarget": "food-app-console:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "food-app-console"
 }
