@@ -1,2 +1,20 @@
-<app-header></app-header>
-<app-sidebar></app-sidebar>
+<mat-drawer-container class="example-container">
+  <mat-drawer mode="side" opened>
+    <div class="sidebar-content">
+    <a>Narudzbe</a><br>
+    <a>Novi unos</a><br>
+    <a>Postavke</a><br>
+  </div>
+    </mat-drawer>
+  <mat-drawer-content>
+    <mat-toolbar>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+    <app-narudzbe></app-narudzbe>
+  </mat-drawer-content>
+</mat-drawer-container>

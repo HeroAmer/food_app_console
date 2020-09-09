@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatIconModule} from '@angular/material/icon';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -13,14 +16,13 @@ import { ItemsComponent } from './components/items/items.component';
 import { ItemService } from './services/item-service.service';
 import { AddItemComponent } from './components/add-item/add-item.component';
 import { HomeComponent } from './main-home/home/home.component';
-import { HeaderComponent } from './main-home/home/header/header.component';
-import { SidebarComponent } from './main-home/home/sidebar/sidebar.component';
-import { NarudzbeComponent } from './main-home/home/sidebar/narudzbe/narudzbe.component';
-import { NoviUnosComponent } from './main-home/home/sidebar/novi-unos/novi-unos.component';
-import { PostavkeComponent } from './main-home/home/sidebar/postavke/postavke.component';
+import { NarudzbeComponent } from './main-home/home/narudzbe/narudzbe.component';
+import { NoviUnosComponent } from './main-home/home/novi-unos/novi-unos.component';
+import { PostavkeComponent } from './main-home/home/postavke/postavke.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [AppComponent, ItemsComponent, AddItemComponent, HomeComponent, HeaderComponent, SidebarComponent, NarudzbeComponent, NoviUnosComponent, PostavkeComponent],
+  declarations: [AppComponent, ItemsComponent, AddItemComponent, HomeComponent, NarudzbeComponent, NoviUnosComponent, PostavkeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,6 +30,10 @@ import { PostavkeComponent } from './main-home/home/sidebar/postavke/postavke.co
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],

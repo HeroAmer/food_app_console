@@ -1,0 +1,17 @@
+.example-container {
+  width: 100%;
+  height: 100%;
+}
+
+
+.example-container mat-drawer{
+  background-color: blue;
+  color:white;
+  width: 15%;
+}
+
+mat-toolbar{
+  display: flex;
+  justify-content: flex-end;
+}
+
