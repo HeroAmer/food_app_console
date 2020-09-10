@@ -14,7 +14,7 @@
 
 
 .example-container mat-drawer {
-  background-color:#2D62ED;
+  background-color: #2D62ED;
   color: white;
   width: 15%;
 }
@@ -49,16 +49,22 @@ mat-drawer .sidebar-content ul li a img {
 }
 
 mat-drawer .sidebar-content ul li:hover::before {
-  /* border-left: 2px solid white; */
   content: "";
   border: 1px solid white;
   border-radius: 1px;
-  /* color: white;
-  width: 5px;*/
   height: 20px;
   position: absolute;
   left: 0;
 }
+
+/* mat-drawer .sidebar-content ul li:hover::before:focus {
+  content: "";
+  border: 1px solid white;
+  border-radius: 1px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+} */
 
 mat-drawer .sidebar-content ul li a p {
   display: inline-block;
@@ -144,6 +150,12 @@ mat-drawer .sidebar-content ul li a:visited {
   opacity: 0.5;
 }
 
+mat-drawer .sidebar-content ul li a:focus {
+  color: #ffffff;
+  opacity: 1;
+  outline: none;
+}
+
 mat-drawer .sidebar-content ul li a:active,
 mat-drawer .sidebar-content ul li a:hover {
   color: #ffffff;
@@ -154,3 +166,7 @@ mat-drawer .sidebar-content ul li a:hover {
 .material-icons {
   padding: 0px 10px;
 }
+
+/* .active-link {
+  color: white;
+} */

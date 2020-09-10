@@ -9,33 +9,29 @@
       </div>
 
       <ul>
-        <li>
-          <a href="#"
-            ><img src="../../../assets/icons/house.svg" alt="house" />
-            <p>Narudzbe</p></a
-          >
+        <li class="active-link">
+          <a routerLink="" routerLinkActive="active" tabindex="1"><img src="../../../assets/icons/house.svg"
+              alt="house" />
+            <p>Narudzbe</p>
+          </a>
         </li>
         <li>
-          <a href="#"
-            ><img src="../../../assets/icons/folder.svg" alt="folder" />
-            <p>Novi unos</p></a
-          >
+          <a routerLink="/novi-unos" routerLinkActive="active"><img src="../../../assets/icons/folder.svg"
+              alt="folder" />
+            <p>Novi unos</p>
+          </a>
         </li>
         <li>
-          <a href="#"
-            ><img src="../../../assets/icons/postavke.svg" alt="postavke" />
-            <p>Postavke</p></a
-          >
+          <a routerLink="/postavke" routerLinkActive="active"><img src="../../../assets/icons/postavke.svg"
+              alt="postavke" />
+            <p>Postavke</p>
+          </a>
         </li>
       </ul>
       <div class="users">
         <div class="avatar">
-          <img
-            src="https://img.icons8.com/plasticine/100/000000/administrator-male.png"
-            alt="user"
-            height="50px"
-            width="50px"
-          />
+          <img src="https://img.icons8.com/plasticine/100/000000/administrator-male.png" alt="user" height="50px"
+            width="50px" />
         </div>
         <div class="user">
           <p>Dzevad</p>
@@ -54,6 +50,7 @@
       <span class="material-icons"> notifications_none </span>
       <span class="material-icons"> exit_to_app </span>
     </mat-toolbar>
-    <app-novi-unos></app-novi-unos>
+    <!-- RouterOutlet -->
+    <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>
