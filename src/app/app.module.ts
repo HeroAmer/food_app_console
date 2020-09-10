@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -20,9 +21,10 @@ import { NarudzbeComponent } from './main-home/home/narudzbe/narudzbe.component'
 import { NoviUnosComponent } from './main-home/home/novi-unos/novi-unos.component';
 import { PostavkeComponent } from './main-home/home/postavke/postavke.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/input-dialog.component';
 
 @NgModule({
-  declarations: [AppComponent, ItemsComponent, AddItemComponent, HomeComponent, NarudzbeComponent, NoviUnosComponent, PostavkeComponent],
+  declarations: [AppComponent, ItemsComponent, AddItemComponent, HomeComponent, NarudzbeComponent, NoviUnosComponent, PostavkeComponent, InputDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -33,9 +35,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],
+  entryComponents: [
+   InputDialogComponent
+  ],
 })
 export class AppModule {}
