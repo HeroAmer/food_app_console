@@ -1,1 +1,13 @@
-<h3>Unosi</h3><button mat-button (click)="openDialog()">Open dialog</button>
+<div class="container">
+  <h2>Unesi sliku</h2>
+  <form (ngSubmit)="saveFood()">
+    <p>Ime unosa</p><input type="text" [(ngModel)]="hrana.naziv" name="naziv">
+    <p>Kategorija</p><input type="text" [(ngModel)]="hrana.kategorija" name="kategorija">
+    <p>Opis unosa</p><input type="text" [(ngModel)]="hrana.opis" name="opis">
+    <p>Cijena:</p><input type="text"[(ngModel)]="hrana.cijena" name="cijena">
+    <p>Oznaka:</p><input type="text"[(ngModel)]="hrana.oznaka" name="oznaka">
+    <p>Količina:</p><input type="text" [(ngModel)]="hrana.kolicina" name="kolicina"><br>
+
+  <input type="file" (change)="upload($event)" accept=".png, .jpg">
+    <button type="submit">Submit</button>
+  </form></div>

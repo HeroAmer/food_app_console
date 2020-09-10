@@ -8,9 +8,11 @@ import {Item} from '../../models/item';
   styleUrls: ['./add-item.component.css']
 })
 export class AddItemComponent implements OnInit {
+  urlTest = 'abababab';
   item: Item = {
     title: '',
-    description: ''
+    description: '',
+    url:''
   }
 
   constructor(private itemService: ItemService) { }
@@ -19,6 +21,7 @@ export class AddItemComponent implements OnInit {
   }
 
   onSubmit(){
+    this.item.url = this.urlTest;
     if(this.item.title != '' && this.item.description != ''){
       this.itemService.addItem(this.item);
       this.item.title = '';
