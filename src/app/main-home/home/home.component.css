@@ -26,6 +26,14 @@ mat-toolbar {
 
 }
 
+mat-toolbar a {
+  padding: 10px;
+}
+
+#notification {
+  margin-right: 15px;
+}
+
 mat-drawer {
   /* text-align: center; */
   display: flex;
