@@ -1,11 +1,54 @@
 <mat-drawer-container class="example-container">
   <mat-drawer mode="side" opened>
+    <!-- <div class="title"></div> -->
     <div class="sidebar-content">
-    <a>Narudzbe</a><br>
-    <a>Novi unos</a><br>
-    <a>Postavke</a><br>
-  </div>
-    </mat-drawer>
+      <!-- <img src="" alt="logo" /> -->
+      <div class="header">
+        <img src="../../../assets/icons/wavee.svg" alt="wave" />
+        <h4>Zeljo dostava</h4>
+      </div>
+
+      <ul>
+        <li>
+          <a href="#"
+            ><img src="../../../assets/icons/house.svg" alt="house" />
+            <p>Narudzbe</p></a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><img src="../../../assets/icons/folder.svg" alt="folder" />
+            <p>Postavke</p></a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><img src="../../../assets/icons/postavke.svg" alt="postavke" />
+            <p>Postavke</p></a
+          >
+        </li>
+      </ul>
+      <div class="users">
+        <div class="avatar">
+          <img
+            src="https://img.icons8.com/plasticine/100/000000/administrator-male.png"
+            alt="user"
+            height="50px"
+            width="50px"
+          />
+        </div>
+        <div class="user">
+          <p>Dzevad</p>
+          <!-- Biti ce select input -->
+          <!-- <p>Uposlenik</p> -->
+          <select name="employee" id="zaposleni">
+            <option id="opcija" value="">Uposlenik</option>
+            <option id="opcija" value="vlasnik">Vlasnik</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </mat-drawer>
   <mat-drawer-content>
     <mat-toolbar>
       <span class="material-icons">

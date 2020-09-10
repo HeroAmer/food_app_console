@@ -1,20 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
 .example-container {
   width: 100%;
   height: 100%;
+  position: relative;
 }
 
 
-.example-container mat-drawer{
+.example-container mat-drawer {
   background-color: blue;
-  color:white;
+  color: white;
   width: 15%;
 }
 
-mat-toolbar{
+mat-toolbar {
   display: flex;
   justify-content: flex-end;
+  position: relative;
+
 }
 
+mat-drawer {
+  /* text-align: center; */
+  display: flex;
+  position: absolute;
+}
+
+mat-drawer .title {
+  margin-top: 53px;
+}
+
+mat-drawer .sidebar-content {
+  margin-top: 30px;
+
+}
+
+mat-drawer .sidebar-content ul li a img {
+  vertical-align: middle;
+  display: inline-block;
+
+
+}
+
+mat-drawer .sidebar-content ul li:hover::before {
+  /* border-left: 2px solid white; */
+  content: "";
+  border: 1px solid white;
+  border-radius: 1px;
+  /* color: white;
+  width: 5px;*/
+  height: 20px;
+  position: absolute;
+  left: 0;
+}
+
+mat-drawer .sidebar-content ul li a p {
+  display: inline-block;
+  font: normal normal 600 16px/19px Montserrat;
+  vertical-align: middle;
+  margin-left: 18px;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+}
+
+.header img {
+  margin-right: 10px;
+}
+
+mat-drawer .sidebar-content>h4 {
+  text-align: center;
+}
+
+
+mat-drawer .sidebar-content>div {
+  padding: 20px;
+}
+
+mat-drawer .sidebar-content .users {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+mat-drawer .sidebar-content ul {
+  list-style-type: none;
+  padding-left: 0;
+
+}
+
+.users {
+  display: flex;
+  align-items: center;
+}
+
+.user>p {
+  margin-left: 3px;
+}
+
+#zaposleni {
+  background-color: transparent;
+  color: white;
+  opacity: 0.5;
+  border-style: none;
+  border: none;
+}
+
+select:focus {
+  outline: none;
+}
+
+select #opcija {
+  /* background-color: red; */
+  color: black;
+  outline: none;
+  border-style: none;
+  border: none;
+}
+
+mat-drawer .sidebar-content ul li {
+  padding: 20px;
+}
+
+mat-drawer .sidebar-content ul li a {
+  text-decoration: none;
+  display: block;
+}
+
+mat-drawer .sidebar-content ul li a:link,
+mat-drawer .sidebar-content ul li a:visited {
+  color: #ffffff;
+  opacity: 0.5;
+}
+
+mat-drawer .sidebar-content ul li a:active,
+mat-drawer .sidebar-content ul li a:hover {
+  color: #ffffff;
+  opacity: 1;
+  transition: all 0.4s;
+}
 .material-icons{
   padding:0px 10px;
 }
