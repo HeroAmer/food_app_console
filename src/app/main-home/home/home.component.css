@@ -14,7 +14,7 @@
 
 
 .example-container mat-drawer {
-  background-color: blue;
+  background-color: #2D62ED;
   color: white;
   width: 15%;
 }
@@ -150,7 +150,7 @@ mat-drawer .sidebar-content ul li a:hover {
   opacity: 1;
   transition: all 0.4s;
 }
-.material-icons{
-  padding:0px 10px;
-}
 
+.material-icons {
+  padding: 0px 10px;
+}
