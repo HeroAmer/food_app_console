@@ -55,6 +55,7 @@ input[type="file"]{
   border: 1px solid #2D62ED;
   border-radius: 5px;
   margin-left: 10px;
+  cursor: pointer;
 }
 
 #zavrsi-button[disabled]{
@@ -63,6 +64,7 @@ input[type="file"]{
   color: #666666;
 }
 #odustani-button{
+  cursor: pointer;
   background-color: white;
   color: #2D62ED;
   padding:10px 20px;
