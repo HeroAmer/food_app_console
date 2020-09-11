@@ -1,0 +1,11 @@
+
+.novi-unos-container{
+  display: flex;
+  justify-content: flex-end;
+}
+.unos-button{
+  color:white;
+  background-color:  #386cf0;
+  border-radius: 15px;
+  margin:10px;
+}
