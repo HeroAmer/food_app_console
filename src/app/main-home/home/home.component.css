@@ -16,7 +16,7 @@
 .example-container mat-drawer {
   background-color: #2D62ED;
   color: white;
-  width: 15%;
+  /* width: 15%; */
 }
 
 mat-toolbar {
@@ -39,6 +39,11 @@ mat-drawer {
   display: flex;
   position: absolute;
 }
+
+/* .sidebar {
+  left: 50%;
+  transform: translateX(-30%);
+} */
 
 mat-drawer .title {
   margin-top: 53px;
@@ -75,6 +80,8 @@ mat-drawer .sidebar-content ul li:focus-within::before {
   position: absolute;
   left: 0;
 }
+
+
 
 mat-drawer .sidebar-content ul li a p {
   display: inline-block;
@@ -156,7 +163,7 @@ mat-drawer .sidebar-content ul li a {
 
 mat-drawer .sidebar-content ul li a:link {
   color: #ffffff;
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
 mat-drawer .sidebar-content ul li a:visited {
@@ -169,6 +176,7 @@ mat-drawer .sidebar-content ul li a:focus {
   opacity: 1;
   outline: none;
 }
+
 
 mat-drawer .sidebar-content ul li a::after {
   color: #ffffff;

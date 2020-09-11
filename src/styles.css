@@ -9,3 +9,17 @@ body {
   margin: 0;
   font-family: 'Montserrat', sans-serif;
 }
+
+.mat-fab {
+  width: 45px;
+  height: 45px;
+  display: initial !important;
+
+}
+
+.mat-fab>span {
+  padding: 16px 0;
+  /* display: inline-block; */
+  display: initial !important;
+  line-height: 20px;
+}
