@@ -1,0 +1,22 @@
+.container{
+  width: 50vw;
+  height: 80vh;
+}
+.unos{
+  height: 30px;
+  margin:20px;
+}
+.text-unosa{
+  padding:6.5px;
+  background-color: #2D62ED;
+  color:white;
+  width: 70px;
+}
+.input-field{
+  height: 29px;
+  width: 65%;
+  border:none;
+}
+*:focus {
+  outline: none;
+}
