@@ -13,7 +13,7 @@
     <input type="file" (change)="upload($event)" #filePicker accept=".png, .jpg">
     <br>
     <div class="buttons-container">
-    <button id="odustani-button">Odustani</button>
+    <button #bntClose id="odustani-button">Odustani</button>
     <button id="zavrsi-button" [disabled]="isDisabled" type="submit">Završi</button>
     </div>
   </form>
