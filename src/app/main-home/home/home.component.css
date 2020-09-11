@@ -23,6 +23,8 @@ mat-toolbar {
   display: flex;
   justify-content: flex-end;
   position: relative;
+  margin-bottom: 30px;
+  box-shadow: 5px 5px 8px #888888;
 
 }
 
