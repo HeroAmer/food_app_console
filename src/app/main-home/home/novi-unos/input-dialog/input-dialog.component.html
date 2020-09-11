@@ -1,14 +1,20 @@
 <div class="container">
   <h2>Novi unos</h2>
   <form (ngSubmit)="saveFood()">
-    <div class="unos"><span class="text-unosa">Naziv unosa</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.naziv" name="naziv"></div>
-    <div class="unos"><span class="text-unosa">Kategorija</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.kategorija" name="kategorija"></div>
-    <div class="unos"><span class="text-unosa">Opis unosa</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.opis" name="opis"></div>
-    <div class="unos"><span class="text-unosa">Cijena:</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.cijena" name="cijena"></div>
-    <div class="unos"><span class="text-unosa">Oznaka:</span><input type="text" placeholder="Nebavezno polje" class="input-field" [(ngModel)]="hrana.oznaka" name="oznaka"></div>
-    <div class="unos"><span class="text-unosa">Količina:</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.kolicina" name="kolicina"></div><br>
-
-    <input type="file" (change)="upload($event)" accept=".png, .jpg">
-    <button type="submit">Submit</button>
+    <div class="unos"><span class="text-unosa">NAZIV UNOSA</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.naziv" name="naziv"></div>
+    <div class="unos"><span class="text-unosa">KATEGORIJA</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.kategorija" name="kategorija"></div>
+    <div class="unos"><span class="text-unosa">OPIS UNOSA</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.opis" name="opis"></div>
+    <div class="unos"><span class="text-unosa">CIJENA</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.cijena" name="cijena"></div>
+    <div class="unos"><span class="text-unosa">OZNAKA</span><input type="text" placeholder="Nebavezno polje" class="input-field" [(ngModel)]="hrana.oznaka" name="oznaka"></div>
+    <div class="unos"><span class="text-unosa">KOLIČINA</span><input type="text" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.kolicina" name="kolicina"></div><br>
+    <button (click)="filePicker.click()" class="image-button" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+      <mat-icon>add</mat-icon>
+    </button>
+    <input type="file" (change)="upload($event)" #filePicker accept=".png, .jpg">
+    <br>
+    <div class="buttons-container">
+    <button id="odustani-button">Odustani</button>
+    <button id="zavrsi-button" type="submit">Završi</button>
+    </div>
   </form>
 </div>
