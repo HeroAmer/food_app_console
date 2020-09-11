@@ -9,22 +9,22 @@
   border: 0.5px solid #2699FB;
 }
 
+
 input[type="file"] {
   visibility: hidden;
 }
 
+
 .text-unosa {
+  display: inline;
   /* padding: 5.5px; */
-  width: 74px;
   /* padding-bottom: 18px; */
-  min-width: 70px;
   /* padding-top: 10px; */
   background-color: #2699FB;
   color: white;
-  width: 70px;
   overflow: hidden;
   font-size: 12px;
-  padding: 10px 10px 18px 10px;
+  padding: 9px 10px 18px 10px;
   font-weight: 600;
 }
 
@@ -66,7 +66,7 @@ input[type="file"] {
   background-color: #2699FB;
   color: white;
   padding: 10px 25px;
-  border: 1px solid #2699FB;
+  border: 2px solid #2699FB;
   border-radius: 5px;
   margin-left: 10px;
   cursor: pointer;

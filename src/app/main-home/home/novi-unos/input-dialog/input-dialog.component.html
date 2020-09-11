@@ -1,17 +1,17 @@
 <div class="container">
   <h2>Novi unos</h2>
   <form (ngSubmit)="saveFood()">
-    <div class="unos"><span class="text-unosa">NAZIV UNOSA</span><input type="text" placeholder="Obavezno polje"
+    <div class="unos"><a class="text-unosa">NAZIV UNOSA</a><input type="text" autocomplete="off" placeholder="Obavezno polje"
         class="input-field" [(ngModel)]="hrana.naziv" name="naziv"></div>
-    <div class="unos"><span class="text-unosa">KATEGORIJA</span><input type="text" placeholder="Obavezno polje"
+    <div class="unos"><div class="text-unosa">KATEGORIJA</div><input type="text" autocomplete="off" placeholder="Obavezno polje"
         class="input-field" [(ngModel)]="hrana.kategorija" name="kategorija"></div>
-    <div class="unos"><span class="text-unosa">OPIS UNOSA</span><input type="text" placeholder="Obavezno polje"
+    <div class="unos"><div class="text-unosa">OPIS UNOSA</div><input type="text" autocomplete="off" placeholder="Obavezno polje"
         class="input-field" [(ngModel)]="hrana.opis" name="opis"></div>
-    <div class="unos"><span class="text-unosa">CIJENA</span><input type="text" placeholder="Obavezno polje"
+    <div class="unos"><div class="text-unosa">CIJENA</div><input type="text" autocomplete="off" placeholder="Obavezno polje"
         class="input-field" [(ngModel)]="hrana.cijena" name="cijena"></div>
-    <div class="unos"><span class="text-unosa">OZNAKA</span><input type="text" placeholder="Nebavezno polje"
+    <div class="unos"><div class="text-unosa">OZNAKA</div><input type="text" autocomplete="off" placeholder="Nebavezno polje"
         class="input-field" [(ngModel)]="hrana.oznaka" name="oznaka"></div>
-    <div class="unos"><span class="text-unosa">KOLIČINA</span><input type="text" placeholder="Obavezno polje"
+    <div class="unos"><div class="text-unosa">KOLIČINA</div><input type="text" autocomplete="off" placeholder="Obavezno polje"
         class="input-field" [(ngModel)]="hrana.kolicina" name="kolicina"></div><br>
     <button (click)="filePicker.click()" class="image-button" mat-fab
       aria-label="Example icon button with a delete icon">
