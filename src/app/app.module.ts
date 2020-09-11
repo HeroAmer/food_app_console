@@ -3,10 +3,11 @@ import { NgModule, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -50,6 +51,7 @@ import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/in
     MatDialogModule,
     MatTableModule,
     MatMenuModule,
+    MatButtonModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],

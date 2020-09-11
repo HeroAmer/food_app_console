@@ -6,6 +6,7 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import {Router } from '@angular/router';
 import { Item } from '../models/item';
 import { Hrana } from '../models/hrana-unos';
 @Injectable({
@@ -56,6 +57,7 @@ export class ItemService {
   }
 
   addHrana(hrana:Hrana){
-    this.hranaCollection.add(hrana)
+    this.hranaCollection.add(hrana);
+    alert("Uspješno ste dodali novi unos");
   }
 }

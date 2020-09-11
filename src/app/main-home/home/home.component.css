@@ -66,6 +66,7 @@ mat-drawer .sidebar-content ul li a img {
   left: 0;
 } */
 
+
 mat-drawer .sidebar-content ul li:focus-within::before {
   content: "";
   border: 1px solid white;
@@ -153,10 +154,14 @@ mat-drawer .sidebar-content ul li a {
   display: block;
 }
 
-mat-drawer .sidebar-content ul li a:link,
-mat-drawer .sidebar-content ul li a:visited {
+mat-drawer .sidebar-content ul li a:link {
   color: #ffffff;
   opacity: 0.5;
+}
+
+mat-drawer .sidebar-content ul li a:visited {
+  color: #ffffff;
+  opacity: 1;
 }
 
 mat-drawer .sidebar-content ul li a:focus {
@@ -165,7 +170,18 @@ mat-drawer .sidebar-content ul li a:focus {
   outline: none;
 }
 
-mat-drawer .sidebar-content ul li a:active,
+mat-drawer .sidebar-content ul li a::after {
+  color: #ffffff;
+  opacity: 1;
+  outline: none;
+}
+
+mat-drawer .sidebar-content ul li a:active {
+  color: #ffffff;
+  opacity: 1;
+  outline: none;
+}
+
 mat-drawer .sidebar-content ul li a:hover {
   color: #ffffff;
   opacity: 1;
