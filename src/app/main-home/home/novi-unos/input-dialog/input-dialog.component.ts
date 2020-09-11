@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./input-dialog.component.css']
 })
 export class InputDialogComponent implements OnInit {
+  isDisabled = true;
 
   urlTest;
   hrana: Hrana = {
@@ -44,6 +45,7 @@ export class InputDialogComponent implements OnInit {
         this.ref.getDownloadURL().subscribe(url => {
           console.log(url);
           this.urlTest = url; // <-- do what ever you want with the url..
+          this.isDisabled = false;
         });
       })
     ).subscribe();
