@@ -62,6 +62,12 @@ input[type="file"] {
   /* padding-bottom: 10px; */
 }
 
+.image-button-text{
+  display: inline;
+  color:#2699FB;
+  font-size: 14px;
+}
+
 #zavrsi-button {
   background-color: #2699FB;
   color: white;
