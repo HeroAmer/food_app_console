@@ -12,10 +12,9 @@
   position: relative;
 }
 
-
 .example-container mat-drawer {
-  background-color: #2D62ED;
-  color: white;
+  background-color: #2699fb;
+  color: rgb(255, 255, 255, 0.9);
   /* width: 15%; */
 }
 
@@ -25,7 +24,6 @@ mat-toolbar {
   position: relative;
   margin-bottom: 30px;
   box-shadow: 5px 5px 8px #888888;
-
 }
 
 mat-toolbar a {
@@ -42,25 +40,17 @@ mat-drawer {
   position: absolute;
 }
 
-/* .sidebar {
-  left: 50%;
-  transform: translateX(-30%);
-} */
-
 mat-drawer .title {
   margin-top: 53px;
 }
 
 mat-drawer .sidebar-content {
   margin-top: 30px;
-
 }
 
 mat-drawer .sidebar-content ul li a img {
   vertical-align: middle;
   display: inline-block;
-
-
 }
 
 /* Moze se staviti samo mat-drawer .sidebar-content ul li:focus-within::before pa da samo na klik se desi ovo i da ostane */
@@ -73,7 +63,6 @@ mat-drawer .sidebar-content ul li a img {
   left: 0;
 } */
 
-
 mat-drawer .sidebar-content ul li:focus-within::before {
   content: "";
   border: 1px solid white;
@@ -83,15 +72,12 @@ mat-drawer .sidebar-content ul li:focus-within::before {
   left: 0;
 }
 
-
-
 mat-drawer .sidebar-content ul li a p {
   display: inline-block;
   font: normal normal 600 16px/19px Montserrat;
   vertical-align: middle;
   margin-left: 18px;
 }
-
 
 .header {
   display: flex;
@@ -102,12 +88,11 @@ mat-drawer .sidebar-content ul li a p {
   margin-right: 10px;
 }
 
-mat-drawer .sidebar-content>h4 {
+mat-drawer .sidebar-content > h4 {
   text-align: center;
 }
 
-
-mat-drawer .sidebar-content>div {
+mat-drawer .sidebar-content > div {
   padding: 20px;
 }
 
@@ -122,7 +107,6 @@ mat-drawer .sidebar-content .users {
 mat-drawer .sidebar-content ul {
   list-style-type: none;
   padding-left: 0;
-
 }
 
 .users {
@@ -130,7 +114,7 @@ mat-drawer .sidebar-content ul {
   align-items: center;
 }
 
-.user>p {
+.user > p {
   margin-left: 3px;
 }
 
@@ -159,17 +143,21 @@ mat-drawer .sidebar-content ul li {
 }
 
 mat-drawer .sidebar-content ul li a {
-  text-decoration: none;
+  /* text-decoration: none; */
   display: block;
 }
 
-mat-drawer .sidebar-content ul li a:link {
+/* mat-drawer .sidebar-content ul li a:link {
   color: #ffffff;
-  opacity: 0.7;
-}
+  opacity: 1;
+} */
 
-mat-drawer .sidebar-content ul li a:visited {
-  color: #ffffff;
+/* mat-drawer .sidebar-content ul li a:visited {
+  color: rgba(174, 219, 25, 0.6) !important;
+} */
+
+.active-link {
+  color: rgb(255, 255, 255);
   opacity: 1;
 }
 
@@ -179,18 +167,11 @@ mat-drawer .sidebar-content ul li a:focus {
   outline: none;
 }
 
-
-mat-drawer .sidebar-content ul li a::after {
-  color: #ffffff;
+/* mat-drawer .sidebar-content ul li a.active {
+  color: #f36b6b;
   opacity: 1;
   outline: none;
-}
-
-mat-drawer .sidebar-content ul li a:active {
-  color: #ffffff;
-  opacity: 1;
-  outline: none;
-}
+} */
 
 mat-drawer .sidebar-content ul li a:hover {
   color: #ffffff;
@@ -201,7 +182,3 @@ mat-drawer .sidebar-content ul li a:hover {
 .material-icons {
   padding: 0px 10px;
 }
-
-/* .active-link {
-  color: white;
-} */
