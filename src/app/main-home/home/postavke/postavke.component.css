@@ -25,15 +25,6 @@ table {
   background: content-box !important;
 }
 
-#last {
-  /* border-bottom-style: none; */
-}
-
-.header {
-  /* display: flex; */
-  /* position: absolute; */
-
-}
 
 .header>.title {
   display: flex;
@@ -92,4 +83,26 @@ table {
   background-color: #386cf0;
   border-radius: 15px;
   margin: 10px;
+}
+
+.dark-mode{
+  margin-left: 10%;
+  margin-top: 20px;
+  width: 80px;
+  height: 110px;
+  padding-left: 20px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border:1.5px solid rgb(179, 166, 166);
+  border-radius: 8px;
+  box-shadow: 2px 2px 8px #888888;
+}
+
+.dark-mode img{
+  padding-left: 10px;
+}
+
+.dark-mode-text{
+  font-size: 12px;
 }
