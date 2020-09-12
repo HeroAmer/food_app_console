@@ -8,6 +8,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatButtonModule} from '@angular/material/button';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -51,7 +52,8 @@ import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/in
     MatDialogModule,
     MatTableModule,
     MatMenuModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSlideToggleModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],
