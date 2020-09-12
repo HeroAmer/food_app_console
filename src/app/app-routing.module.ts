@@ -12,7 +12,7 @@ const routes: Routes = [
   // },
   // TODO: Pokusati sa rijesenjem lazyLoadinga zbog ucitvanja ngModela (ako ovo rijesenje bude radilo sporo)
   {
-    path: '',
+    path: 'narudzbe',
     component: NarudzbeComponent,
   },
   {
