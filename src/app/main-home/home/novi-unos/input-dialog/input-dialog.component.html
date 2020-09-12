@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Novi unos</h2>
   <form (ngSubmit)="saveFood()">
-    <div class="unos"><a class="text-unosa">NAZIV UNOSA</a><input type="text" autocomplete="off" placeholder="Obavezno polje"
+    <div class="unos"><div class="text-unosa">NAZIV UNOSA</div><input type="text" autocomplete="off" placeholder="Obavezno polje"
         class="input-field" [(ngModel)]="hrana.naziv" name="naziv"></div>
     <div class="unos"><div class="text-unosa">KATEGORIJA</div><input type="text" autocomplete="off" placeholder="Obavezno polje"
         class="input-field" [(ngModel)]="hrana.kategorija" name="kategorija"></div>
@@ -17,12 +17,12 @@
       aria-label="Example icon button with a delete icon">
       <mat-icon>add</mat-icon>
 
-    </button>
+    </button><p *ngIf="isDisabled" class="image-button-text">Ubaci fotografiju</p><p *ngIf="!isDisabled" class="image-button-text">Ubacili ste fotografiju.</p>
 
     <input type="file" (change)="upload($event)" #filePicker accept=".png, .jpg">
     <br>
     <div class="buttons-container">
-      <button #bntClose id="odustani-button">ODUSTANI</button>
+      <button #bntClose mat-dialog-close (click)="closeDialog()" id="odustani-button">ODUSTANI</button>
       <button id="zavrsi-button" [disabled]="isDisabled" type="submit">ZAVRŠI</button>
     </div>
   </form>

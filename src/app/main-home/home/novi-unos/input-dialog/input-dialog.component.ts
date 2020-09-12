@@ -66,4 +66,7 @@ export class InputDialogComponent implements OnInit {
     this.hrana.imageURL = this.urlTest;
     this.itemService.addHrana(this.hrana);
   }
+  closeDialog(){
+    console.log('Dialog closed!');
+  }
 }
