@@ -23,3 +23,8 @@ body {
   display: initial !important;
   line-height: 20px;
 }
+
+a:visited {
+  /* color: rgb(40, 86, 172); */
+  color: rgb(204, 208, 221);
+}
