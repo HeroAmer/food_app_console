@@ -20,9 +20,10 @@ export class ItemService {
   hranaCollection: AngularFirestoreCollection<Hrana>;
   hrana: Observable<Hrana[]>;
 
+
   constructor(public afs: AngularFirestore) {
     this.itemsCollection = this.afs.collection('items', (ref) =>
-      ref.orderBy('description', 'asc')
+      ref.where('description','==','This is item 2')
     );
 
     // this.items = firestore.collection('items').valueChanges();
@@ -36,14 +37,13 @@ export class ItemService {
 
 
 
-    this.hranaCollection = this.afs.collection('unos_hrane', (ref) =>
-    ref.orderBy('description', 'asc')
-  );
-  this.hrana = this.itemsCollection.snapshotChanges().map((changes) => {
-    return changes.map((a) => {
-      const data = a.payload.doc.data() as Hrana;
-      data.id = a.payload.doc.id;
-      return data;
+    this.hranaCollection = this.afs.collection('unos_hrane');
+
+  this.hrana = this.hranaCollection.snapshotChanges().map((newData) => {
+    return newData.map((b) => {
+      const hranaData = b.payload.doc.data() as Hrana;
+      // hranaData.id = b.payload.doc.id;
+      return hranaData;
     });
   });
   }
@@ -51,6 +51,11 @@ export class ItemService {
   getItems() {
     return this.items;
   }
+
+  getFood(){
+    return this.hrana;
+  }
+
 
   addItem(item: Item) {
     this.itemsCollection.add(item);

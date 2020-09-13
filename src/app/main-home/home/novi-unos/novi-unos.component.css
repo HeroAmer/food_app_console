@@ -38,6 +38,15 @@ table {
 
 }
 
+table, th, td {
+  border-collapse: collapse;
+}
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}
 
 .novi-unos {
   display: flex;
@@ -46,6 +55,14 @@ table {
   justify-content: flex-end;
   padding: 10px;
 
+}
+#data  > tr:last-child {
+  border-bottom: 0;
+}
+#unos-slika{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
 }
 
 .novi-unos>button {

@@ -22,44 +22,35 @@
     </div>
   </div>
 
-  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+  <table id="data" class="mat-elevation-z8">
 
-    <!-- Image Column -->
-    <ng-container matColumnDef="image">
-      <th mat-header-cell *matHeaderCellDef></th>
-      <td mat-cell *matCellDef="let element">{{ element.image }}</td>
-    </ng-container>
+    <tr>
+      <th> </th>
+      <th>Naziv</th>
+      <th>Opis</th>
+      <th>Cijena</th>
+    </tr>
+    <tr *ngFor="let jelo of hrana">
 
-    <!-- Naziv Column -->
-    <ng-container matColumnDef="naziv">
-      <th mat-header-cell *matHeaderCellDef>NAZIV</th>
-      <td mat-cell *matCellDef="let element">{{ element.naziv }}</td>
-    </ng-container>
-
-    <!-- Opis Column -->
-    <ng-container matColumnDef="opis">
-      <th mat-header-cell *matHeaderCellDef>OPIS</th>
-      <td mat-cell *matCellDef="let element">{{ element.opis }}</td>
-    </ng-container>
-
-    <!-- Cijena Column -->
-    <ng-container matColumnDef="cijena">
-      <th mat-header-cell *matHeaderCellDef>CIJENA (BAM)</th>
-      <td mat-cell *matCellDef="let element" id="last">{{ element.cijena }}</td>
-    </ng-container>
-    <ng-container matColumnDef="execute">
-      <th mat-header-cell fxFlex="8%" fxLayoutAlign="start center" *matHeaderCellDef></th>
-      <td mat-cell fxFlex="8%" fxLayoutAlign="start center" *matCellDef="let element">
-        <button id="menu" mat-icon-button [matMenuTriggerFor]="menu" [matMenuTriggerData]="{ element: element }">
-          <i class="material-icons" style="color: #000">more_vert</i>
+      <td><img id="unos-slika" src="{{jelo.imageURL}}"></td>
+      <td>{{jelo.naziv}}</td>
+      <td>{{jelo.opis}}</td>
+      <td>{{jelo.cijena + ' KM'}}</td>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
         </button>
-      </td>
-    </ng-container>
+        <button mat-menu-item disabled>
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </mat-menu>
+    </tr>
   </table>
 
   <mat-menu #menu="matMenu">
