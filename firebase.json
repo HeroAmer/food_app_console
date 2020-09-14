@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "dist/food-app-console",
     "ignore": [
       "firebase.json",
       "**/.*",

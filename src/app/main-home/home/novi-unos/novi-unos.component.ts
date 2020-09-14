@@ -16,33 +16,7 @@ import { Observable } from 'rxjs';
 // import { AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask } from '@angular/fire/storage';
 // import { Observable } from 'rxjs';
 
-export interface PeriodicElement {
-  image: string;
-  naziv: string;
-  opis: string;
-  cijena: number;
-}
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    image: 'Slika',
-    naziv: 'Ustipci od heljde',
-    opis: '300gr, uštipaka',
-    cijena: 10.0,
-  },
-  {
-    image: 'Slika',
-    naziv: 'Cevapi s lukom',
-    opis: '400gr, salata',
-    cijena: 21.8,
-  },
-  {
-    image: 'Slika',
-    naziv: 'Futrovane pljeskavice',
-    opis: '500gr, prilog',
-    cijena: 15.6,
-  },
-];
 @Component({
   selector: 'app-novi-unos',
   templateUrl: './novi-unos.component.html',
@@ -51,9 +25,29 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class NoviUnosComponent implements OnInit {
   /// Things below is for table content
   displayedColumns: string[] = ['image', 'naziv', 'opis', 'cijena', 'execute'];
-  dataSource = ELEMENT_DATA;
+  hrana:Hrana[];
+  unosi= [
+    {
+      image: 'Slika',
+      naziv: 'Ustipci od heljde',
+      opis: '300gr, uštipaka',
+      cijena: 10.0,
+    },
+    {
+      image: 'Slika',
+      naziv: 'Cevapi s lukom',
+      opis: '400gr, salata',
+      cijena: 21.8,
+    },
+    {
+      image: 'Slika',
+      naziv: 'Futrovane pljeskavice',
+      opis: '500gr, prilog',
+      cijena: 15.6,
+    },
+  ];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, public itemService: ItemService) {}
   openDialog() {
     const dialogRef = this.dialog.open(InputDialogComponent);
 
@@ -66,7 +60,11 @@ export class NoviUnosComponent implements OnInit {
     alert('User has been edited!');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.itemService.getFood().subscribe(hrana => {
+      this.hrana = hrana;
+    })
+  }
 
 
 }

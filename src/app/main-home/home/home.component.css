@@ -14,7 +14,7 @@
 
 .example-container mat-drawer {
   background-color: #2699fb;
-  color: rgb(255, 255, 255, 0.8);
+  color: rgb(255, 255, 255, 0.9);
   /* width: 15%; */
 }
 
@@ -39,11 +39,6 @@ mat-drawer {
   display: flex;
   position: absolute;
 }
-
-/* .sidebar {
-  left: 50%;
-  transform: translateX(-30%);
-} */
 
 mat-drawer .title {
   margin-top: 53px;
@@ -93,11 +88,11 @@ mat-drawer .sidebar-content ul li a p {
   margin-right: 10px;
 }
 
-mat-drawer .sidebar-content>h4 {
+mat-drawer .sidebar-content > h4 {
   text-align: center;
 }
 
-mat-drawer .sidebar-content>div {
+mat-drawer .sidebar-content > div {
   padding: 20px;
 }
 
@@ -119,7 +114,7 @@ mat-drawer .sidebar-content ul {
   align-items: center;
 }
 
-.user>p {
+.user > p {
   margin-left: 3px;
 }
 
@@ -156,7 +151,6 @@ mat-drawer .sidebar-content ul li a {
   color: #ffffff;
   opacity: 1;
 } */
-
 
 /* mat-drawer .sidebar-content ul li a:visited {
   color: rgba(174, 219, 25, 0.6) !important;
