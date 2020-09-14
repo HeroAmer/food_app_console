@@ -1,6 +1,8 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Chart } from 'node_modules/chart.js';
 import { ViewChild } from '@angular/core';
+import {Narudzbe} from '../../../models/orders';
+import {ItemService} from '../../../services/item-service.service';
 
 @Component({
   selector: 'app-narudzbe',
@@ -8,7 +10,12 @@ import { ViewChild } from '@angular/core';
   styleUrls: ['./narudzbe.component.css'],
 })
 export class NarudzbeComponent implements OnInit {
-  constructor() {}
+  orderItem: Narudzbe[];
+  constructor(public itemService: ItemService) {}
+
+  cl() {
+    alert('User has been edited!');
+  }
 
   ngOnInit(): void {
     var ctx = 'myChart';
@@ -41,5 +48,10 @@ export class NarudzbeComponent implements OnInit {
         },
       },
     });
+
+    this.itemService.selectAllOrders().subscribe((orderItem) =>{
+      console.log(orderItem);
+      this.orderItem = orderItem;
+    })
   }
 }
