@@ -26,6 +26,7 @@ import { NoviUnosComponent } from './main-home/home/novi-unos/novi-unos.componen
 import { PostavkeComponent } from './main-home/home/postavke/postavke.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/input-dialog.component';
+import { OrderDetailsComponent } from './main-home/home/narudzbe/order-details/order-details.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/in
     NoviUnosComponent,
     PostavkeComponent,
     InputDialogComponent,
+    OrderDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,6 @@ import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/in
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],
-  entryComponents: [InputDialogComponent],
+  entryComponents: [InputDialogComponent, OrderDetailsComponent],
 })
 export class AppModule {}

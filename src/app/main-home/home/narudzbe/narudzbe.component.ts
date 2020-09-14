@@ -1,8 +1,10 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Chart } from 'node_modules/chart.js';
 import { ViewChild } from '@angular/core';
-import {Narudzbe} from '../../../models/orders';
-import {ItemService} from '../../../services/item-service.service';
+import { Narudzbe } from '../../../models/orders';
+import { ItemService } from '../../../services/item-service.service';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 @Component({
   selector: 'app-narudzbe',
@@ -11,7 +13,7 @@ import {ItemService} from '../../../services/item-service.service';
 })
 export class NarudzbeComponent implements OnInit {
   orderItem: Narudzbe[];
-  constructor(public itemService: ItemService) {}
+  constructor(public itemService: ItemService, public dialog: MatDialog) {}
 
   cl() {
     alert('User has been edited!');
@@ -49,9 +51,16 @@ export class NarudzbeComponent implements OnInit {
       },
     });
 
-    this.itemService.selectAllOrders().subscribe((orderItem) =>{
+    this.itemService.selectAllOrders().subscribe((orderItem) => {
       console.log(orderItem);
       this.orderItem = orderItem;
-    })
+    });
+  }
+  openDetails(orderAddress: string) {
+    const dialogRef = this.dialog.open(OrderDetailsComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

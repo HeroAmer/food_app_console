@@ -6,16 +6,11 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { Observable, combineLatest, of } from 'rxjs';
-import { concat } from 'rxjs';
 import { flatMap, map } from 'rxjs/operators';
-
-import { switchMap } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { Item } from '../models/item';
 import { Hrana } from '../models/hrana-unos';
 import { Users, Order, Narudzbe } from '../models/orders';
-import { uniq, flatten } from 'lodash';
-import { User } from 'firebase';
+
 
 @Injectable({
   providedIn: 'root',

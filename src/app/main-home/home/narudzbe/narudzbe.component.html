@@ -17,51 +17,38 @@
     </div>
   </div>
   <table id="data" class="mat-elevation-z8">
-
     <tr>
+      <th>
+        <label class="container">
+          <input type="checkbox" checked="checked">
+          <span class="checkmark"></span>
+        </label>
+      </th>
       <th>BROJ</th>
       <th>NAZIV OSOBE</th>
       <th>DATUM</th>
       <th>CIJENA</th>
       <th>STATUS</th>
       <th>ADRESA</th>
+      <th></th>
     </tr>
     <tr *ngFor="let order of orderItem">
-
       <!-- <td><img id="unos-slika" src=""></td> -->
+      <label class="container" id="drugi">
+        <input type="checkbox" checked="checked">
+        <span class="checkmark"></span>
+      </label>
       <td>{{order.phone}}</td>
       <td>{{order.fullName}}</td>
       <td>12.10.20</td>
       <td>{{order.orderTotal}}</td>
       <td>{{order.status}}</td>
       <td>{{order.orderAddress}}</td>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+
+      <button mat-icon-button aria-label="Example icon-button with a menu" (click)="openDetails(order.orderAddress)">
         <mat-icon>more_vert</mat-icon>
       </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>edit</mat-icon>
-          <span>Edit</span>
-        </button>
-        <button mat-menu-item disabled>
-          <mat-icon>delete</mat-icon>
-          <span>Delete</span>
-        </button>
 
-      </mat-menu>
     </tr>
   </table>
-
-  <mat-menu #menu="matMenu">
-    <ng-template matMenuContent let-aliasMenuItems="element">
-      <button mat-menu-item (click)="cl(aliasMenuItems)">
-        <mat-icon>edit</mat-icon>
-        <span>Edit</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>delete</mat-icon>
-        <span>Delete</span>
-      </button>
-    </ng-template>
-  </mat-menu>
 </div>
