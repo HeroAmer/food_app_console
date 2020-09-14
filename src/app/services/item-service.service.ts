@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import {Router } from '@angular/router';
 import { Item } from '../models/item';
 import { Hrana } from '../models/hrana-unos';
+import { Narudzba } from '../models/narudzba';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,6 +20,9 @@ export class ItemService {
 
   hranaCollection: AngularFirestoreCollection<Hrana>;
   hrana: Observable<Hrana[]>;
+
+  notifikacijeCollection: AngularFirestoreCollection<Narudzba>;
+  notifikacije:Observable<Narudzba[]>;
 
 
   constructor(public afs: AngularFirestore) {
@@ -34,6 +38,19 @@ export class ItemService {
         return data;
       });
     });
+
+    ///Uzimanje narudzbi kojima je status = false , da bi ih pokazali u notifikacijama
+    this.notifikacijeCollection = this.afs.collection('ordersUser', (ref) =>
+      ref.where('status', '==', false )
+
+    );
+
+    this.notifikacije = this.notifikacijeCollection.snapshotChanges().map((changes) => {
+      return changes.map((c)=> {
+        const notifikacijeData = c.payload.doc.data() as Narudzba;
+        return notifikacijeData;
+      });
+    })
 
 
 
@@ -59,6 +76,10 @@ export class ItemService {
 
   addItem(item: Item) {
     this.itemsCollection.add(item);
+  }
+
+  getNotifikacije(){
+    return this.notifikacije;
   }
 
   addHrana(hrana:Hrana){
