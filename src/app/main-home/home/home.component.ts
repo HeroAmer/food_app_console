@@ -12,10 +12,12 @@ export class HomeComponent implements OnInit {
   numberOfNotifications;
 
   ngOnInit(): void {
-    this.notifications = this.itemService.getNotifikacije().subscribe(notifikacije =>{
-      this.notifications = notifikacije;
-      this.numberOfNotifications = notifikacije.length;
-    })
+    this.notifications = this.itemService
+      .getNotifikacije()
+      .subscribe((notifikacije) => {
+        this.notifications = notifikacije;
+        this.numberOfNotifications = notifikacije.length;
+      });
   }
 
   // ngAfterViewInit(){
