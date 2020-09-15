@@ -12,7 +12,6 @@ import { Hrana } from '../models/hrana-unos';
 import { Narudzba } from '../models/narudzba';
 import { Users, Order, Narudzbe } from '../models/orders';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -83,6 +82,10 @@ export class ItemService implements OnInit {
           const address = data.orderAddress;
           const total = data.orderTotal;
           const status = data.status;
+          const code = data.orderCode;
+          const jelo = data.orderJelo;
+          const komentar = data.orderKomentar;
+          const doplata = data.orderDoplata;
           return this.afs
             .doc('users/' + orderId)
             .valueChanges()
@@ -94,6 +97,10 @@ export class ItemService implements OnInit {
                   orderAddress: address,
                   orderTotal: total,
                   status: status,
+                  orderCode: code,
+                  orderJelo: jelo,
+                  orderKomentar: komentar,
+                  orderDoplata: doplata,
                 });
               })
             );

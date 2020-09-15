@@ -5,6 +5,10 @@ export interface Narudzbe {
   orderAddress?: string;
   orderTotal?: number;
   status?: boolean;
+  orderCode?: string;
+  orderJelo?: string;
+  orderKomentar?: string;
+  orderDoplata?: number;
   // address?: string,
 }
 
@@ -18,4 +22,8 @@ export interface Order {
   orderAddress?: string;
   orderTotal?: number;
   status?: boolean;
+  orderCode?: string;
+  orderJelo?: string;
+  orderKomentar?: string;
+  orderDoplata?: number;
 }

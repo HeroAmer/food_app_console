@@ -6,6 +6,19 @@ import { ItemService } from '../../../services/item-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 
+export interface DialogData {
+  uid?: string;
+  phone: string;
+  fullName?: string;
+  orderAddress?: string;
+  orderTotal?: number;
+  status?: boolean;
+  orderCode: string;
+  orderJelo?: string;
+  orderKomentar?: string;
+  orderDoplata: number;
+}
+
 @Component({
   selector: 'app-narudzbe',
   templateUrl: './narudzbe.component.html',
@@ -56,8 +69,19 @@ export class NarudzbeComponent implements OnInit {
       this.orderItem = orderItem;
     });
   }
-  openDetails(orderAddress: string) {
-    const dialogRef = this.dialog.open(OrderDetailsComponent);
+  openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
+    const dialogRef = this.dialog.open(OrderDetailsComponent, {
+      data: {
+        orderCode: code,
+        orderJelo: jelo,
+        orderKomentar: komentar,
+        fullName: name,
+        orderAddress: adresa,
+        phone: orderphone,
+        orderDoplata: doplata,
+        orderTotal: suma
+      },
+    });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
