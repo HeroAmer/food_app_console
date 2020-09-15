@@ -16,11 +16,13 @@ body {
   display: initial !important;
 }
 
-.mat-fab > span {
+.mat-fab>span {
   padding: 16px 0;
   display: initial !important;
   line-height: 20px;
 }
-a:visited {
+
+a:visited,
+a:link {
   color: rgb(204, 208, 221);
 }
