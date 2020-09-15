@@ -51,8 +51,17 @@
   <mat-drawer-content>
     <mat-toolbar>
       <!-- <span class="material-icons"> notifications_none </span> -->
-      <a href="#" id="notification"><img src="../../../assets/icons/notification.svg" alt="notification" /></a>
-      <a href="#"><img src="../../../assets/icons/logout.svg" alt="logout" /></a>
+      <button matBadge="{{numberOfNotifications}}" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon >notifications</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <div *ngFor="let notifikacija of notifications">
+          <p>NEW ORDER PENDING: {{notifikacija.orderID}}</p>
+        </div>
+      </mat-menu>
+      <a href="#"
+        ><img src="../../../assets/icons/logout.svg" alt="logout"
+      /></a>
 
       <!-- <span class="material-icons"> exit_to_app </span> -->
     </mat-toolbar>
