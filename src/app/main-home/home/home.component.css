@@ -32,6 +32,10 @@ mat-toolbar a {
 
 #notification {
   margin-right: 15px;
+  color: rgb(59, 58, 58);
+}
+mat-menu p {
+  width: 500px;
 }
 
 mat-drawer {

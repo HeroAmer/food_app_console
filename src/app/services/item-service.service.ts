@@ -9,6 +9,7 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { flatMap, map } from 'rxjs/operators';
 import { Item } from '../models/item';
 import { Hrana } from '../models/hrana-unos';
+import { Narudzba } from '../models/narudzba';
 import { Users, Order, Narudzbe } from '../models/orders';
 
 @Injectable({
@@ -30,6 +31,10 @@ export class ItemService implements OnInit {
   hranaCollection: AngularFirestoreCollection<Hrana>;
   hrana: Observable<Hrana[]>;
 
+  notifikacijeCollection: AngularFirestoreCollection<Narudzba>;
+  notifikacije:Observable<Narudzba[]>;
+
+
   constructor(public afs: AngularFirestore) {
     // this.itemsCollection = this.afs.collection('items', (ref) =>
     //   ref.where('description','==','This is item 2')
@@ -43,6 +48,19 @@ export class ItemService implements OnInit {
     //     return data;
     //   });
     // });
+
+    ///Uzimanje narudzbi kojima je status = false , da bi ih pokazali u notifikacijama
+    this.notifikacijeCollection = this.afs.collection('ordersUser', (ref) =>
+      ref.where('status', '==', false )
+
+    );
+
+    this.notifikacije = this.notifikacijeCollection.snapshotChanges().map((changes) => {
+      return changes.map((c)=> {
+        const notifikacijeData = c.payload.doc.data() as Narudzba;
+        return notifikacijeData;
+      });
+    })
 
     this.hranaCollection = this.afs.collection('unos_hrane');
 
@@ -114,6 +132,11 @@ export class ItemService implements OnInit {
   addItem(item: Item) {
     this.itemsCollection.add(item);
   }
+
+  getNotifikacije(){
+    return this.notifikacije;
+  }
+
 
   addHrana(hrana: Hrana) {
     this.hranaCollection.add(hrana);
