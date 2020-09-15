@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 export interface PeriodicElement {
   image: string;
   name: string;
@@ -32,11 +31,16 @@ const ELEMENT_DATA: PeriodicElement[] = [
 @Component({
   selector: 'app-postavke',
   templateUrl: './postavke.component.html',
-  styleUrls: ['./postavke.component.css']
+  styleUrls: ['./postavke.component.css'],
 })
 export class PostavkeComponent implements OnInit {
-
-  displayedColumns: string[] = ['image', 'Ime', 'Pozicija', 'Broj telefona', 'execute'];
+  displayedColumns: string[] = [
+    'image',
+    'Ime',
+    'Pozicija',
+    'Broj telefona',
+    'execute',
+  ];
   dataSource = ELEMENT_DATA;
 
   constructor() {}
@@ -44,9 +48,5 @@ export class PostavkeComponent implements OnInit {
     alert('User has been edited!');
   }
 
-
-
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

@@ -5,11 +5,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatBadgeModule} from '@angular/material/badge';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatBadgeModule } from '@angular/material/badge';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -28,6 +28,7 @@ import { PostavkeComponent } from './main-home/home/postavke/postavke.component'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/input-dialog.component';
 import { OrderDetailsComponent } from './main-home/home/narudzbe/order-details/order-details.component';
+import { LoginComponent } from './main-home/login/login.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { OrderDetailsComponent } from './main-home/home/narudzbe/order-details/o
     PostavkeComponent,
     InputDialogComponent,
     OrderDetailsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +59,7 @@ import { OrderDetailsComponent } from './main-home/home/narudzbe/order-details/o
     MatMenuModule,
     MatButtonModule,
     MatSlideToggleModule,
-    MatBadgeModule
+    MatBadgeModule,
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],

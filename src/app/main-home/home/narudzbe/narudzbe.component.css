@@ -180,8 +180,8 @@ tr:last-child {
 .container .checkmark:after {
   left: 5px;
   top: 3px;
-  width: 4px;
-  height: 7px;
+  width: 7px;
+  height: 11px;
   border: solid white;
   border-width: 0 3px 3px 0;
   -webkit-transform: rotate(45deg);
