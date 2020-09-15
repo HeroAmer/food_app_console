@@ -44,8 +44,8 @@
       <td>{{order.orderTotal}}</td>
       <td>{{order.status}}</td>
       <td>{{order.orderAddress}}</td>
-
-      <button mat-icon-button aria-label="Example icon-button with a menu" (click)="openDetails(order.orderAddress)">
+      <button mat-icon-button aria-label="Example icon-button with a menu"
+        (click)="openDetails(order.orderCode, order.orderJelo, order.orderKomentar, order.fullName, order.orderAddress, order.phone, order.orderDoplata, order.orderTotal)">
         <mat-icon>more_vert</mat-icon>
       </button>
 

@@ -1,4 +1,7 @@
+import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DialogData } from '../narudzbe.component';
 
 @Component({
   selector: 'app-order-details',
@@ -7,9 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  constructor() {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   ngOnInit(): void {
-
+    console.log(this.data)
   }
 }
