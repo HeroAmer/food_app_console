@@ -31,6 +31,7 @@ export class InputDialogComponent implements OnInit {
     cijena: '',
     oznaka: '',
     kolicina: '',
+    brojlajkova:0,
     imageURL: '',
   };
 
