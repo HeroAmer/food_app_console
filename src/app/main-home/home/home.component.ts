@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { ItemService } from 'src/app/services/item-service.service';
+import { FlashMessagesService } from 'angular2-flash-messages';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,17 @@ import { ItemService } from 'src/app/services/item-service.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  constructor(public itemService: ItemService, public authService:AuthServiceService) {}
+  constructor(
+    public itemService: ItemService,
+    private afAuth: AuthServiceService,
+    private router: Router,
+    private flashMessage: FlashMessagesService
+  ) {}
   notifications;
   numberOfNotifications;
+  isLoggedIn: boolean;
+  loggedInUser: string;
+  showRegister: boolean;
 
   ngOnInit(): void {
     this.notifications = this.itemService
@@ -19,6 +29,22 @@ export class HomeComponent implements OnInit {
         this.notifications = notifikacije;
         this.numberOfNotifications = notifikacije.length;
       });
+    this.afAuth.getAuth().subscribe((auth) => {
+      if (auth) {
+        this.isLoggedIn = true;
+        this.loggedInUser = auth.email;
+      } else {
+        this.isLoggedIn = false;
+      }
+    });
+  }
+  onLogoutClick() {
+    this.afAuth.logout();
+    this.flashMessage.show('You are now logged out!', {
+      cssClass: 'alert-success',
+      timeout: 4000,
+    });
+    this.router.navigate(['/']);
   }
 
 

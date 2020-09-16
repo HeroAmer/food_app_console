@@ -60,7 +60,11 @@
           <p>NEW ORDER PENDING: {{notifikacija.orderID}}</p>
         </div>
       </mat-menu>
-      <a href="#"><img src="../../../assets/icons/logout.svg"alt="logout" /></a>
+
+      <a *ngIf="isLoggedIn" (click)="onLogoutClick()" href="#"><img src="../../../assets/icons/logout.svg"
+          alt="logout" /></a>
+
+
 
       <!-- <span class="material-icons"> exit_to_app </span> -->
     </mat-toolbar>

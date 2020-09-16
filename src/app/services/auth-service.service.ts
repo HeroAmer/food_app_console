@@ -66,7 +66,7 @@ insertUserData(userCredential:firebase.auth.UserCredential){
   })
 }
 
-
-
-
+  logout(){
+    this.afAuth.signOut();
+  }
 }

@@ -10,6 +10,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
+import { FlashMessagesModule } from 'angular2-flash-messages';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -62,6 +63,7 @@ import { RegisterPopupComponent } from './main-home/home/postavke/register-popup
     MatButtonModule,
     MatSlideToggleModule,
     MatBadgeModule,
+    FlashMessagesModule.forRoot(),
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],
