@@ -29,6 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/input-dialog.component';
 import { OrderDetailsComponent } from './main-home/home/narudzbe/order-details/order-details.component';
 import { LoginComponent } from './main-home/login/login.component';
+import { RegisterPopupComponent } from './main-home/home/postavke/register-popup/register-popup.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { LoginComponent } from './main-home/login/login.component';
     InputDialogComponent,
     OrderDetailsComponent,
     LoginComponent,
+    RegisterPopupComponent,
   ],
   imports: [
     BrowserModule,
