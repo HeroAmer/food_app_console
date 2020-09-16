@@ -31,6 +31,8 @@ import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/in
 import { OrderDetailsComponent } from './main-home/home/narudzbe/order-details/order-details.component';
 import { LoginComponent } from './main-home/login/login.component';
 import { RegisterPopupComponent } from './main-home/home/postavke/register-popup/register-popup.component';
+import { KategorijeComponent } from './main-home/home/kategorije/kategorije.component';
+import { NovaKategorijaComponent } from './main-home/home/kategorije/nova-kategorija/nova-kategorija.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { RegisterPopupComponent } from './main-home/home/postavke/register-popup
     OrderDetailsComponent,
     LoginComponent,
     RegisterPopupComponent,
+    KategorijeComponent,
+    NovaKategorijaComponent,
   ],
   imports: [
     BrowserModule,
