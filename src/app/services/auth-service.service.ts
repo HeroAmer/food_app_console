@@ -23,6 +23,12 @@ export class AuthServiceService {
   getUserState(){
     return this.afAuth.authState
   }
+
+  getAuth(){
+    return this.afAuth.authState.map(auth => auth);
+  }
+
+
   login(email: string, password: string) {
     this.afAuth
       .signInWithEmailAndPassword(email, password)
@@ -59,10 +65,6 @@ insertUserData(userCredential:firebase.auth.UserCredential){
     role: 'admin'
   })
 }
-
-  getAuth(){
-    return this.afAuth.authState.map(auth => auth);
-  }
 
   logout(){
     this.afAuth.signOut();

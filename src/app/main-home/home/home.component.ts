@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { ItemService } from 'src/app/services/item-service.service';
-import { AuthServiceService } from '../../services/auth-service.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 
@@ -46,6 +46,7 @@ export class HomeComponent implements OnInit {
     });
     this.router.navigate(['/']);
   }
+
 
   // ngAfterViewInit(){
   //   (document.querySelector('.active-link') as HTMLElement).style.color{

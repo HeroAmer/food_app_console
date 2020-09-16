@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Novi unos</h2>
-  <form (ngSubmit)="saveFood()">
+  <form #myForm (ngSubmit)="saveFood()">
     <div class="parent">
       <div class="text-unosa">NAZIV UNOSA</div>
       <div class="inputic"><input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
@@ -49,11 +49,11 @@
     <p *ngIf="isDisabled" class="image-button-text">Ubaci fotografiju</p>
     <p *ngIf="!isDisabled" class="image-button-text">Ubacili ste fotografiju.</p>
 
-    <input type="file" (change)="upload($event)" #filePicker accept=".png, .jpg">
+    <input type="file" (change)="upload($event)" #filePicker accept=".png, .jpeg, .jpg">
     <br>
     <div class="buttons-container">
-      <button #bntClose mat-dialog-close (click)="closeDialog()" id="odustani-button">ODUSTANI</button>
-      <button id="zavrsi-button" [disabled]="isDisabled" type="submit">ZAVRŠI</button>
+      <button #btnClose mat-dialog-close (click)="closeDialog()" id="odustani-button">ODUSTANI</button>
+      <button #btnClose (click)="zatvori()" id="zavrsi-button" [disabled]="isDisabled" type="submit">ZAVRŠI</button>
     </div>
   </form>
 </div>
