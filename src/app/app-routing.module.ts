@@ -5,7 +5,10 @@ import { NarudzbeComponent } from './main-home/home/narudzbe/narudzbe.component'
 import { NoviUnosComponent } from './main-home/home/novi-unos/novi-unos.component';
 import { PostavkeComponent } from './main-home/home/postavke/postavke.component';
 import { LoginComponent } from './main-home/login/login.component';
+import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
 const routes: Routes = [
   {
     path: '',
@@ -18,15 +21,15 @@ const routes: Routes = [
     children: [
       {
         path: 'narudzbe',
-        component: NarudzbeComponent,
+        component: NarudzbeComponent,  canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
       },
       {
         path: 'novi-unos',
-        component: NoviUnosComponent,
+        component: NoviUnosComponent,  canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
       },
       {
         path: 'postavke',
-        component: PostavkeComponent,
+        component: PostavkeComponent , canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
       },
     ]
   },
