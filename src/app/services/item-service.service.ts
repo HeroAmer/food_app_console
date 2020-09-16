@@ -9,6 +9,7 @@ import { Observable, combineLatest, of } from 'rxjs';
 import { flatMap, map } from 'rxjs/operators';
 import { Item } from '../models/item';
 import { Hrana } from '../models/hrana-unos';
+import { Kategorija } from '../models/kategorija';
 import { Narudzba } from '../models/narudzba';
 import { Users, Order, Narudzbe } from '../models/orders';
 
@@ -33,6 +34,9 @@ export class ItemService implements OnInit {
 
   notifikacijeCollection: AngularFirestoreCollection<Narudzba>;
   notifikacije:Observable<Narudzba[]>;
+
+  kategorijaCollection:AngularFirestoreCollection<Kategorija>;
+  kategorije:Observable<Kategorija[]>;
 
 
   constructor(public afs: AngularFirestore) {
@@ -71,7 +75,25 @@ export class ItemService implements OnInit {
         return hranaData;
       });
     });
+
+
+    this.kategorijaCollection = this.afs.collection('kategorija');
+
+    this.kategorije = this.kategorijaCollection.snapshotChanges().map((newData) => {
+      return newData.map((d) => {
+        const kategorijaData = d.payload.doc.data() as Kategorija;
+        kategorijaData.katID = d.payload.doc.id;
+        return kategorijaData;
+      });
+    });
+
+
+
   }
+
+
+
+
   collectionInitialization() {
     this.ordersCollection = this.afs.collection('ordersUser');
     this.orderItem = this.ordersCollection.snapshotChanges().pipe(
@@ -129,8 +151,18 @@ export class ItemService implements OnInit {
     return this.hrana;
   }
 
+  getKategorije(){
+    return this.kategorije;
+  }
+
   addItem(item: Item) {
     this.itemsCollection.add(item);
+  }
+
+  addKategorija(kategorija:Kategorija){
+    let katID = this.afs.createId();
+    kategorija.katID = katID;
+    this.afs.collection('kategorija').doc(katID).set(kategorija).then();
   }
 
   getNotifikacije(){

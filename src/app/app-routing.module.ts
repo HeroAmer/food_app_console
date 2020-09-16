@@ -6,6 +6,7 @@ import { NoviUnosComponent } from './main-home/home/novi-unos/novi-unos.componen
 import { PostavkeComponent } from './main-home/home/postavke/postavke.component';
 import { LoginComponent } from './main-home/login/login.component';
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
+import { KategorijeComponent } from './main-home/home/kategorije/kategorije.component';
 
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
@@ -30,6 +31,10 @@ const routes: Routes = [
       {
         path: 'postavke',
         component: PostavkeComponent , canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
+      },
+      {
+        path: 'kategorije',
+        component: KategorijeComponent , canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
       },
     ]
   },

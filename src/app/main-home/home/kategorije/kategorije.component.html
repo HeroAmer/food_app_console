@@ -1,0 +1,54 @@
+
+<div class="tabela">
+  <div class="header">
+    <div class="title">
+      <h3>Kategorije</h3>
+    </div>
+    <div class="novi-unos">
+      <button (click)="openDialog()">Kategorija+</button>
+    </div>
+  </div>
+
+  <!-- <table id="data" class="mat-elevation-z8">
+
+    <tr>
+      <th> </th>
+      <th>NAZIV</th>
+      <th> </th>
+    </tr>
+    <tr *ngFor="let jelo of hrana">
+
+      <td><img id="unos-slika" src="{{jelo.imageURL}}"></td>
+      <td>{{jelo.naziv}}</td>
+      <td>{{jelo.opis}}</td>
+      <td>{{jelo.cijena + ' KM'}}</td>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          <span>Edit</span>
+        </button>
+        <button mat-menu-item disabled>
+          <mat-icon>delete</mat-icon>
+          <span>Delete</span>
+        </button>
+
+      </mat-menu>
+    </tr>
+  </table> -->
+
+  <mat-menu #menu="matMenu">
+    <ng-template matMenuContent let-aliasMenuItems="element">
+      <button mat-menu-item (click)="cl(aliasMenuItems)">
+        <mat-icon>edit</mat-icon>
+        <span>Edit</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>delete</mat-icon>
+        <span>Delete</span>
+      </button>
+    </ng-template>
+  </mat-menu>
+</div>

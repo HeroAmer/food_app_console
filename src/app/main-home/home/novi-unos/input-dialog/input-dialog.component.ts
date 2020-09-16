@@ -9,6 +9,7 @@ import {
   AngularFireUploadTask,
 } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-input-dialog',
@@ -40,7 +41,8 @@ export class InputDialogComponent implements OnInit {
   downloadURL: Observable<string>;
   constructor(
     private afStorage: AngularFireStorage,
-    private itemService: ItemService
+    private itemService: ItemService,
+
   ) {}
 
   ngOnInit(): void {}
