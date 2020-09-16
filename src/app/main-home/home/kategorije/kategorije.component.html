@@ -9,19 +9,19 @@
     </div>
   </div>
 
-  <!-- <table id="data" class="mat-elevation-z8">
+  <table id="data" class="mat-elevation-z8">
 
     <tr>
       <th> </th>
       <th>NAZIV</th>
       <th> </th>
     </tr>
-    <tr *ngFor="let jelo of hrana">
+    <tr *ngFor="let kategorija of kategorije">
 
-      <td><img id="unos-slika" src="{{jelo.imageURL}}"></td>
-      <td>{{jelo.naziv}}</td>
-      <td>{{jelo.opis}}</td>
-      <td>{{jelo.cijena + ' KM'}}</td>
+      <!-- <td><img id="unos-slika" src="{{jelo.imageURL}}"></td> -->
+      <td>{{kategorija.nazivKategorije}}</td>
+      <!-- <td>{{jelo.opis}}</td>
+      <td>{{jelo.cijena + ' KM'}}</td> -->
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -37,7 +37,7 @@
 
       </mat-menu>
     </tr>
-  </table> -->
+  </table>
 
   <mat-menu #menu="matMenu">
     <ng-template matMenuContent let-aliasMenuItems="element">
