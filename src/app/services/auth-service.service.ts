@@ -12,6 +12,8 @@ export class AuthServiceService {
   private eventAuthError = new BehaviorSubject<string>('');
   eventAuthError$ = this.eventAuthError.asObservable();
 
+  newUser:any;
+
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFirestore,
@@ -34,6 +36,30 @@ export class AuthServiceService {
         }
       });
   }
+
+createUser(user){
+  this.afAuth.createUserWithEmailAndPassword(user.email , user.password)
+  .then(userCredential => {
+    this.newUser = user;
+    userCredential.user.updateProfile({
+      displayName : user.fullname
+    });
+
+    this.insertUserData(userCredential)
+    .then(()=>{
+      alert("Dodan novi user!")
+    })
+  })
+}
+
+insertUserData(userCredential:firebase.auth.UserCredential){
+  return this.db.doc(`employees/${userCredential.user.uid}`).set({
+    email:this.newUser.email,
+    fullname : this.newUser.fullname,
+    role: 'admin'
+  })
+}
+
   getAuth(){
     return this.afAuth.authState.map(auth => auth);
   }

@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { RegisterPopupComponent } from './register-popup/register-popup.component';
+
 
 export interface PeriodicElement {
   image: string;
@@ -43,7 +46,14 @@ export class PostavkeComponent implements OnInit {
   ];
   dataSource = ELEMENT_DATA;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
+  openDialog() {
+    const dialogRef = this.dialog.open(RegisterPopupComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
   cl() {
     alert('User has been edited!');
   }
