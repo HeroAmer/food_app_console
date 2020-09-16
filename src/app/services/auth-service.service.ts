@@ -63,4 +63,8 @@ insertUserData(userCredential:firebase.auth.UserCredential){
   getAuth(){
     return this.afAuth.authState.map(auth => auth);
   }
+
+  logout(){
+    this.afAuth.signOut();
+  }
 }

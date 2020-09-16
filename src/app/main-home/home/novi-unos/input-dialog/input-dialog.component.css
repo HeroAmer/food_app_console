@@ -1,7 +1,4 @@
-.container {
-  width: 50vw;
-  height: 80vh;
-}
+.container {}
 
 .unos {
   height: 40px;
@@ -16,7 +13,7 @@ input[type="file"] {
 
 
 .text-unosa {
-  display: inline;
+  /* display: inline; */
   /* padding: 5.5px; */
   /* padding-bottom: 18px; */
   /* padding-top: 10px; */
@@ -24,8 +21,16 @@ input[type="file"] {
   color: white;
   overflow: hidden;
   font-size: 12px;
-  padding: 9px 10px 18px 10px;
+  padding: 18px 10px 18px 10px;
   font-weight: 600;
+  width: 130px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#opiss {
+  vertical-align: middle;
+  padding-top: 25px;
 }
 
 .md-button {
@@ -43,13 +48,15 @@ input[type="file"] {
 
 .input-field {
   height: 29px;
-  width: 65%;
+  width: 100%;
   border: none;
+  padding-left: 4px;
 }
 
 ::placeholder {
   color: #2699FB;
   opacity: 0.7;
+  padding-left: 4px;
 }
 
 *:focus {
@@ -62,9 +69,9 @@ input[type="file"] {
   /* padding-bottom: 10px; */
 }
 
-.image-button-text{
+.image-button-text {
   display: inline;
-  color:#2699FB;
+  color: #2699FB;
   font-size: 14px;
 }
 
@@ -97,7 +104,8 @@ input[type="file"] {
 }
 
 .image-button {
-  margin-left: 16px;
+  /* margin-left: 16px; */
+  margin-right: 5px;
   background-color: #2699FB;
 
 }
@@ -114,4 +122,27 @@ input[type="file"] {
   /* display: inline-block; */
   display: initial !important;
   line-height: 20px;
+}
+
+.parent {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+.inputic {
+  border: 1px solid grey;
+  flex-grow: 2;
+}
+
+#opis-unosa {
+  height: 102px;
+  border: none;
+}
+
+textarea {
+  overflow: auto;
+  resize: none;
+  border-radius: 0px;
+  padding-left: 4px;
 }
