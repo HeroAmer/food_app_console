@@ -11,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
 import { FlashMessagesModule } from 'angular2-flash-messages';
+import { MatSelectModule } from '@angular/material/select';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
@@ -67,6 +68,7 @@ import { NovaKategorijaComponent } from './main-home/home/kategorije/nova-katego
     MatButtonModule,
     MatSlideToggleModule,
     MatBadgeModule,
+    MatSelectModule,
     FlashMessagesModule.forRoot(),
   ],
   providers: [ItemService],

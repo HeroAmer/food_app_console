@@ -1,4 +1,13 @@
 <form ngForm="kategorija" (ngSubmit)="kreirajKategoriju()">
-<input type="text" placeholder="Kategorija" [(ngModel)]="category.nazivKategorije" name="nazivKategorije"><br>
-<button type="submit">Unesi kategoriju</button>
+  <div class="avatar"><mat-icon id="icona"> border_color</mat-icon></div>
+  <input
+    class="form-control"
+    type="text"
+    placeholder="Kategorija"
+    [(ngModel)]="category.nazivKategorije"
+    name="nazivKategorije"
+  /><br />
+  <button class="btn btn-primary btn-block btn-lg" type="submit">
+    Unesi kategoriju
+  </button>
 </form>

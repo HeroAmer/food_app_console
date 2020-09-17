@@ -40,13 +40,12 @@ export class HomeComponent implements OnInit {
   }
   onLogoutClick() {
     this.afAuth.logout();
-    this.flashMessage.show('You are now logged out!', {
-      cssClass: 'alert-success',
+    this.flashMessage.show(`You are now <strong>logged out!</strong>`, {
+      cssClass: 'alert alert-info',
       timeout: 4000,
     });
     this.router.navigate(['/']);
   }
-
 
   // ngAfterViewInit(){
   //   (document.querySelector('.active-link') as HTMLElement).style.color{

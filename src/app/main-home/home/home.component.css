@@ -34,6 +34,7 @@ mat-toolbar a {
   margin-right: 15px;
   color: rgb(59, 58, 58);
 }
+
 mat-menu p {
   width: 500px;
 }
@@ -92,11 +93,11 @@ mat-drawer .sidebar-content ul li a p {
   margin-right: 10px;
 }
 
-mat-drawer .sidebar-content > h4 {
+mat-drawer .sidebar-content>h4 {
   text-align: center;
 }
 
-mat-drawer .sidebar-content > div {
+mat-drawer .sidebar-content>div {
   padding: 20px;
 }
 
@@ -118,7 +119,7 @@ mat-drawer .sidebar-content ul {
   align-items: center;
 }
 
-.user > p {
+.user>p {
   margin-left: 3px;
 }
 
@@ -185,4 +186,8 @@ mat-drawer .sidebar-content ul li a:hover {
 
 .material-icons {
   padding: 0px 10px;
+}
+
+#notifications {
+  margin-right: 15px;
 }

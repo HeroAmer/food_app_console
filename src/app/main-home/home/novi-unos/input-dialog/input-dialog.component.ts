@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ItemService } from '../../../../services/item-service.service';
 import { Hrana } from '../../../../models/hrana-unos';
+import { Kategorija } from '../../../../models/kategorija';
 import { finalize } from 'rxjs/operators';
 import {
   AngularFireStorage,
@@ -11,12 +12,24 @@ import {
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+interface Food {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-input-dialog',
   templateUrl: './input-dialog.component.html',
   styleUrls: ['./input-dialog.component.css'],
 })
 export class InputDialogComponent implements OnInit {
+  kategorije: Kategorija[];
+
+  foods: Food[] = [
+    { value: 'steak-0', viewValue: 'Steak' },
+    { value: 'pizza-1', viewValue: 'Pizza' },
+    { value: 'tacos-2', viewValue: 'Tacos' },
+  ];
   isDisabled = true;
 
   @ViewChild('btnClose') btnClose: ElementRef;
@@ -32,7 +45,7 @@ export class InputDialogComponent implements OnInit {
     cijena: '',
     oznaka: '',
     kolicina: '',
-    brojlajkova:0,
+    brojlajkova: 0,
     imageURL: '',
   };
 
@@ -41,11 +54,14 @@ export class InputDialogComponent implements OnInit {
   downloadURL: Observable<string>;
   constructor(
     private afStorage: AngularFireStorage,
-    private itemService: ItemService,
-
+    private itemService: ItemService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.itemService.getKategorije().subscribe((kategorije) => {
+      this.kategorije = kategorije;
+    });
+  }
 
   upload(event) {
     const id = Math.random().toString(36).substring(2);
@@ -69,7 +85,7 @@ export class InputDialogComponent implements OnInit {
     this.hrana.imageURL = this.urlTest;
     this.itemService.addHrana(this.hrana);
   }
-  closeDialog(){
+  closeDialog() {
     console.log('Dialog closed!');
   }
 }

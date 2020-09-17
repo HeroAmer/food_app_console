@@ -7,12 +7,20 @@
           [(ngModel)]="hrana.naziv" name="naziv">
       </div>
     </div>
-    <div class="parent">
-      <div class="text-unosa">KATEGORIJA</div>
-      <div class="inputic">
+    <div class="parent" id="kategorija-parent">
+      <div id="kategorija" class="text-unosa">KATEGORIJA</div>
+      <!-- <div class="inputic">
         <input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
           [(ngModel)]="hrana.kategorija" name="kategorija">
-      </div>
+      </div> -->
+      <mat-form-field appearance="fill">
+        <mat-label>Ponuda hrane</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let category of kategorije">
+            {{category.nazivKategorije}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
     </div>
     <div class="parent">
       <div class="text-unosa">
