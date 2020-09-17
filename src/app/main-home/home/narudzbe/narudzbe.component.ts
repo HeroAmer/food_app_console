@@ -26,6 +26,8 @@ export interface DialogData {
 })
 export class NarudzbeComponent implements OnInit {
   orderItem: Narudzbe[];
+  danasnjeNarudzbe;
+  today = new Date().toLocaleDateString('en-GB');
   constructor(public itemService: ItemService, public dialog: MatDialog) {}
 
   cl() {
@@ -33,14 +35,68 @@ export class NarudzbeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+       this.povuciNarudzbe();
+       setTimeout(() => this.napraviChart(), 2500);
+       setInterval(() => {
+        this.napraviChart();
+       }, 5000);
+
+
+      }
+  openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
+    const dialogRef = this.dialog.open(OrderDetailsComponent, {
+      data: {
+        orderCode: code,
+        orderJelo: jelo,
+        orderKomentar: komentar,
+        fullName: name,
+        orderAddress: adresa,
+        phone: orderphone,
+        orderDoplata: doplata,
+        orderTotal: suma
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+
+  povuciNarudzbe(){
+    this.itemService.selectAllOrders().subscribe((orderItem) => {
+      console.log(orderItem);
+      this.orderItem = orderItem;
+      // let today = new Date().toDateString().slice(0, 10);
+      // console.log(today);
+      var today = new Date().toLocaleDateString('en-GB');
+      console.log(today);
+
+      let arrayOfOrdersToday = [];
+      orderItem.forEach(narudzba => {
+          if(narudzba.datum == today){
+            console.log("NOVAA")
+            arrayOfOrdersToday.push(narudzba);
+          }
+
+      });
+
+      console.log(arrayOfOrdersToday.length)
+      this.danasnjeNarudzbe = arrayOfOrdersToday.length;
+    });
+  }
+
+
+
+  napraviChart() {
     var ctx = 'myChart';
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [1, 2, 3, 4, 5, 6, 7],
+        labels: [1, 2, 3, 4, 6, this.today ],
         datasets: [
           {
-            data: [2, 8, 3, 6, 3, 10],
+            data: [0, 8, 3, 3, 3, this.danasnjeNarudzbe],
             label: 'Broj narudzbi',
             borderColor: '#3e95cd',
             fill: false,
@@ -62,29 +118,6 @@ export class NarudzbeComponent implements OnInit {
           ],
         },
       },
-    });
-
-    this.itemService.selectAllOrders().subscribe((orderItem) => {
-      console.log(orderItem);
-      this.orderItem = orderItem;
-    });
-  }
-  openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
-    const dialogRef = this.dialog.open(OrderDetailsComponent, {
-      data: {
-        orderCode: code,
-        orderJelo: jelo,
-        orderKomentar: komentar,
-        fullName: name,
-        orderAddress: adresa,
-        phone: orderphone,
-        orderDoplata: doplata,
-        orderTotal: suma
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 }
