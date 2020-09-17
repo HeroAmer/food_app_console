@@ -35,6 +35,11 @@ mat-toolbar a {
   color: rgb(59, 58, 58);
 }
 
+.notifikacije-button{
+  outline: none;
+  margin-right: 15px;
+}
+
 mat-menu p {
   width: 500px;
 }
