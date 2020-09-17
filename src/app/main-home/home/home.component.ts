@@ -18,6 +18,8 @@ export class HomeComponent implements OnInit {
   ) {}
   notifications;
   numberOfNotifications;
+  numberOfOrders = 0 ;
+  numberOfSeen = 0;
   isLoggedIn: boolean;
   loggedInUser: string;
   showRegister: boolean;
@@ -27,7 +29,8 @@ export class HomeComponent implements OnInit {
       .getNotifikacije()
       .subscribe((notifikacije) => {
         this.notifications = notifikacije;
-        this.numberOfNotifications = notifikacije.length;
+        this.numberOfOrders = notifikacije.length;
+        console.log('Number of orders' , this.numberOfOrders)
       });
     this.afAuth.getAuth().subscribe((auth) => {
       if (auth) {
@@ -37,6 +40,7 @@ export class HomeComponent implements OnInit {
         this.isLoggedIn = false;
       }
     });
+
   }
   onLogoutClick() {
     this.afAuth.logout();
@@ -46,6 +50,16 @@ export class HomeComponent implements OnInit {
     });
     this.router.navigate(['/']);
   }
+
+  getSeenNotifications(){
+    this.numberOfSeen = this.numberOfOrders;
+    this.numberOfNotifications = this.numberOfOrders - this.numberOfSeen;
+  }
+
+   timerId = setInterval(() => {
+    this.numberOfNotifications = this.numberOfOrders - this.numberOfSeen;
+    console.log('number of seen notifications', this.numberOfSeen);
+   }, 2000);
 
 
   // ngAfterViewInit(){
