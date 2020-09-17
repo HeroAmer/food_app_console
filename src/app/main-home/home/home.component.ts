@@ -58,7 +58,6 @@ export class HomeComponent implements OnInit {
 
    timerId = setInterval(() => {
     this.numberOfNotifications = this.numberOfOrders - this.numberOfSeen;
-    console.log('number of seen notifications', this.numberOfSeen);
    }, 2000);
 
 
