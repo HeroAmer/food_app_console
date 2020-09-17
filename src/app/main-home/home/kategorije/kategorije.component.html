@@ -12,14 +12,14 @@
   <table id="data" class="mat-elevation-z8">
 
     <tr>
-      <th> </th>
+      <!-- <th> </th> -->
       <th>NAZIV</th>
-      <th> </th>
+      <th></th>
     </tr>
     <tr *ngFor="let kategorija of kategorije">
 
       <!-- <td><img id="unos-slika" src="{{jelo.imageURL}}"></td> -->
-      <td>{{kategorija.nazivKategorije}}</td>
+      <td id="naziv">{{kategorija.nazivKategorije}}</td>
       <!-- <td>{{jelo.opis}}</td>
       <td>{{jelo.cijena + ' KM'}}</td> -->
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">

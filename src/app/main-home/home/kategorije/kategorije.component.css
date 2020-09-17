@@ -104,3 +104,7 @@ tr:last-child {
   border-radius: 15px;
   margin: 10px;
 }
+
+#naziv {
+  width: 100%;
+}

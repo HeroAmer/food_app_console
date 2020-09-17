@@ -1,3 +1,4 @@
+/* @import "../../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css"; */
 /* .container {} */
 
 .unos {
@@ -127,7 +128,7 @@ input[type="file"] {
 .parent {
   display: flex;
   flex-direction: row;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .inputic {
@@ -145,4 +146,16 @@ textarea {
   resize: none;
   border-radius: 0px;
   padding-left: 4px;
+}
+
+mat-form-field {
+  width: 80%;
+}
+
+#kategorija {
+  height: 60px;
+}
+
+#kategorija-parent {
+  margin-bottom: 0 !important;
 }
