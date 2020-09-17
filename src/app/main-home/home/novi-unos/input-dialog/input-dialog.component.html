@@ -13,10 +13,12 @@
         <input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
           [(ngModel)]="hrana.kategorija" name="kategorija">
       </div> -->
-      <mat-form-field appearance="fill">
-        <mat-label>Ponuda hrane</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let category of kategorije">
+      <mat-form-field appearance="fill" style="font-family:  Montserrat, sans-serif !important;">
+        <mat-label style="color: #2699FB; font-family:  Montserrat, sans-serif !important;">Ponuda hrane</mat-label>
+        <mat-select [(ngModel)]="hrana.kategorija" name="kategorija"
+          style="color: #2699FB; font-family:  Montserrat, sans-serif !important;">
+          <mat-option style="color: #2699FB; font-family:  Montserrat, sans-serif !important;"
+            *ngFor="let category of kategorije" [value]="category.nazivKategorije">
             {{category.nazivKategorije}}
           </mat-option>
         </mat-select>

@@ -26,3 +26,27 @@ a:visited,
 a:link {
   color: rgb(204, 208, 221);
 }
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  background-color: #2698FA !important;
+}
+
+.mat-form-field-ripple {
+  background-color: #2698FA;
+}
+
+.mat-form-field.mat-focused .mat-form-field-ripple {
+  background-color: #2698FA;
+}
+
+.not-empty-select.mat-selected {
+  color: green !important;
+}
+
+:host /deep/ .mat-select-value-text {
+  color: green !important;
+}
+
+.mat-form-field-infix {
+  color: red;
+}

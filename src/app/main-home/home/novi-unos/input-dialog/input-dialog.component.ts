@@ -12,11 +12,6 @@ import {
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
-interface Food {
-  value: string;
-  viewValue: string;
-}
-
 @Component({
   selector: 'app-input-dialog',
   templateUrl: './input-dialog.component.html',
@@ -25,11 +20,6 @@ interface Food {
 export class InputDialogComponent implements OnInit {
   kategorije: Kategorija[];
 
-  foods: Food[] = [
-    { value: 'steak-0', viewValue: 'Steak' },
-    { value: 'pizza-1', viewValue: 'Pizza' },
-    { value: 'tacos-2', viewValue: 'Tacos' },
-  ];
   isDisabled = true;
 
   @ViewChild('btnClose') btnClose: ElementRef;
@@ -83,6 +73,7 @@ export class InputDialogComponent implements OnInit {
 
   saveFood() {
     this.hrana.imageURL = this.urlTest;
+    // this.kategorije.nazivKategorije = this.kategorije
     this.itemService.addHrana(this.hrana);
   }
   closeDialog() {
