@@ -3,8 +3,16 @@
   <form #myForm (ngSubmit)="saveFood()">
     <div class="parent">
       <div class="text-unosa">NAZIV UNOSA</div>
-      <div class="inputic"><input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
-          [(ngModel)]="hrana.naziv" name="naziv">
+      <div class="inputic">
+        <input
+          type="text"
+          autocomplete="off"
+          placeholder="Obavezno polje"
+          class="input-field"
+          [(ngModel)]="hrana.naziv"
+          required
+          name="naziv"
+        />
       </div>
     </div>
     <div class="parent" id="kategorija-parent">
@@ -13,13 +21,29 @@
         <input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
           [(ngModel)]="hrana.kategorija" name="kategorija">
       </div> -->
-      <mat-form-field appearance="fill" style="font-family:  Montserrat, sans-serif !important;">
-        <mat-label style="color: #2699FB; font-family:  Montserrat, sans-serif !important;">Ponuda hrane</mat-label>
-        <mat-select [(ngModel)]="hrana.kategorija" name="kategorija"
-          style="color: #2699FB; font-family:  Montserrat, sans-serif !important;">
-          <mat-option style="color: #2699FB; font-family:  Montserrat, sans-serif !important;"
-            *ngFor="let category of kategorije" [value]="category.nazivKategorije">
-            {{category.nazivKategorije}}
+      <mat-form-field
+        appearance="fill"
+        style="font-family: Montserrat, sans-serif !important"
+      >
+        <mat-label
+          style="color: #2699fb; font-family: Montserrat, sans-serif !important"
+          >Ponuda hrane</mat-label
+        >
+        <mat-select
+          [(ngModel)]="hrana.kategorija"
+          name="kategorija"
+          style="color: #2699fb; font-family: Montserrat, sans-serif !important"
+          required
+        >
+          <mat-option
+            style="
+              color: #2699fb;
+              font-family: Montserrat, sans-serif !important;
+            "
+            *ngFor="let category of kategorije"
+            [value]="category.nazivKategorije"
+          >
+            {{ category.nazivKategorije }}
           </mat-option>
         </mat-select>
       </mat-form-field>
@@ -31,39 +55,132 @@
       <div class="inputic" id="opis-unosa">
         <!-- <input type="text" autocomplete="off" placeholder="Obavezno polje"
           class="input-field" [(ngModel)]="hrana.opis" name="opis"> -->
-        <textarea name="opis" [(ngModel)]="hrana.opis" id="" cols="50" rows="4" placeholder="Obavezno polje"
-          wrap="soft">
+        <textarea
+          name="opis"
+          [(ngModel)]="hrana.opis"
+          id=""
+          cols="50"
+          rows="4"
+          placeholder="Obavezno polje"
+          wrap="soft"
+          required
+        >
         </textarea>
       </div>
     </div>
     <div class="parent">
       <div class="text-unosa">CIJENA</div>
-      <div class="inputic"><input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
-          [(ngModel)]="hrana.cijena" name="cijena"></div>
+      <div class="inputic">
+        <input
+          type="text"
+          autocomplete="off"
+          placeholder="Obavezno polje"
+          class="input-field"
+          [(ngModel)]="hrana.cijena"
+          name="cijena"
+          required
+        />
+      </div>
     </div>
     <div class="parent">
       <div class="text-unosa">OZNAKA</div>
-      <div class="inputic"><input type="text" autocomplete="off" placeholder="Nebavezno polje" class="input-field"
-          [(ngModel)]="hrana.oznaka" name="oznaka"></div>
+      <div class="inputic">
+        <input
+          type="text"
+          autocomplete="off"
+          placeholder="Nebavezno polje"
+          class="input-field"
+          [(ngModel)]="hrana.oznaka"
+          name="oznaka"
+        />
+      </div>
     </div>
     <div class="parent">
       <div class="text-unosa">KOLIČINA</div>
-      <div class="inputic"><input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
-          [(ngModel)]="hrana.kolicina" name="kolicina"></div>
-    </div><br>
-    <button (click)="filePicker.click()" class="image-button" mat-fab
-      aria-label="Example icon button with a delete icon">
+      <div id="kolicina">
+        <input
+          type="text"
+          autocomplete="off"
+          placeholder="Obavezno polje"
+          class="input-field"
+          [(ngModel)]="hrana.kolicina"
+          name="kolicina"
+          required
+        />
+      </div>
+      <mat-form-field
+        id="drugi"
+        appearance="fill"
+        style="
+          width: 15%;
+          margin-left: 20px;
+          height: 20px !important;
+          font-family: Montserrat, sans-serif !important;
+        "
+      >
+        <mat-label
+          style="color: #2699fb; font-family: Montserrat, sans-serif !important"
+        >
+          kg/l</mat-label
+        >
+        <mat-select
+          [(ngModel)]="hrana.mjernaJedinica"
+          name="kolicina"
+          style="color: #2699fb; font-family: Montserrat, sans-serif !important"
+          required
+        >
+          <mat-option
+            style="
+              color: #2699fb;
+              font-family: Montserrat, sans-serif !important;
+            "
+            *ngFor="let izbor of quantity"
+            [value]="izbor.value"
+          >
+            {{ izbor.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <br />
+    <button
+      (click)="filePicker.click()"
+      class="image-button"
+      mat-fab
+      aria-label="Example icon button with a delete icon"
+    >
       <mat-icon>add</mat-icon>
-
     </button>
     <p *ngIf="isDisabled" class="image-button-text">Ubaci fotografiju</p>
-    <p *ngIf="!isDisabled" class="image-button-text">Ubacili ste fotografiju.</p>
+    <p *ngIf="!isDisabled" class="image-button-text">
+      Ubacili ste fotografiju.
+    </p>
 
-    <input type="file" (change)="upload($event)" #filePicker accept=".png, .jpeg, .jpg">
-    <br>
+    <input
+      type="file"
+      (change)="upload($event)"
+      #filePicker
+      accept=".png, .jpeg, .jpg"
+    />
+    <br />
     <div class="buttons-container">
-      <button #btnClose mat-dialog-close (click)="closeDialog()" id="odustani-button">ODUSTANI</button>
-      <button #btnClose (click)="zatvori()" id="zavrsi-button" [disabled]="isDisabled" type="submit">ZAVRŠI</button>
+      <button
+        #btnClose
+        mat-dialog-close
+        (click)="closeDialog()"
+        id="odustani-button"
+      >
+        ODUSTANI
+      </button>
+      <button
+        #btnClose
+        (click)="zatvori()"
+        id="zavrsi-button"
+        [disabled]="isDisabled"
+        type="submit"
+      >
+        ZAVRŠI
+      </button>
     </div>
   </form>
 </div>

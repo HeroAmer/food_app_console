@@ -37,10 +37,10 @@ export class NarudzbeComponent implements OnInit {
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [1, 2, 3, 4, 5, 6, 7],
+        labels: [0, 1, 2, 3, 4, 5, 6, 7],
         datasets: [
           {
-            data: [2, 8, 3, 6, 3, 10],
+            data: [1, 2, 8, 3, 6, 3, 10],
             label: 'Broj narudzbi',
             borderColor: '#3e95cd',
             fill: false,
@@ -79,7 +79,7 @@ export class NarudzbeComponent implements OnInit {
         orderAddress: adresa,
         phone: orderphone,
         orderDoplata: doplata,
-        orderTotal: suma
+        orderTotal: suma,
       },
     });
 

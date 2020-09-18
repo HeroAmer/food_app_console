@@ -6,6 +6,7 @@ export interface Hrana {
   cijena?:string,
   oznaka?:string,
   kolicina?:string,
+  mjernaJedinica?:string,
   brojlajkova?:number,
   imageURL?:string
 }

@@ -2,6 +2,7 @@ export interface Narudzbe {
   uid?: string;
   phone: string;
   fullName?: string;
+  datum?:string;
   orderAddress?: string;
   orderTotal?: number;
   status?: boolean;
@@ -26,4 +27,5 @@ export interface Order {
   orderJelo?: string;
   orderKomentar?: string;
   orderDoplata?: number;
+  datum?:string;
 }
