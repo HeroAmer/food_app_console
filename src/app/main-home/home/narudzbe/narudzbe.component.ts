@@ -28,6 +28,10 @@ export class NarudzbeComponent implements OnInit {
   orderItem: Narudzbe[];
   danasnjeNarudzbe;
   today = new Date().toLocaleDateString('en-GB');
+
+  yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
+
+
   constructor(public itemService: ItemService, public dialog: MatDialog) {}
 
   cl() {
@@ -36,13 +40,9 @@ export class NarudzbeComponent implements OnInit {
 
   ngOnInit(): void {
        this.povuciNarudzbe();
-       setTimeout(() => this.napraviChart(), 2500);
-       setInterval(() => {
-        this.napraviChart();
-       }, 5000);
-
-
+       console.log('Yesterday was ' + this.yesterday);
       }
+
   openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
     const dialogRef = this.dialog.open(OrderDetailsComponent, {
       data: {
@@ -62,32 +62,31 @@ export class NarudzbeComponent implements OnInit {
     });
   }
 
-
+///Funkcija koja se poziva pri loadanju komponente (onInit) i povlaci narudzbe
   povuciNarudzbe(){
     this.itemService.selectAllOrders().subscribe((orderItem) => {
       console.log(orderItem);
       this.orderItem = orderItem;
-      // let today = new Date().toDateString().slice(0, 10);
-      // console.log(today);
       var today = new Date().toLocaleDateString('en-GB');
       console.log(today);
 
+      ///Niz narudzbi koje su napravljenje danas
       let arrayOfOrdersToday = [];
       orderItem.forEach(narudzba => {
           if(narudzba.datum == today){
             console.log("NOVAA")
             arrayOfOrdersToday.push(narudzba);
           }
-
       });
-
-      console.log(arrayOfOrdersToday.length)
+      console.log(arrayOfOrdersToday.length);
+      ///Uzimamo duzinu niza narudzbi koje su napravljene danas da bi mogli prikazati na grafikonu
       this.danasnjeNarudzbe = arrayOfOrdersToday.length;
+      this.napraviChart();
     });
   }
 
 
-
+///Funkcija koja se poziva kada zelimo napraviti chart (pir loadanju komponente, ili primanja novih vrijednosti)
   napraviChart() {
     var ctx = 'myChart';
     var myChart = new Chart(ctx, {
