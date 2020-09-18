@@ -10,4 +10,5 @@ export interface Narudzba{
   orderTotal?:number,
   status?:boolean,
   uid?:string
+  orderphone?:string;
 }

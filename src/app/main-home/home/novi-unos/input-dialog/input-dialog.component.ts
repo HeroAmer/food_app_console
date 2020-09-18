@@ -12,12 +12,25 @@ import {
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+interface Kolicina {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-input-dialog',
   templateUrl: './input-dialog.component.html',
   styleUrls: ['./input-dialog.component.css'],
 })
 export class InputDialogComponent implements OnInit {
+  modifedKolicina: string;
+
+  quantity: Kolicina[] = [
+    { value: 'kg', viewValue: 'kilogram/a' },
+    { value: 'l', viewValue: 'litar/a' },
+  ];
+  selectdQuantity = this.quantity[0];
+
+
   kategorije: Kategorija[];
 
   isDisabled = true;
@@ -35,6 +48,7 @@ export class InputDialogComponent implements OnInit {
     cijena: '',
     oznaka: '',
     kolicina: '',
+    mjernaJedinica: '',
     brojlajkova: 0,
     imageURL: '',
   };
@@ -73,9 +87,11 @@ export class InputDialogComponent implements OnInit {
 
   saveFood() {
     this.hrana.imageURL = this.urlTest;
+    console.log(this.quantity);
     // this.kategorije.nazivKategorije = this.kategorije
     this.itemService.addHrana(this.hrana);
   }
+
   closeDialog() {
     console.log('Dialog closed!');
   }

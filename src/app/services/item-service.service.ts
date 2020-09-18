@@ -106,10 +106,11 @@ export class ItemService implements OnInit {
           const total = data.orderTotal;
           const status = data.status;
           const code = data.orderCode;
+          const datumKreiranja = data.datum;
           const jelo = data.orderJelo;
           const komentar = data.orderKomentar;
           const doplata = data.orderDoplata;
-          const date = data.datum
+
           return this.afs
             .doc('users/' + orderId)
             .valueChanges()
@@ -118,6 +119,7 @@ export class ItemService implements OnInit {
                 return Object.assign({
                   phone: usersData?.phone,
                   fullName: usersData?.fullName,
+                  datum: datumKreiranja,
                   orderAddress: address,
                   orderTotal: total,
                   status: status,
@@ -125,7 +127,7 @@ export class ItemService implements OnInit {
                   orderJelo: jelo,
                   orderKomentar: komentar,
                   orderDoplata: doplata,
-                  datum:date
+                 
                 });
               })
             );
@@ -141,9 +143,9 @@ export class ItemService implements OnInit {
   }
 
   ngOnInit() {
-    this.orderItem.forEach((value) => {
-      console.log(value);
-    });
+    // this.orderItem.forEach((value) => {
+    //   console.log(value);
+    // });
   }
 
   getItems() {
@@ -170,6 +172,7 @@ export class ItemService implements OnInit {
 
   getNotifikacije(){
     return this.notifikacije;
+    console.log()
   }
 
 

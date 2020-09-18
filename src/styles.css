@@ -50,3 +50,7 @@ a:link {
 .mat-form-field-infix {
   color: red;
 }
+
+.mat-form-field-infix ng-tns-c135-13 {
+  height: 50px !important;
+}

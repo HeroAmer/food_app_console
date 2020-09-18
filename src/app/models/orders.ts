@@ -27,4 +27,5 @@ export interface Order {
   orderJelo?: string;
   orderKomentar?: string;
   orderDoplata?: number;
+  datum?:string;
 }
