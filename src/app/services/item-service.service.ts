@@ -12,6 +12,7 @@ import { Hrana } from '../models/hrana-unos';
 import { Kategorija } from '../models/kategorija';
 import { Narudzba } from '../models/narudzba';
 import { Users, Order, Narudzbe } from '../models/orders';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @Injectable({
   providedIn: 'root',
@@ -109,6 +110,7 @@ export class ItemService implements OnInit {
           const jelo = data.orderJelo;
           const komentar = data.orderKomentar;
           const doplata = data.orderDoplata;
+
           return this.afs
             .doc('users/' + orderId)
             .valueChanges()
@@ -125,6 +127,7 @@ export class ItemService implements OnInit {
                   orderJelo: jelo,
                   orderKomentar: komentar,
                   orderDoplata: doplata,
+                 
                 });
               })
             );

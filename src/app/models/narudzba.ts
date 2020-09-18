@@ -1,3 +1,5 @@
+import { Timestamp } from 'rxjs/internal/operators/timestamp';
+
 export interface Narudzba{
   orderAdress?:string,
   orderCode?:string,
@@ -8,4 +10,5 @@ export interface Narudzba{
   orderTotal?:number,
   status?:boolean,
   uid?:string
+  orderphone?:string;
 }

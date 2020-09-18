@@ -1,8 +1,8 @@
 export interface Narudzbe {
+  datum?:any;
   uid?: string;
   phone: string;
   fullName?: string;
-  datum?:string;
   orderAddress?: string;
   orderTotal?: number;
   status?: boolean;
