@@ -27,9 +27,22 @@ export interface DialogData {
 export class NarudzbeComponent implements OnInit {
   orderItem: Narudzbe[];
   danasnjeNarudzbe;
+  jucerasnjeNarudzbe;
+  threeDaysAgoOrders;
+  fourDaysAgoOrders;
+  fiveDaysAgoOrders;
+  sixDaysAgoOrders;
+  sevenDaysAgoOrders;
   today = new Date().toLocaleDateString('en-GB');
-
   yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
+  threeDaysAgo = new Date(Date.now() - 48*60*60*1000).toLocaleDateString('en-GB');
+  fourDaysAgo = new Date(Date.now() - 64*60*60*1000).toLocaleDateString('en-GB');
+  fiveDaysAgo = new Date(Date.now() - 96*60*60*1000).toLocaleDateString('en-GB');
+  sixDaysAgo = new Date(Date.now() - 120*60*60*1000).toLocaleDateString('en-GB');
+  sevenDaysAgo = new Date(Date.now() - 148*60*60*1000).toLocaleDateString('en-GB');
+
+
+  // yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
 
 
   constructor(public itemService: ItemService, public dialog: MatDialog) {}
@@ -40,7 +53,6 @@ export class NarudzbeComponent implements OnInit {
 
   ngOnInit(): void {
        this.povuciNarudzbe();
-       console.log('Yesterday was ' + this.yesterday);
       }
 
   openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
@@ -65,22 +77,83 @@ export class NarudzbeComponent implements OnInit {
 ///Funkcija koja se poziva pri loadanju komponente (onInit) i povlaci narudzbe
   povuciNarudzbe(){
     this.itemService.selectAllOrders().subscribe((orderItem) => {
-      console.log(orderItem);
       this.orderItem = orderItem;
       var today = new Date().toLocaleDateString('en-GB');
+      let yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
       console.log(today);
+      let threeDaysAgo = this.threeDaysAgo;
+      let fourDaysAgo = this.fourDaysAgo;
+      let fiveDaysAgo = this.fiveDaysAgo;
+      let sixDaysAgo = this.sixDaysAgo;
+      let sevenDaysAgo = this.sevenDaysAgo;
 
       ///Niz narudzbi koje su napravljenje danas
       let arrayOfOrdersToday = [];
+      let arrayOfOrdersYesterday = [];
+      let threeDaysAgoOrders = [];
+      let fourDaysAgoOrders = [];
+      let fiveDaysAgoOrders = [];
+      let sixDaysAgoOrders = [];
+      let sevenDaysAgoOrders = [];
+
+
+      /// Provjera narudzbi za danas
       orderItem.forEach(narudzba => {
           if(narudzba.datum == today){
-            console.log("NOVAA")
             arrayOfOrdersToday.push(narudzba);
           }
       });
-      console.log(arrayOfOrdersToday.length);
+
+       ///Provjera narudzbi za jucer
+       orderItem.forEach(jucer => {
+        if(jucer.datum == yesterday ){
+          arrayOfOrdersYesterday.push(jucer);
+        }
+      });
+
+      ///Provjera za prekjucer
+      orderItem.forEach(prekjucer => {
+        if(prekjucer.datum == threeDaysAgo){
+          threeDaysAgoOrders.push(prekjucer);
+        }
+      });
+       ///Provjera za prije 4 dana
+       orderItem.forEach(prijeCetriDana => {
+        if(prijeCetriDana.datum == this.fourDaysAgo){
+          fourDaysAgoOrders.push(prijeCetriDana);
+        }
+      });
+
+       ///Provjera za prije 5 dana
+       orderItem.forEach(prijePetDana => {
+        if(prijePetDana.datum == fiveDaysAgo){
+          fiveDaysAgoOrders.push(prijePetDana);
+        }
+      });
+
+       ///Provjera za prije 6 dana
+       orderItem.forEach(prijeSestDana => {
+        if(prijeSestDana.datum == sixDaysAgo){
+          sixDaysAgoOrders.push(prijeSestDana);
+        }
+      });
+
+       ///Provjera za prije 7 dana
+       orderItem.forEach(prijeSedamDana => {
+        if(prijeSedamDana.datum == sevenDaysAgo){
+          sevenDaysAgoOrders.push(prijeSedamDana);
+        }
+      });
+
+
       ///Uzimamo duzinu niza narudzbi koje su napravljene danas da bi mogli prikazati na grafikonu
       this.danasnjeNarudzbe = arrayOfOrdersToday.length;
+      this.jucerasnjeNarudzbe = arrayOfOrdersYesterday.length;
+      this.threeDaysAgoOrders = threeDaysAgoOrders.length;
+      this.fourDaysAgoOrders = fourDaysAgoOrders.length;
+      this.fiveDaysAgoOrders = fiveDaysAgoOrders.length;
+      this.sixDaysAgoOrders = sixDaysAgoOrders.length;
+      this.sevenDaysAgoOrders = sevenDaysAgoOrders.length;
       this.napraviChart();
     });
   }
@@ -92,10 +165,10 @@ export class NarudzbeComponent implements OnInit {
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [1, 2, 3, 4, 6, this.today ],
+        labels: [this.sevenDaysAgo,this.sixDaysAgo, this.fiveDaysAgo,this.fourDaysAgo, this.threeDaysAgo, this.yesterday, this.today ],
         datasets: [
           {
-            data: [0, 8, 3, 3, 3, this.danasnjeNarudzbe],
+            data: [this.sevenDaysAgoOrders,this.sixDaysAgoOrders, this.fiveDaysAgoOrders, this.fourDaysAgoOrders, this.threeDaysAgoOrders, this.jucerasnjeNarudzbe , this.danasnjeNarudzbe],
             label: 'Broj narudzbi',
             borderColor: '#3e95cd',
             fill: false,
