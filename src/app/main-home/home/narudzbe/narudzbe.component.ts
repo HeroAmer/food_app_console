@@ -35,15 +35,23 @@ export class NarudzbeComponent implements OnInit {
   sevenDaysAgoOrders;
   today = new Date().toLocaleDateString('en-GB');
   yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
-  threeDaysAgo = new Date(Date.now() - 48*60*60*1000).toLocaleDateString('en-GB');
-  fourDaysAgo = new Date(Date.now() - 64*60*60*1000).toLocaleDateString('en-GB');
-  fiveDaysAgo = new Date(Date.now() - 96*60*60*1000).toLocaleDateString('en-GB');
-  sixDaysAgo = new Date(Date.now() - 120*60*60*1000).toLocaleDateString('en-GB');
-  sevenDaysAgo = new Date(Date.now() - 148*60*60*1000).toLocaleDateString('en-GB');
-
+  threeDaysAgo = new Date(Date.now() - 48 * 60 * 60 * 1000).toLocaleDateString(
+    'en-GB'
+  );
+  fourDaysAgo = new Date(Date.now() - 64 * 60 * 60 * 1000).toLocaleDateString(
+    'en-GB'
+  );
+  fiveDaysAgo = new Date(Date.now() - 96 * 60 * 60 * 1000).toLocaleDateString(
+    'en-GB'
+  );
+  sixDaysAgo = new Date(Date.now() - 120 * 60 * 60 * 1000).toLocaleDateString(
+    'en-GB'
+  );
+  sevenDaysAgo = new Date(Date.now() - 148 * 60 * 60 * 1000).toLocaleDateString(
+    'en-GB'
+  );
 
   // yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
-
 
   constructor(public itemService: ItemService, public dialog: MatDialog) {}
 
@@ -52,30 +60,30 @@ export class NarudzbeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-       this.povuciNarudzbe();
-      }
-
-  openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
-    const dialogRef = this.dialog.open(OrderDetailsComponent, {
-      data: {
-        orderCode: code,
-        orderJelo: jelo,
-        orderKomentar: komentar,
-        fullName: name,
-        orderAddress: adresa,
-        phone: orderphone,
-        orderDoplata: doplata,
-        orderTotal: suma
-      },
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
+    this.povuciNarudzbe();
   }
 
-///Funkcija koja se poziva pri loadanju komponente (onInit) i povlaci narudzbe
-  povuciNarudzbe(){
+  // openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
+  //   const dialogRef = this.dialog.open(OrderDetailsComponent, {
+  //     data: {
+  //       orderCode: code,
+  //       orderJelo: jelo,
+  //       orderKomentar: komentar,
+  //       fullName: name,
+  //       orderAddress: adresa,
+  //       phone: orderphone,
+  //       orderDoplata: doplata,
+  //       orderTotal: suma,
+  //     },
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     console.log(`Dialog result: ${result}`);
+  //   });
+  // }
+
+  ///Funkcija koja se poziva pri loadanju komponente (onInit) i povlaci narudzbe
+  povuciNarudzbe() {
     this.itemService.selectAllOrders().subscribe((orderItem) => {
       this.orderItem = orderItem;
       var today = new Date().toLocaleDateString('en-GB');
@@ -96,55 +104,53 @@ export class NarudzbeComponent implements OnInit {
       let sixDaysAgoOrders = [];
       let sevenDaysAgoOrders = [];
 
-
       /// Provjera narudzbi za danas
-      orderItem.forEach(narudzba => {
-          if(narudzba.datum == today){
-            arrayOfOrdersToday.push(narudzba);
-          }
+      orderItem.forEach((narudzba) => {
+        if (narudzba.datum == today) {
+          arrayOfOrdersToday.push(narudzba);
+        }
       });
 
-       ///Provjera narudzbi za jucer
-       orderItem.forEach(jucer => {
-        if(jucer.datum == yesterday ){
+      ///Provjera narudzbi za jucer
+      orderItem.forEach((jucer) => {
+        if (jucer.datum == yesterday) {
           arrayOfOrdersYesterday.push(jucer);
         }
       });
 
       ///Provjera za prekjucer
-      orderItem.forEach(prekjucer => {
-        if(prekjucer.datum == threeDaysAgo){
+      orderItem.forEach((prekjucer) => {
+        if (prekjucer.datum == threeDaysAgo) {
           threeDaysAgoOrders.push(prekjucer);
         }
       });
-       ///Provjera za prije 4 dana
-       orderItem.forEach(prijeCetriDana => {
-        if(prijeCetriDana.datum == this.fourDaysAgo){
+      ///Provjera za prije 4 dana
+      orderItem.forEach((prijeCetriDana) => {
+        if (prijeCetriDana.datum == this.fourDaysAgo) {
           fourDaysAgoOrders.push(prijeCetriDana);
         }
       });
 
-       ///Provjera za prije 5 dana
-       orderItem.forEach(prijePetDana => {
-        if(prijePetDana.datum == fiveDaysAgo){
+      ///Provjera za prije 5 dana
+      orderItem.forEach((prijePetDana) => {
+        if (prijePetDana.datum == fiveDaysAgo) {
           fiveDaysAgoOrders.push(prijePetDana);
         }
       });
 
-       ///Provjera za prije 6 dana
-       orderItem.forEach(prijeSestDana => {
-        if(prijeSestDana.datum == sixDaysAgo){
+      ///Provjera za prije 6 dana
+      orderItem.forEach((prijeSestDana) => {
+        if (prijeSestDana.datum == sixDaysAgo) {
           sixDaysAgoOrders.push(prijeSestDana);
         }
       });
 
-       ///Provjera za prije 7 dana
-       orderItem.forEach(prijeSedamDana => {
-        if(prijeSedamDana.datum == sevenDaysAgo){
+      ///Provjera za prije 7 dana
+      orderItem.forEach((prijeSedamDana) => {
+        if (prijeSedamDana.datum == sevenDaysAgo) {
           sevenDaysAgoOrders.push(prijeSedamDana);
         }
       });
-
 
       ///Uzimamo duzinu niza narudzbi koje su napravljene danas da bi mogli prikazati na grafikonu
       this.danasnjeNarudzbe = arrayOfOrdersToday.length;
@@ -158,17 +164,32 @@ export class NarudzbeComponent implements OnInit {
     });
   }
 
-
-///Funkcija koja se poziva kada zelimo napraviti chart (pir loadanju komponente, ili primanja novih vrijednosti)
+  ///Funkcija koja se poziva kada zelimo napraviti chart (pir loadanju komponente, ili primanja novih vrijednosti)
   napraviChart() {
     var ctx = 'myChart';
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [this.sevenDaysAgo,this.sixDaysAgo, this.fiveDaysAgo,this.fourDaysAgo, this.threeDaysAgo, this.yesterday, this.today ],
+        labels: [
+          this.sevenDaysAgo,
+          this.sixDaysAgo,
+          this.fiveDaysAgo,
+          this.fourDaysAgo,
+          this.threeDaysAgo,
+          this.yesterday,
+          this.today,
+        ],
         datasets: [
           {
-            data: [this.sevenDaysAgoOrders,this.sixDaysAgoOrders, this.fiveDaysAgoOrders, this.fourDaysAgoOrders, this.threeDaysAgoOrders, this.jucerasnjeNarudzbe , this.danasnjeNarudzbe],
+            data: [
+              this.sevenDaysAgoOrders,
+              this.sixDaysAgoOrders,
+              this.fiveDaysAgoOrders,
+              this.fourDaysAgoOrders,
+              this.threeDaysAgoOrders,
+              this.jucerasnjeNarudzbe,
+              this.danasnjeNarudzbe,
+            ],
             label: 'Broj narudzbi',
             borderColor: '#3e95cd',
             fill: false,
@@ -190,6 +211,29 @@ export class NarudzbeComponent implements OnInit {
           ],
         },
       },
+    });
+
+    this.itemService.selectAllOrders().subscribe((orderItem) => {
+      console.log(orderItem);
+      this.orderItem = orderItem;
+    });
+  }
+  openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
+    const dialogRef = this.dialog.open(OrderDetailsComponent, {
+      data: {
+        orderCode: code,
+        orderJelo: jelo,
+        orderKomentar: komentar,
+        fullName: name,
+        orderAddress: adresa,
+        phone: orderphone,
+        orderDoplata: doplata,
+        orderTotal: suma,
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
     });
   }
 }

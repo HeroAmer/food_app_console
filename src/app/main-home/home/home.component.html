@@ -57,8 +57,8 @@
   <mat-drawer-content>
     <mat-toolbar>
       <!-- <span class="material-icons"> notifications_none </span> -->
-      <button class="notifikacije-button" matBadge="{{numberOfNotifications}}" (click)="getSeenNotifications()" mat-icon-button [matMenuTriggerFor]="menu"
-        aria-label="Example icon-button with a menu">
+      <button class="notifikacije-button" matBadge="{{numberOfNotifications}}" (click)="getSeenNotifications()"
+        mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>notifications</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
