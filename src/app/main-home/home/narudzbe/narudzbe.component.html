@@ -1,4 +1,3 @@
-
 <div class="container-narudzbe">
   <div id="chart">
     <canvas id="myChart"></canvas>
@@ -22,7 +21,7 @@
           <span class="checkmark"></span>
         </label>
       </th>
-      <th>BROJ</th>
+      <th>BROJ NARUDZBE</th>
       <th>NAZIV OSOBE</th>
       <th>DATUM</th>
       <th>CIJENA</th>
@@ -30,13 +29,13 @@
       <th>ADRESA</th>
       <th></th>
     </tr>
-    <tr *ngFor="let order of orderItem">
+    <tr *ngFor="let order of orderItem; let i = index; ">
       <!-- <td><img id="unos-slika" src=""></td> -->
       <label class="container" id="drugi">
         <input type="checkbox" checked="checked">
         <span class="checkmark"></span>
       </label>
-      <td>{{order.phone}}</td>
+      <td>{{(i + 1).toLocaleString().padStart(5, '0')}}</td>
       <td>{{order.fullName}}</td>
       <td>{{order.datum}}</td>
       <td>{{order.orderTotal}}</td>

@@ -54,3 +54,7 @@ a:link {
 .mat-form-field-infix ng-tns-c135-13 {
   height: 50px !important;
 }
+
+.mat-dialog-container {
+  width: 650px !important;
+}

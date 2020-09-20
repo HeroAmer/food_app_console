@@ -192,3 +192,7 @@ tr:last-child {
 #drugi {
   margin-left: 30px;
 }
+
+.mat-dialog-container {
+  width: 650px;
+}

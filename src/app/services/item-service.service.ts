@@ -18,7 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
   providedIn: 'root',
 })
 export class ItemService implements OnInit {
-  ordersCollection: AngularFirestoreCollection<Order>;
+  ordersCollection: AngularFirestoreCollection<Narudzbe>;
   orderItem: Observable<Narudzbe[]>;
   // all$: Observable<{users: Users[], orders: Order[]}>
   // ordersCollection: AngularFirestoreCollection<Order>;
@@ -34,11 +34,10 @@ export class ItemService implements OnInit {
   hrana: Observable<Hrana[]>;
 
   notifikacijeCollection: AngularFirestoreCollection<Narudzba>;
-  notifikacije:Observable<Narudzba[]>;
+  notifikacije: Observable<Narudzba[]>;
 
-  kategorijaCollection:AngularFirestoreCollection<Kategorija>;
-  kategorije:Observable<Kategorija[]>;
-
+  kategorijaCollection: AngularFirestoreCollection<Kategorija>;
+  kategorije: Observable<Kategorija[]>;
 
   constructor(public afs: AngularFirestore) {
     // this.itemsCollection = this.afs.collection('items', (ref) =>
@@ -56,16 +55,17 @@ export class ItemService implements OnInit {
 
     ///Uzimanje narudzbi kojima je status = false , da bi ih pokazali u notifikacijama
     this.notifikacijeCollection = this.afs.collection('ordersUser', (ref) =>
-      ref.where('status', '==', false )
-
+      ref.where('status', '==', false)
     );
 
-    this.notifikacije = this.notifikacijeCollection.snapshotChanges().map((changes) => {
-      return changes.map((c)=> {
-        const notifikacijeData = c.payload.doc.data() as Narudzba;
-        return notifikacijeData;
+    this.notifikacije = this.notifikacijeCollection
+      .snapshotChanges()
+      .map((changes) => {
+        return changes.map((c) => {
+          const notifikacijeData = c.payload.doc.data() as Narudzba;
+          return notifikacijeData;
+        });
       });
-    })
 
     this.hranaCollection = this.afs.collection('unos_hrane');
 
@@ -77,23 +77,18 @@ export class ItemService implements OnInit {
       });
     });
 
-
     this.kategorijaCollection = this.afs.collection('kategorija');
 
-    this.kategorije = this.kategorijaCollection.snapshotChanges().map((newData) => {
-      return newData.map((d) => {
-        const kategorijaData = d.payload.doc.data() as Kategorija;
-        kategorijaData.katID = d.payload.doc.id;
-        return kategorijaData;
+    this.kategorije = this.kategorijaCollection
+      .snapshotChanges()
+      .map((newData) => {
+        return newData.map((d) => {
+          const kategorijaData = d.payload.doc.data() as Kategorija;
+          kategorijaData.katID = d.payload.doc.id;
+          return kategorijaData;
+        });
       });
-    });
-
-
-
   }
-
-
-
 
   collectionInitialization() {
     this.ordersCollection = this.afs.collection('ordersUser');
@@ -127,7 +122,6 @@ export class ItemService implements OnInit {
                   orderJelo: jelo,
                   orderKomentar: komentar,
                   orderDoplata: doplata,
-                 
                 });
               })
             );
@@ -156,7 +150,7 @@ export class ItemService implements OnInit {
     return this.hrana;
   }
 
-  getKategorije(){
+  getKategorije() {
     return this.kategorije;
   }
 
@@ -164,17 +158,16 @@ export class ItemService implements OnInit {
     this.itemsCollection.add(item);
   }
 
-  addKategorija(kategorija:Kategorija){
+  addKategorija(kategorija: Kategorija) {
     let katID = this.afs.createId();
     kategorija.katID = katID;
     this.afs.collection('kategorija').doc(katID).set(kategorija).then();
   }
 
-  getNotifikacije(){
+  getNotifikacije() {
     return this.notifikacije;
-    console.log()
+    console.log();
   }
-
 
   addHrana(hrana: Hrana) {
     this.hranaCollection.add(hrana);
