@@ -26,6 +26,7 @@ export interface DialogData {
 })
 export class NarudzbeComponent implements OnInit {
   orderItem: Narudzbe[];
+  
   danasnjeNarudzbe;
   jucerasnjeNarudzbe;
   threeDaysAgoOrders;
