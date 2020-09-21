@@ -1,4 +1,5 @@
 export interface Hrana {
+  createdAt?:any,
   id?:string,
   naziv?:string,
   kategorija?:string,
