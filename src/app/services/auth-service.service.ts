@@ -23,42 +23,57 @@ export class AuthServiceService {
   usersCollection:AngularFirestoreCollection<Employee>;
   userr:Observable<Employee[]>;
 
+  employeesCollection:AngularFirestoreCollection<Employee>;
+  allEmployees:Observable<Employee[]>;
+
+
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFirestore,
     private router: Router
-  ) {}
+  ) {
 
-  getUserState(){
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap(user => {
-        if (user) {
-          return this.db.collection<Employee>(`users/${user.uid}`).valueChanges()
-        } else {
-          return of(null)
-        }
-      })
-    )
+    this.employeesCollection = this.db.collection('employees');
+
+    this.allEmployees = this.employeesCollection
+      .snapshotChanges()
+      .map((changes) => {
+        return changes.map((c) => {
+          const notifikacijeData = c.payload.doc.data() as Employee;
+          return notifikacijeData;
+        });
+      });
+
   }
 
-  returnUser(){
-    return this.user$;
-  }
+  // getUserState(){
+  //   this.user$ = this.afAuth.authState.pipe(
+  //     switchMap(user => {
+  //       if (user) {
+  //         return this.db.collection<Employee>(`users/${user.uid}`).valueChanges()
+  //       } else {
+  //         return of(null)
+  //       }
+  //     })
+  //   )
+  // }
 
-  getAutorizacija(){
-    this.juzer$ = this.afAuth.authState.pipe(switchMap(auth => {
-      if(auth){
-        return this.db.collection(`employees/${auth.uid}`).valueChanges();
-      }else{
-        return of(null);
-      }
-    }));}
+  // returnUser(){
+  //   return this.user$;
+  // }
+
+  // getAutorizacija(){
+  //   this.juzer$ = this.afAuth.authState.pipe(switchMap(auth => {
+  //     if(auth){
+  //       return this.db.collection(`employees/${auth.uid}`).valueChanges();
+  //     }else{
+  //       return of(null);
+  //     }
+  //   }));}
 
 
   getAuth(){
       return this.afAuth.authState.map(auth => auth);
-
-
     // this.user$ = this.afAuth.authState.switchMap
     // this.user$ =  this.afAuth.authState.map(auth => {
     //   if(auth){
@@ -72,6 +87,10 @@ export class AuthServiceService {
     // });
   }
 
+  getEmployees(){
+    return this.allEmployees;
+  }
+
   getUserDetails(userID){
     this.usersCollection = this.db.collection('employees', (ref) =>
     ref.where('uid', '==', userID )
@@ -82,7 +101,6 @@ export class AuthServiceService {
       return userData;
     });
   })
-
 
   }
 

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Employee } from 'src/app/models/employee';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { RegisterPopupComponent } from './register-popup/register-popup.component';
 
 
@@ -37,6 +39,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./postavke.component.css'],
 })
 export class PostavkeComponent implements OnInit {
+  employees:Employee[];
   displayedColumns: string[] = [
     'image',
     'Ime',
@@ -46,7 +49,7 @@ export class PostavkeComponent implements OnInit {
   ];
   dataSource = ELEMENT_DATA;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog , private authService: AuthServiceService) {}
   openDialog() {
     const dialogRef = this.dialog.open(RegisterPopupComponent);
 
@@ -58,5 +61,11 @@ export class PostavkeComponent implements OnInit {
     alert('User has been edited!');
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log('postavke')
+    this.authService.getEmployees().subscribe(uposlenici => {
+      this.employees = uposlenici;
+      console.log(uposlenici);
+    })
+  }
 }
