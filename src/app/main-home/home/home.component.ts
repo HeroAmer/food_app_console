@@ -6,6 +6,22 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Employee } from 'src/app/models/employee';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { MatDialog } from '@angular/material/dialog';
+import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
+
+export interface DialogData {
+  uid?: string;
+  phone: string;
+  fullName?: string;
+  orderAddress?: string;
+  orderTotal?: number;
+  status?: boolean;
+  orderCode: string;
+  orderJelo?: string;
+  orderKomentar?: string;
+  orderDoplata: number;
+}
+
 
 @Component({
   selector: 'app-home',
@@ -18,7 +34,8 @@ export class HomeComponent implements OnInit {
     private afAuth: AuthServiceService,
     private router: Router,
     private flashMessage: FlashMessagesService,
-    private afs:AngularFirestore
+    private afs:AngularFirestore,
+    public dialog: MatDialog
   ) {}
   notifications;
   numberOfNotifications;
@@ -35,13 +52,16 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     console.log('Hey');
-    this.notifications = this.itemService
-      .getNotifikacije()
-      .subscribe((notifikacije) => {
-        this.notifications = notifikacije;
-        this.numberOfOrders = notifikacije.length;
-        console.log('Number of orders' , this.numberOfOrders)
-      });
+    this.povuciNotifikacije();
+    // this.notifications = this.itemService
+    //   .getNotifikacije()
+    //   .subscribe((notifikacije) => {
+    //     this.notifications = notifikacije;
+    //     this.numberOfOrders = notifikacije.length;
+    //     console.log('Number of orders' , this.numberOfOrders)
+    //   });
+
+
     this.afAuth.getAuth().subscribe((auth) => {
       if (auth) {
         this.isLoggedIn = true;
@@ -68,6 +88,7 @@ export class HomeComponent implements OnInit {
     // console.log(this.juzer);
 
   }
+
   onLogoutClick() {
     this.afAuth.logout();
     this.flashMessage.show(`You are now <strong>logged out!</strong>`, {
@@ -77,13 +98,36 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  otvoriDetalje(){
+  otvoriDetalje(code, jelo, komentar, name, adresa, orderphone, doplata, suma){
+    const dialogRef = this.dialog.open(NotificationPopupComponent, {
+      data:{
+        orderCode:code,
+        orderJelo:jelo,
+        orderKomentar:komentar,
+        fullName:name,
+        orderAddress:adresa,
+        phone:orderphone,
+        orderDoplata:doplata,
+        orderTotal:suma
 
+      }
+    });
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   getSeenNotifications(){
     this.numberOfSeen = this.numberOfOrders;
     this.numberOfNotifications = this.numberOfOrders - this.numberOfSeen;
+  }
+
+  povuciNotifikacije(){
+    this.itemService.selectAllOrders().subscribe((notifikaije) => {
+      this.notifications = notifikaije;
+      this.numberOfOrders = this.notifications.length;
+    })
+
   }
 
    timerId = setInterval(() => {

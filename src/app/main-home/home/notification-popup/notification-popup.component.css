@@ -1,0 +1,44 @@
+.novi-unos {
+  display: flex;
+  /* position: absolute; */
+  align-items: center;
+  justify-content: flex-end;
+  padding: 10px;
+
+}
+
+.novi-unos>button {
+  border: none;
+  width: 140px;
+  height: 40px;
+  background: #00CCF2 0% 0% no-repeat padding-box;
+  border-radius: 20px;
+  opacity: 1;
+  cursor: pointer;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  /* float: right; */
+}
+
+.novi-unos>#nazad {
+  border: 1px solid #00CCF2;
+  width: 140px;
+  height: 40px;
+  background: white 0% 0% no-repeat padding-box;
+  color: #00CCF2;
+  border-radius: 20px;
+  opacity: 1;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.novi-unos>button:focus {
+  outline: none;
+}
+
+.mat-dialog-container {
+  width: 650px !important;
+}
