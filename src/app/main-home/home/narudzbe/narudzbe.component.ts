@@ -137,7 +137,7 @@ export class NarudzbeComponent implements OnInit {
       ///Provjera za prije 7 dana
       orderItem.forEach((prijeSedamDana) => {
         let sevenDaysAgoDate = prijeSedamDana.datum.toString();
-        if(sevenDaysAgoDate.startsWith(fourDaysAgo)){
+        if(sevenDaysAgoDate.startsWith(sevenDaysAgo)){
           sevenDaysAgoOrders.push(prijeSedamDana);
         }
       });
