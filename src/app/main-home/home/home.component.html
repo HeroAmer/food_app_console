@@ -61,15 +61,21 @@
         mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>notifications</mat-icon>
       </button>
-      <mat-menu #menu="matMenu">
-        <div *ngFor="let notifikacija of notifications">
-          <p>NEW ORDER PENDING: {{notifikacija.orderID}}</p>
-        </div>
+      <mat-menu #menu="matMenu" style="max-width: 600px;overflow-x: hidden;" >
+        <table id="data">
+          <tr  *ngFor="let notifikacija of notifications">
+      <td>New order at: {{notifikacija.orderAddress}} </td>
+      <button mat-icon-button aria-label="Example icon-button with a menu"
+        (click)="otvoriDetalje()">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+          </tr>
+
+      </table>
       </mat-menu>
 
       <a *ngIf="isLoggedIn" (click)="onLogoutClick()" href="#"><img src="../../../assets/icons/logout.svg"
           alt="logout" /></a>
-<button (click)="getUserDetails()">aaaaa</button>
 
 
       <!-- <span class="material-icons"> exit_to_app </span> -->

@@ -34,6 +34,8 @@ export class NarudzbeComponent implements OnInit {
   fiveDaysAgoOrders;
   sixDaysAgoOrders;
   sevenDaysAgoOrders;
+
+/// Računanje datuma za posljednjih 7 dana
   today = new Date().toLocaleDateString('en-GB');
   yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
   threeDaysAgo = new Date(Date.now() - 48 * 60 * 60 * 1000).toLocaleDateString(
@@ -52,7 +54,6 @@ export class NarudzbeComponent implements OnInit {
     'en-GB'
   );
 
-  // yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
 
   constructor(public itemService: ItemService, public dialog: MatDialog) {}
 
@@ -63,25 +64,6 @@ export class NarudzbeComponent implements OnInit {
   ngOnInit(): void {
     this.povuciNarudzbe();
   }
-
-  // openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
-  //   const dialogRef = this.dialog.open(OrderDetailsComponent, {
-  //     data: {
-  //       orderCode: code,
-  //       orderJelo: jelo,
-  //       orderKomentar: komentar,
-  //       fullName: name,
-  //       orderAddress: adresa,
-  //       phone: orderphone,
-  //       orderDoplata: doplata,
-  //       orderTotal: suma,
-  //     },
-  //   });
-
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     console.log(`Dialog result: ${result}`);
-  //   });
-  // }
 
   ///Funkcija koja se poziva pri loadanju komponente (onInit) i povlaci narudzbe
   povuciNarudzbe() {

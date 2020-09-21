@@ -77,6 +77,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  otvoriDetalje(){
+
+  }
+
   getSeenNotifications(){
     this.numberOfSeen = this.numberOfOrders;
     this.numberOfNotifications = this.numberOfOrders - this.numberOfSeen;
