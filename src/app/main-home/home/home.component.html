@@ -64,9 +64,9 @@
       <mat-menu #menu="matMenu" style="max-width: 600px;overflow-x: hidden;" >
         <table id="data">
           <tr  *ngFor="let notifikacija of notifications">
-      <td>New order at: {{notifikacija.orderAddress}} </td>
+      <td>{{notifikacija.fullName}} ordered at: {{notifikacija.orderAddress}} </td>
       <button mat-icon-button aria-label="Example icon-button with a menu"
-        (click)="otvoriDetalje()">
+        (click)="otvoriDetalje(notifikacija.orferCode, notifikacija.orderJelo, notifikacija.orderKomentar,notifikacija.fullName, notifikacija.orderAddress, notifikacija.phone, notifikacija.orderDoplata, notifikacija.orderTotal)">
         <mat-icon>more_vert</mat-icon>
       </button>
           </tr>

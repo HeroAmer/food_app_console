@@ -36,6 +36,7 @@ import { LoginComponent } from './main-home/login/login.component';
 import { RegisterPopupComponent } from './main-home/home/postavke/register-popup/register-popup.component';
 import { KategorijeComponent } from './main-home/home/kategorije/kategorije.component';
 import { NovaKategorijaComponent } from './main-home/home/kategorije/nova-kategorija/nova-kategorija.component';
+import { NotificationPopupComponent } from './main-home/home/notification-popup/notification-popup.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { NovaKategorijaComponent } from './main-home/home/kategorije/nova-katego
     RegisterPopupComponent,
     KategorijeComponent,
     NovaKategorijaComponent,
+    NotificationPopupComponent,
   ],
   imports: [
     BrowserModule,
