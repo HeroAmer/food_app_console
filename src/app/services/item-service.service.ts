@@ -67,7 +67,18 @@ export class ItemService implements OnInit {
         });
       });
 
-    this.hranaCollection = this.afs.collection('unos_hrane');
+    this.hranaCollection = this.afs.collection('unos_hrane', (ref) => {
+      return ref.orderBy('naziv', 'asc');
+    });
+    // , (ref) => {
+    //   return ref.where('myTimeStamp', '<', new Date()).orderBy('myTimeStamp');
+    // }
+    /// ---
+    // (ref) => {
+    //   return ref
+    //     .where('createdAt', '<', new Date())
+    //     .orderBy('createdAt', 'desc');
+    // }
 
     this.hrana = this.hranaCollection.snapshotChanges().map((newData) => {
       return newData.map((b) => {
@@ -91,7 +102,9 @@ export class ItemService implements OnInit {
   }
 
   collectionInitialization() {
-    this.ordersCollection = this.afs.collection('ordersUser');
+    this.ordersCollection = this.afs.collection('ordersUser', (ref) => {
+      return ref.orderBy('datum', 'desc');
+    });
     this.orderItem = this.ordersCollection.snapshotChanges().pipe(
       map((changes) => {
         return changes.map((change) => {
