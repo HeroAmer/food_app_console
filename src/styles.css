@@ -58,3 +58,11 @@ a:link {
 .mat-dialog-container {
   width: 650px !important;
 }
+
+.mat-menu-panel {
+  max-width: 800px !important;
+  max-height: 600px !important;
+}
+.mat-menu-content{
+  overflow-x: hidden !important;
+}
