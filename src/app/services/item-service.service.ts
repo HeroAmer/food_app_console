@@ -183,7 +183,8 @@ export class ItemService implements OnInit {
   }
 
   addHrana(hrana: Hrana) {
-    this.hranaCollection.add(hrana);
-    alert('Uspješno ste dodali novi unos');
+    this.hranaCollection.add(hrana).then(() => {
+      alert('Uspjesan unos!');
+    });
   }
 }

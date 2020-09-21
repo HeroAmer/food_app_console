@@ -23,14 +23,16 @@
             </a>
           </li>
           <li>
-            <a routerLink="postavke"  *ngIf="showPostavke" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"><img
-                src="../../../assets/icons/postavke.svg" alt="postavke" />
+            <a routerLink="postavke" *ngIf="showPostavke" routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"><img src="../../../assets/icons/postavke.svg"
+                alt="postavke" />
               <p>Postavke</p>
             </a>
           </li>
           <li>
-            <a routerLink="kategorije" *ngIf="showPostavke" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }"><img
-                src="../../../assets/icons/postavke.svg" alt="postavke" />
+            <a routerLink="kategorije" *ngIf="showPostavke" routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: true }"><img src="../../../assets/icons/category4.svg"
+                alt="category" />
               <p>Kategorije</p>
             </a>
           </li>
@@ -69,7 +71,7 @@
 
       <a *ngIf="isLoggedIn" (click)="onLogoutClick()" href="#"><img src="../../../assets/icons/logout.svg"
           alt="logout" /></a>
-<button (click)="getUserDetails()">aaaaa</button>
+      <button (click)="getUserDetails()">aaaaa</button>
 
 
       <!-- <span class="material-icons"> exit_to_app </span> -->
