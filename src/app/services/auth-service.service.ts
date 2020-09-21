@@ -125,11 +125,24 @@ insertUserData(userCredential:firebase.auth.UserCredential){
     email:this.newUser.email,
     uid: userCredential.user.uid,
     fullname : this.newUser.fullname,
-    role: 'admin'
+    role: 'admin',
+    seenNotifications: 0
   })
 }
 
-  logout(){
-    this.afAuth.signOut();
+  logout(uid ,numberOfNotifications, userEmail, userFullname, role){
+    this.update(uid ,numberOfNotifications, userEmail, userFullname, role ).then(()=>{
+      this.afAuth.signOut();
+    })
+  }
+
+  update(uid ,numberOfNotifications, userEmail, userFullname, role){
+    return this.db.doc(`employees/${uid}`).set({
+      email:userEmail,
+      uid: uid,
+      fullname : userFullname,
+      role: role,
+      seenNotifications: numberOfNotifications
+    });
   }
 }

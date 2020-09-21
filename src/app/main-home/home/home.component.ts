@@ -40,13 +40,18 @@ export class HomeComponent implements OnInit {
   notifications;
   numberOfNotifications;
   numberOfOrders = 0 ;
+
+
   iD:string;
-  numberOfSeen = 0;
+  numberOfSeen;
+  userEmail;
+  role:string;
+  userFullname:string;
+
   isLoggedIn: boolean;
   loggedInUser: string;
   showRegister: boolean;
   userDetails:Employee;
-  role:string;
   showPostavke = false;
 
   ngOnInit(): void {
@@ -70,6 +75,11 @@ export class HomeComponent implements OnInit {
         this.afAuth.getUserDetails(this.iD);
     this.afAuth.getUser().subscribe(user =>{
       this.role=user[0].role;
+      this.numberOfSeen= user[0].seenNotifications;
+      this.userEmail = user[0].email;
+      console.log(this.userEmail);
+      this.userFullname = user[0].fullname;
+      console.log('Seen notifications: ' +this.numberOfSeen)
       console.log(user[0].role);
       if(this.role == 'vlasnik'){
         this.showPostavke = true;
@@ -89,8 +99,8 @@ export class HomeComponent implements OnInit {
 
   }
 
-  onLogoutClick() {
-    this.afAuth.logout();
+  onLogoutClick(uid ,numberOfNotifications, userEmail, userFullname ,role) {
+    this.afAuth.logout(uid ,numberOfNotifications, userEmail, userFullname,role);
     this.flashMessage.show(`You are now <strong>logged out!</strong>`, {
       cssClass: 'alert alert-info',
       timeout: 4000,

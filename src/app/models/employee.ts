@@ -3,4 +3,5 @@ export interface Employee{
   email?:string;
   fullname?:string;
   role?:string;
+  seenNotifications?:number
 }
