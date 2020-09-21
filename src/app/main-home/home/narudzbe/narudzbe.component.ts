@@ -26,7 +26,7 @@ export interface DialogData {
 })
 export class NarudzbeComponent implements OnInit {
   orderItem: Narudzbe[];
-  
+
   danasnjeNarudzbe;
   jucerasnjeNarudzbe;
   threeDaysAgoOrders;
@@ -107,48 +107,55 @@ export class NarudzbeComponent implements OnInit {
 
       /// Provjera narudzbi za danas
       orderItem.forEach((narudzba) => {
-        if (narudzba.datum == today) {
+        let todayOrdersDate = narudzba.datum.toString();
+        if(todayOrdersDate.startsWith(today)){
           arrayOfOrdersToday.push(narudzba);
         }
       });
 
       ///Provjera narudzbi za jucer
       orderItem.forEach((jucer) => {
-        if (jucer.datum == yesterday) {
+        let yesterdaysOrdersDate = jucer.datum.toString();
+        if(yesterdaysOrdersDate.startsWith(yesterday)){
           arrayOfOrdersYesterday.push(jucer);
         }
       });
 
       ///Provjera za prekjucer
       orderItem.forEach((prekjucer) => {
-        if (prekjucer.datum == threeDaysAgo) {
+        let threeDaysAgoDate = prekjucer.datum.toString();
+        if(threeDaysAgoDate.startsWith(threeDaysAgo)){
           threeDaysAgoOrders.push(prekjucer);
         }
       });
       ///Provjera za prije 4 dana
       orderItem.forEach((prijeCetriDana) => {
-        if (prijeCetriDana.datum == this.fourDaysAgo) {
+        let fourDaysAgoDate = prijeCetriDana.datum.toString();
+        if(fourDaysAgoDate.startsWith(fourDaysAgo)){
           fourDaysAgoOrders.push(prijeCetriDana);
         }
       });
 
       ///Provjera za prije 5 dana
       orderItem.forEach((prijePetDana) => {
-        if (prijePetDana.datum == fiveDaysAgo) {
+        let fiveDaysAgoDate = prijePetDana.datum.toString();
+        if(fiveDaysAgoDate.startsWith(fiveDaysAgo)){
           fiveDaysAgoOrders.push(prijePetDana);
         }
       });
 
       ///Provjera za prije 6 dana
       orderItem.forEach((prijeSestDana) => {
-        if (prijeSestDana.datum == sixDaysAgo) {
+        let sixDaysAgoDate = prijeSestDana.datum.toString();
+        if(sixDaysAgoDate.startsWith(sixDaysAgo)){
           sixDaysAgoOrders.push(prijeSestDana);
         }
       });
 
       ///Provjera za prije 7 dana
       orderItem.forEach((prijeSedamDana) => {
-        if (prijeSedamDana.datum == sevenDaysAgo) {
+        let sevenDaysAgoDate = prijeSedamDana.datum.toString();
+        if(sevenDaysAgoDate.startsWith(fourDaysAgo)){
           sevenDaysAgoOrders.push(prijeSedamDana);
         }
       });
