@@ -57,6 +57,7 @@ a:link {
 
 .mat-dialog-container {
   width: 650px !important;
+  height: 600px !important;
 }
 
 .mat-menu-panel {

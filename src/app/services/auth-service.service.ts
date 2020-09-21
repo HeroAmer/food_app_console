@@ -1,10 +1,13 @@
 import { error } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/firestore';
 import { Route, Router } from '@angular/router';
 import { auth } from 'firebase';
-import { BehaviorSubject, Observable, of  } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { retry, switchMap } from 'rxjs/operators';
 import { Employee } from '../models/employee';
 
@@ -15,24 +18,22 @@ export class AuthServiceService {
   private eventAuthError = new BehaviorSubject<string>('');
   eventAuthError$ = this.eventAuthError.asObservable();
 
-  newUser:any;
+  newUser: any;
   currentUser;
-  user$:Observable<Employee>;
-  juzer$:Observable<Employee>;
+  user$: Observable<Employee>;
+  juzer$: Observable<Employee>;
 
-  usersCollection:AngularFirestoreCollection<Employee>;
-  userr:Observable<Employee[]>;
+  usersCollection: AngularFirestoreCollection<Employee>;
+  userr: Observable<Employee[]>;
 
-  employeesCollection:AngularFirestoreCollection<Employee>;
-  allEmployees:Observable<Employee[]>;
-
+  employeesCollection: AngularFirestoreCollection<Employee>;
+  allEmployees: Observable<Employee[]>;
 
   constructor(
     private afAuth: AngularFireAuth,
     private db: AngularFirestore,
     private router: Router
   ) {
-
     this.employeesCollection = this.db.collection('employees');
 
     this.allEmployees = this.employeesCollection
@@ -43,7 +44,6 @@ export class AuthServiceService {
           return notifikacijeData;
         });
       });
-
   }
 
   // getUserState(){
@@ -71,9 +71,8 @@ export class AuthServiceService {
   //     }
   //   }));}
 
-
-  getAuth(){
-      return this.afAuth.authState.map(auth => auth);
+  getAuth() {
+    return this.afAuth.authState.map((auth) => auth);
     // this.user$ = this.afAuth.authState.switchMap
     // this.user$ =  this.afAuth.authState.map(auth => {
     //   if(auth){
@@ -87,27 +86,25 @@ export class AuthServiceService {
     // });
   }
 
-  getEmployees(){
+  getEmployees() {
     return this.allEmployees;
   }
 
-  getUserDetails(userID){
+  getUserDetails(userID) {
     this.usersCollection = this.db.collection('employees', (ref) =>
-    ref.where('uid', '==', userID )
-  );
-  this.userr = this.usersCollection.snapshotChanges().map((changes) => {
-    return changes.map((c)=> {
-      const userData = c.payload.doc.data() as Employee;
-      return userData;
+      ref.where('uid', '==', userID)
+    );
+    this.userr = this.usersCollection.snapshotChanges().map((changes) => {
+      return changes.map((c) => {
+        const userData = c.payload.doc.data() as Employee;
+        return userData;
+      });
     });
-  })
-
   }
 
-  getUser(){
+  getUser() {
     return this.userr;
   }
-
 
   login(email: string, password: string) {
     this.afAuth
@@ -123,44 +120,46 @@ export class AuthServiceService {
       });
   }
 
-createUser(user){
-  this.afAuth.createUserWithEmailAndPassword(user.email , user.password)
-  .then(userCredential => {
-    this.newUser = user;
-    userCredential.user.updateProfile({
-      displayName : user.fullname
-    });
+  createUser(user) {
+    this.afAuth
+      .createUserWithEmailAndPassword(user.email, user.password)
+      .then((userCredential) => {
+        this.newUser = user;
+        userCredential.user.updateProfile({
+          displayName: user.fullname,
+        });
 
-    this.insertUserData(userCredential)
-    .then(()=>{
-      alert("Dodan novi user!")
-    })
-  })
-}
-
-insertUserData(userCredential:firebase.auth.UserCredential){
-  return this.db.doc(`employees/${userCredential.user.uid}`).set({
-    email:this.newUser.email,
-    uid: userCredential.user.uid,
-    fullname : this.newUser.fullname,
-    role: 'admin',
-    seenNotifications: 0
-  })
-}
-
-  logout(uid ,numberOfNotifications, userEmail, userFullname, role){
-    this.update(uid ,numberOfNotifications, userEmail, userFullname, role ).then(()=>{
-      this.afAuth.signOut();
-    })
+        this.insertUserData(userCredential).then(() => {
+          alert('Dodan novi user!');
+        });
+      });
   }
 
-  update(uid ,numberOfNotifications, userEmail, userFullname, role){
+  insertUserData(userCredential: firebase.auth.UserCredential) {
+    return this.db.doc(`employees/${userCredential.user.uid}`).set({
+      email: this.newUser.email,
+      uid: userCredential.user.uid,
+      fullname: this.newUser.fullname,
+      role: 'admin',
+      seenNotifications: 0,
+    });
+  }
+
+  logout(uid, numberOfNotifications, userEmail, userFullname, role) {
+    this.update(uid, numberOfNotifications, userEmail, userFullname, role).then(
+      () => {
+        this.afAuth.signOut();
+      }
+    );
+  }
+
+  update(uid, numberOfNotifications, userEmail, userFullname, role) {
     return this.db.doc(`employees/${uid}`).set({
-      email:userEmail,
+      email: userEmail,
       uid: uid,
-      fullname : userFullname,
+      fullname: userFullname,
       role: role,
-      seenNotifications: numberOfNotifications
+      seenNotifications: numberOfNotifications,
     });
   }
 }

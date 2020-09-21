@@ -11,6 +11,7 @@ import {
 } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { NgForm } from '@angular/forms';
 
 interface Kolicina {
   value: string;
@@ -30,15 +31,14 @@ export class InputDialogComponent implements OnInit {
   ];
   selectdQuantity = this.quantity[0];
 
-
   kategorije: Kategorija[];
 
   isDisabled = true;
 
-  @ViewChild('btnClose') btnClose: ElementRef;
-  zatvori() {
-    this.btnClose.nativeElement.click();
-  }
+  // @ViewChild('btnClose') btnClose: ElementRef;
+  // zatvori() {
+  //   this.btnClose.nativeElement.click();
+  // }
 
   urlTest;
   hrana: Hrana = {
@@ -85,7 +85,7 @@ export class InputDialogComponent implements OnInit {
       .subscribe();
   }
 
-  saveFood() {
+  saveFood(form: NgForm) {
     this.hrana.imageURL = this.urlTest;
     console.log(this.quantity);
     // this.kategorije.nazivKategorije = this.kategorije
