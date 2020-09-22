@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ItemService } from '../../../../services/item-service.service';
+// import { ItemService } from '../../../../services/item-service.service';
 import { Hrana } from '../../../../models/hrana-unos';
 import { Kategorija } from '../../../../models/kategorija';
 import { finalize } from 'rxjs/operators';
@@ -12,6 +12,8 @@ import {
 import { Observable } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
+import { HranaService } from 'src/app/services/hrana.service';
+import { KategorijeService } from 'src/app/services/kategorije.service';
 
 interface Kolicina {
   value: string;
@@ -58,11 +60,13 @@ export class InputDialogComponent implements OnInit {
   downloadURL: Observable<string>;
   constructor(
     private afStorage: AngularFireStorage,
-    private itemService: ItemService
+    // private itemService: ItemService,
+    private hranaService: HranaService,
+    private kategorijeService : KategorijeService
   ) {}
 
   ngOnInit(): void {
-    this.itemService.getKategorije().subscribe((kategorije) => {
+    this.kategorijeService.getKategorije().subscribe((kategorije) => {
       this.kategorije = kategorije;
     });
   }
@@ -89,7 +93,7 @@ export class InputDialogComponent implements OnInit {
     this.hrana.imageURL = this.urlTest;
     console.log(this.quantity);
     // this.kategorije.nazivKategorije = this.kategorije
-    this.itemService.addHrana(this.hrana);
+    this.hranaService.addHrana(this.hrana);
   }
 
   closeDialog() {

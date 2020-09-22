@@ -1,4 +1,3 @@
-import { error } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
@@ -6,9 +5,7 @@ import {
   AngularFirestoreCollection,
 } from '@angular/fire/firestore';
 import { Route, Router } from '@angular/router';
-import { auth } from 'firebase';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { retry, switchMap } from 'rxjs/operators';
 import { Employee } from '../models/employee';
 
 @Injectable({
@@ -46,44 +43,9 @@ export class AuthServiceService {
       });
   }
 
-  // getUserState(){
-  //   this.user$ = this.afAuth.authState.pipe(
-  //     switchMap(user => {
-  //       if (user) {
-  //         return this.db.collection<Employee>(`users/${user.uid}`).valueChanges()
-  //       } else {
-  //         return of(null)
-  //       }
-  //     })
-  //   )
-  // }
-
-  // returnUser(){
-  //   return this.user$;
-  // }
-
-  // getAutorizacija(){
-  //   this.juzer$ = this.afAuth.authState.pipe(switchMap(auth => {
-  //     if(auth){
-  //       return this.db.collection(`employees/${auth.uid}`).valueChanges();
-  //     }else{
-  //       return of(null);
-  //     }
-  //   }));}
 
   getAuth() {
     return this.afAuth.authState.map((auth) => auth);
-    // this.user$ = this.afAuth.authState.switchMap
-    // this.user$ =  this.afAuth.authState.map(auth => {
-    //   if(auth){
-    //     return this.db.collection<Employee>(`employees/${auth.uid}`).valueChanges();
-    //   }else{
-    //     return of(null);
-    //   }
-    //   this.currentUser = auth.uid;
-    //   console.log(this.currentUser);
-    //   return auth;
-    // });
   }
 
   getEmployees() {

@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { NovaKategorijaComponent } from './nova-kategorija/nova-kategorija.component';
 import  {Kategorija} from '../../../models/kategorija';
 import { ItemService } from 'src/app/services/item-service.service';
+import { KategorijeService } from 'src/app/services/kategorije.service';
 
 
 @Component({
@@ -13,7 +14,10 @@ import { ItemService } from 'src/app/services/item-service.service';
 export class KategorijeComponent implements OnInit {
   kategorije:Kategorija[];
 
-  constructor(public dialog: MatDialog , private itemService : ItemService) { }
+  constructor(public dialog: MatDialog ,
+    private kategorijeService : KategorijeService
+    //  private itemService : ItemService
+     ) { }
   openDialog() {
     const dialogRef = this.dialog.open(NovaKategorijaComponent);
 
@@ -27,7 +31,7 @@ export class KategorijeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.itemService.getKategorije().subscribe(kategorije => {
+    this.kategorijeService.getKategorije().subscribe(kategorije => {
       this.kategorije = kategorije;
     })
   }

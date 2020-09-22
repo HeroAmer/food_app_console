@@ -1,7 +1,7 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ItemService } from 'src/app/services/item-service.service';
+import { OrdersService } from 'src/app/services/orders.service';
 import { DialogData } from '../narudzbe.component';
 
 @Component({
@@ -11,13 +11,13 @@ import { DialogData } from '../narudzbe.component';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData , public itemService: ItemService) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData  , private ordersService: OrdersService) {}
 
   ngOnInit(): void {
     console.log(this.data)
   }
 
   zavrsiNarudzbu(narudzba_id){
-    this.itemService.zavrsiNarudzbu(narudzba_id);
+    this.ordersService.zavrsiNarudzbu(narudzba_id);
   }
 }

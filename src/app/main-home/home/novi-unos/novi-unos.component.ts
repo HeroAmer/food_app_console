@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
-import { ItemService } from '../../../services/item-service.service';
+import { HranaService } from '../../../services/hrana.service';
 import { Hrana } from '../../../models/hrana-unos';
 import { finalize } from 'rxjs/operators';
 import {
@@ -19,11 +19,10 @@ import { Observable } from 'rxjs';
 })
 export class NoviUnosComponent implements OnInit {
   /// Things below is for table content
-  displayedColumns: string[] = ['image', 'naziv', 'opis', 'cijena', 'execute'];
   hrana:Hrana[];
 
 
-  constructor(public dialog: MatDialog, public itemService: ItemService) {}
+  constructor(public dialog: MatDialog, public hranaService: HranaService) {}
   openDialog() {
     const dialogRef = this.dialog.open(InputDialogComponent);
 
@@ -37,7 +36,7 @@ export class NoviUnosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.itemService.getFood().subscribe(hrana => {
+    this.hranaService.getFood().subscribe(hrana => {
       this.hrana = hrana;
     })
   }
