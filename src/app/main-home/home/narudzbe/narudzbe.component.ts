@@ -17,6 +17,7 @@ export interface DialogData {
   orderJelo?: string;
   orderKomentar?: string;
   orderDoplata: number;
+  narudzba_id:string;
 }
 
 @Component({
@@ -208,7 +209,7 @@ export class NarudzbeComponent implements OnInit {
       this.orderItem = orderItem;
     });
   }
-  openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma) {
+  openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma, narudzba_id) {
     const dialogRef = this.dialog.open(OrderDetailsComponent, {
       data: {
         orderCode: code,
@@ -219,6 +220,7 @@ export class NarudzbeComponent implements OnInit {
         phone: orderphone,
         orderDoplata: doplata,
         orderTotal: suma,
+        narudzba_id:narudzba_id
       },
     });
 
