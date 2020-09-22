@@ -164,6 +164,14 @@ export class ItemService implements OnInit {
     return this.hrana;
   }
 
+  zavrsiMultiple(selectedOrders){
+    selectedOrders.forEach(element => {
+      this.afs.collection('ordersUser').doc(element).update({
+        status:'Završeno'
+      });
+    });
+  }
+
   getKategorije() {
     return this.kategorije;
   }
@@ -185,7 +193,7 @@ export class ItemService implements OnInit {
 
   zavrsiNarudzbu(narudzba_id){
     this.afs.collection('ordersUser').doc(narudzba_id).update({
-      status:'završeno'
+      status:'Završeno'
     });
   }
 
