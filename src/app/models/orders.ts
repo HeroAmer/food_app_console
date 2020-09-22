@@ -1,4 +1,5 @@
 export interface Narudzbe {
+  orderID?:string,
   datum?:any;
   uid?: string;
   phone: string;

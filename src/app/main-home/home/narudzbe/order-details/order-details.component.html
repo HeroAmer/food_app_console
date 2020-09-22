@@ -13,6 +13,6 @@
   <h5>Ukupno za naplatiti: {{data.orderTotal}}</h5>
   <div class="novi-unos">
     <button mat-dialog-close id="nazad">Nazad</button>
-    <button>Zavrsi</button>
+    <button (click)="zavrsiNarudzbu(data.narudzba_id)">Zavrsi</button>
   </div>
 </div>

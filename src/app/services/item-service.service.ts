@@ -118,13 +118,14 @@ export class ItemService implements OnInit {
           const jelo = data.orderJelo;
           const komentar = data.orderKomentar;
           const doplata = data.orderDoplata;
-
+          const narudzba_id = data.orderID;
           return this.afs
             .doc('users/' + orderId)
             .valueChanges()
             .pipe(
               map((usersData: Users) => {
                 return Object.assign({
+                  orderID :narudzba_id,
                   phone: usersData?.phone,
                   fullName: usersData?.fullName,
                   datum: datumKreiranja,
@@ -180,6 +181,12 @@ export class ItemService implements OnInit {
   getNotifikacije() {
     return this.notifikacije;
     console.log();
+  }
+
+  zavrsiNarudzbu(narudzba_id){
+    this.afs.collection('ordersUser').doc(narudzba_id).update({
+      status:'završeno'
+    });
   }
 
   addHrana(hrana: Hrana) {
