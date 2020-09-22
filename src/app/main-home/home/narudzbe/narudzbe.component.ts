@@ -3,6 +3,7 @@ import { Chart } from 'node_modules/chart.js';
 import { ViewChild } from '@angular/core';
 import { Narudzbe } from '../../../models/orders';
 import { ItemService } from '../../../services/item-service.service';
+import { OrdersService } from '../../../services/orders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { ValueTransformer } from '@angular/compiler/src/util';
@@ -59,7 +60,10 @@ export class NarudzbeComponent implements OnInit {
   );
 
 
-  constructor(public itemService: ItemService, public dialog: MatDialog) {}
+  constructor(
+    // public itemService: ItemService,
+    public ordersService: OrdersService,
+    public dialog: MatDialog) {}
 
   cl() {
     alert('User has been edited!');
@@ -71,7 +75,7 @@ export class NarudzbeComponent implements OnInit {
 
   ///Funkcija koja se poziva pri loadanju komponente (onInit) i povlaci narudzbe
   povuciNarudzbe() {
-    this.itemService.selectAllOrders().subscribe((orderItem) => {
+    this.ordersService.selectAllOrders().subscribe((orderItem) => {
       this.orderItem = orderItem;
       var today = new Date().toLocaleDateString('en-GB');
       let yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
@@ -173,7 +177,7 @@ export class NarudzbeComponent implements OnInit {
   }
 
   zavrsiMultipleOrders(selectedOrders){
-    this.itemService.zavrsiMultiple(selectedOrders);
+    this.ordersService.zavrsiMultiple(selectedOrders);
   }
 
   ///Funkcija koja se poziva kada zelimo napraviti chart (pir loadanju komponente, ili primanja novih vrijednosti)
@@ -225,7 +229,7 @@ export class NarudzbeComponent implements OnInit {
       },
     });
 
-    this.itemService.selectAllOrders().subscribe((orderItem) => {
+    this.ordersService.selectAllOrders().subscribe((orderItem) => {
       console.log(orderItem);
       this.orderItem = orderItem;
     });

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { ItemService } from 'src/app/services/item-service.service';
+import { NotifikacijeService } from 'src/app/services/notifikacije.service';
+import { OrdersService } from 'src/app/services/orders.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -30,7 +32,9 @@ export interface DialogData {
 })
 export class HomeComponent implements OnInit {
   constructor(
-    public itemService: ItemService,
+    // public itemService: ItemService,
+    private notifikacijeService: NotifikacijeService,
+    private ordersService: OrdersService,
     private afAuth: AuthServiceService,
     private router: Router,
     private flashMessage: FlashMessagesService,
@@ -133,7 +137,7 @@ export class HomeComponent implements OnInit {
   }
 
   povuciNotifikacije(){
-    this.itemService.selectAllOrders().subscribe((notifikaije) => {
+    this.ordersService.selectAllOrders().subscribe((notifikaije) => {
       this.notifications = notifikaije;
       this.numberOfOrders = this.notifications.length;
     })

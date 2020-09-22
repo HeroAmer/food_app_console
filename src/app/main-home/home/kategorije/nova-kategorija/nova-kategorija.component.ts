@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Kategorija } from 'src/app/models/kategorija';
 import { ItemService } from 'src/app/services/item-service.service';
+import { KategorijeService } from 'src/app/services/kategorije.service';
 
 @Component({
   selector: 'app-nova-kategorija',
@@ -15,13 +16,15 @@ export class NovaKategorijaComponent implements OnInit {
     katID:''
   }
 
-  constructor( private itemService:ItemService) { }
+  constructor(
+    private kategorijeService: KategorijeService
+    ) { }
 
 
   ngOnInit(): void {
   }
 
   kreirajKategoriju(){
-    this.itemService.addKategorija(this.category);
+    this.kategorijeService.addKategorija(this.category);
   }
 }

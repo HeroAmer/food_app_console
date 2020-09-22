@@ -22,14 +22,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ItemsComponent } from './components/items/items.component';
 import { ItemService } from './services/item-service.service';
-import { AddItemComponent } from './components/add-item/add-item.component';
 import { HomeComponent } from './main-home/home/home.component';
 import { NarudzbeComponent } from './main-home/home/narudzbe/narudzbe.component';
 import { NoviUnosComponent } from './main-home/home/novi-unos/novi-unos.component';
 import { PostavkeComponent } from './main-home/home/postavke/postavke.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/input-dialog.component';
 import { OrderDetailsComponent } from './main-home/home/narudzbe/order-details/order-details.component';
 import { LoginComponent } from './main-home/login/login.component';
@@ -41,8 +40,6 @@ import { NotificationPopupComponent } from './main-home/home/notification-popup/
 @NgModule({
   declarations: [
     AppComponent,
-    ItemsComponent,
-    AddItemComponent,
     HomeComponent,
     NarudzbeComponent,
     NoviUnosComponent,
