@@ -10,14 +10,14 @@
     </div>
     <div class="novi-unos">
       <!-- TODO: OpenDialog down below -->
-      <button>Zavrsi</button>
+      <button (click)="zavrsiMultipleOrders(selectedOrders)">Zavrsi</button>
     </div>
   </div>
   <table id="data" class="mat-elevation-z8">
     <tr>
       <th>
         <label class="container">
-          <input type="checkbox" checked="checked">
+          <input type="checkbox" >
           <span class="checkmark"></span>
         </label>
       </th>
@@ -32,7 +32,7 @@
     <tr *ngFor="let order of orderItem; let i = index;">
       <!-- <td><img id="unos-slika" src=""></td> -->
       <label class="container" id="drugi">
-        <input type="checkbox" checked="checked">
+        <input type="checkbox"  (change)="onChangeInput($event,order.orderID , i)">
         <span class="checkmark"></span>
       </label>
       <td>{{(orderItem.length - i).toLocaleString().padStart('5', 0)}}</td>

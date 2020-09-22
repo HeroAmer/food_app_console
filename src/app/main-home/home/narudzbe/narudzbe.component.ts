@@ -5,6 +5,7 @@ import { Narudzbe } from '../../../models/orders';
 import { ItemService } from '../../../services/item-service.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { ValueTransformer } from '@angular/compiler/src/util';
 
 export interface DialogData {
   uid?: string;
@@ -27,6 +28,8 @@ export interface DialogData {
 })
 export class NarudzbeComponent implements OnInit {
   orderItem: Narudzbe[];
+
+  selectedOrders = [];
 
   danasnjeNarudzbe;
   jucerasnjeNarudzbe;
@@ -153,6 +156,24 @@ export class NarudzbeComponent implements OnInit {
       this.sevenDaysAgoOrders = sevenDaysAgoOrders.length;
       this.napraviChart();
     });
+  }
+
+
+  onChangeInput(event, orderId, i){
+    if(event.target.checked){
+      this.selectedOrders.splice(i, 0 ,orderId);
+      console.log(this.selectedOrders);
+      // console.log(i);
+      // this.selectedOrders.push(orderId);
+      // console.log(this.selectedOrders);
+    }else{
+      this.selectedOrders.splice(i, 1);
+      console.log(this.selectedOrders);
+    }
+  }
+
+  zavrsiMultipleOrders(selectedOrders){
+    this.itemService.zavrsiMultiple(selectedOrders);
   }
 
   ///Funkcija koja se poziva kada zelimo napraviti chart (pir loadanju komponente, ili primanja novih vrijednosti)
