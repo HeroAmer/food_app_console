@@ -11,7 +11,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
   styleUrls: ['./narudzbe.component.css'],
 })
 export class NarudzbeComponent implements OnInit {
-  orderItem: Narudzbe[];
+  orders: Narudzbe[];
 
   selectedOrders = [];
 
@@ -58,8 +58,8 @@ export class NarudzbeComponent implements OnInit {
 
   ///Funkcija koja se poziva pri loadanju komponente (onInit) i povlaci narudzbe
   povuciNarudzbe() {
-    this.ordersService.selectAllOrders().subscribe((orderItem) => {
-      this.orderItem = orderItem;
+    this.ordersService.selectAllOrders().subscribe((orders) => {
+      this.orders = orders;
       var today = new Date().toLocaleDateString('en-GB');
       let yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
       console.log(today);
@@ -79,7 +79,7 @@ export class NarudzbeComponent implements OnInit {
       let sevenDaysAgoOrders = [];
 
       /// Provjera narudzbi za danas
-      orderItem.forEach((narudzba) => {
+      orders.forEach((narudzba) => {
         let todayOrdersDate = narudzba.datum.toString();
         if(todayOrdersDate.startsWith(today)){
           arrayOfOrdersToday.push(narudzba);
@@ -87,7 +87,7 @@ export class NarudzbeComponent implements OnInit {
       });
 
       ///Provjera narudzbi za jucer
-      orderItem.forEach((jucer) => {
+      orders.forEach((jucer) => {
         let yesterdaysOrdersDate = jucer.datum.toString();
         if(yesterdaysOrdersDate.startsWith(yesterday)){
           arrayOfOrdersYesterday.push(jucer);
@@ -95,14 +95,14 @@ export class NarudzbeComponent implements OnInit {
       });
 
       ///Provjera za prekjucer
-      orderItem.forEach((prekjucer) => {
+      orders.forEach((prekjucer) => {
         let threeDaysAgoDate = prekjucer.datum.toString();
         if(threeDaysAgoDate.startsWith(threeDaysAgo)){
           threeDaysAgoOrders.push(prekjucer);
         }
       });
       ///Provjera za prije 4 dana
-      orderItem.forEach((prijeCetriDana) => {
+      orders.forEach((prijeCetriDana) => {
         let fourDaysAgoDate = prijeCetriDana.datum.toString();
         if(fourDaysAgoDate.startsWith(fourDaysAgo)){
           fourDaysAgoOrders.push(prijeCetriDana);
@@ -110,7 +110,7 @@ export class NarudzbeComponent implements OnInit {
       });
 
       ///Provjera za prije 5 dana
-      orderItem.forEach((prijePetDana) => {
+      orders.forEach((prijePetDana) => {
         let fiveDaysAgoDate = prijePetDana.datum.toString();
         if(fiveDaysAgoDate.startsWith(fiveDaysAgo)){
           fiveDaysAgoOrders.push(prijePetDana);
@@ -118,7 +118,7 @@ export class NarudzbeComponent implements OnInit {
       });
 
       ///Provjera za prije 6 dana
-      orderItem.forEach((prijeSestDana) => {
+      orders.forEach((prijeSestDana) => {
         let sixDaysAgoDate = prijeSestDana.datum.toString();
         if(sixDaysAgoDate.startsWith(sixDaysAgo)){
           sixDaysAgoOrders.push(prijeSestDana);
@@ -126,7 +126,7 @@ export class NarudzbeComponent implements OnInit {
       });
 
       ///Provjera za prije 7 dana
-      orderItem.forEach((prijeSedamDana) => {
+      orders.forEach((prijeSedamDana) => {
         let sevenDaysAgoDate = prijeSedamDana.datum.toString();
         if(sevenDaysAgoDate.startsWith(sevenDaysAgo)){
           sevenDaysAgoOrders.push(prijeSedamDana);
@@ -212,9 +212,9 @@ export class NarudzbeComponent implements OnInit {
       },
     });
 
-    this.ordersService.selectAllOrders().subscribe((orderItem) => {
-      console.log(orderItem);
-      this.orderItem = orderItem;
+    this.ordersService.selectAllOrders().subscribe((orders) => {
+      console.log(orders);
+      this.orders = orders;
     });
   }
   openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma, narudzba_id) {

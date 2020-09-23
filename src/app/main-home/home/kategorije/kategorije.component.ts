@@ -11,10 +11,10 @@ import { KategorijeService } from 'src/app/services/kategorije.service';
   styleUrls: ['./kategorije.component.css']
 })
 export class KategorijeComponent implements OnInit {
-  kategorije:Kategorija[];
+  categories:Kategorija[];
 
   constructor(public dialog: MatDialog ,
-    private kategorijeService : KategorijeService
+    private categoriesService : KategorijeService
      ) { }
   openDialog() {
     const dialogRef = this.dialog.open(NovaKategorijaComponent);
@@ -29,8 +29,8 @@ export class KategorijeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.kategorijeService.getKategorije().subscribe(kategorije => {
-      this.kategorije = kategorije;
+    this.categoriesService.getKategorije().subscribe(categories => {
+      this.categories = categories;
     })
   }
 

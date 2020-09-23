@@ -14,7 +14,7 @@ import { Users, Narudzbe } from '../models/orders';
 })
 export class OrdersService {
   ordersCollection: AngularFirestoreCollection<Narudzbe>;
-  orderItem: Observable<Narudzbe[]>;
+  orders: Observable<Narudzbe[]>;
 
   constructor(public afs: AngularFirestore) { }
 
@@ -22,7 +22,7 @@ export class OrdersService {
     this.ordersCollection = this.afs.collection('ordersUser', (ref) => {
       return ref.orderBy('datum', 'desc');
     });
-    this.orderItem = this.ordersCollection.snapshotChanges().pipe(
+    this.orders = this.ordersCollection.snapshotChanges().pipe(
       map((changes) => {
         return changes.map((change) => {
           const data = change.payload.doc.data() as Narudzbe;
@@ -63,7 +63,7 @@ export class OrdersService {
   }
   selectAllOrders() {
     this.collectionInitialization();
-    return this.orderItem;
+    return this.orders;
   }
 
   zavrsiMultiple(selectedOrders){

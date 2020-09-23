@@ -17,10 +17,10 @@ export class AuthServiceService {
 
   newUser: any;
   currentUser;
-  user$: Observable<Employee>;
+  // user$: Observable<Employee>;
 
   usersCollection: AngularFirestoreCollection<Employee>;
-  userr: Observable<Employee[]>;
+  user: Observable<Employee[]>;
 
   employeesCollection: AngularFirestoreCollection<Employee>;
   allEmployees: Observable<Employee[]>;
@@ -55,7 +55,7 @@ export class AuthServiceService {
     this.usersCollection = this.db.collection('employees', (ref) =>
       ref.where('uid', '==', userID)
     );
-    this.userr = this.usersCollection.snapshotChanges().map((changes) => {
+    this.user = this.usersCollection.snapshotChanges().map((changes) => {
       return changes.map((c) => {
         const userData = c.payload.doc.data() as Employee;
         return userData;
@@ -64,7 +64,7 @@ export class AuthServiceService {
   }
 
   getUser() {
-    return this.userr;
+    return this.user;
   }
 
   login(email: string, password: string) {

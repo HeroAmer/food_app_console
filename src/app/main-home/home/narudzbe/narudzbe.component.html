@@ -29,13 +29,13 @@
       <th>ADRESA</th>
       <th></th>
     </tr>
-    <tr *ngFor="let order of orderItem; let i = index;">
+    <tr *ngFor="let order of orders; let i = index;">
       <!-- <td><img id="unos-slika" src=""></td> -->
       <label class="container" id="drugi">
         <input type="checkbox"  (change)="onChangeInput($event,order.orderID , i)">
         <span class="checkmark"></span>
       </label>
-      <td>{{(orderItem.length - i).toLocaleString().padStart('5', 0)}}</td>
+      <td>{{(orders.length - i).toLocaleString().padStart('5', 0)}}</td>
       <td>{{order.fullName}}</td>
       <td>{{order.datum}}</td>
       <td>{{order.orderTotal}}</td>

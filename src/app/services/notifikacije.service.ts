@@ -11,26 +11,25 @@ import { Narudzba } from '../models/narudzba';
   providedIn: 'root'
 })
 export class NotifikacijeService {
-  notifikacijeCollection: AngularFirestoreCollection<Narudzba>;
-  notifikacije: Observable<Narudzba[]>;
+  notificationsCollection: AngularFirestoreCollection<Narudzba>;
+  notifications: Observable<Narudzba[]>;
 
   constructor(public afs: AngularFirestore) {
-    this.notifikacijeCollection = this.afs.collection('ordersUser', (ref) =>
+    this.notificationsCollection = this.afs.collection('ordersUser', (ref) =>
     ref.where('status', '==', 'Čekanje')
   );
 
-  this.notifikacije = this.notifikacijeCollection
+  this.notifications = this.notificationsCollection
     .snapshotChanges()
     .map((changes) => {
       return changes.map((c) => {
-        const notifikacijeData = c.payload.doc.data() as Narudzba;
-        return notifikacijeData;
+        const notificationsData = c.payload.doc.data() as Narudzba;
+        return notificationsData;
       });
     });
   }
 
   getNotifikacije() {
-    return this.notifikacije;
-    console.log();
+    return this.notifications;
   }
 }

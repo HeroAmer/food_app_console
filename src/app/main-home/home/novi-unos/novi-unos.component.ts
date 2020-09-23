@@ -12,9 +12,9 @@ import { Hrana } from '../../../models/hrana-unos';
 })
 export class NoviUnosComponent implements OnInit {
 
-  hrana:Hrana[];
+  food:Hrana[];
 
-  constructor(public dialog: MatDialog, public hranaService: HranaService) {}
+  constructor(public dialog: MatDialog, public foodService: HranaService) {}
   openDialog() {
     const dialogRef = this.dialog.open(InputDialogComponent);
 
@@ -24,8 +24,8 @@ export class NoviUnosComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.hranaService.getFood().subscribe(hrana => {
-      this.hrana = hrana;
+    this.foodService.getFood().subscribe(food => {
+      this.food = food;
     })
   }
 

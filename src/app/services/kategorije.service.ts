@@ -11,29 +11,29 @@ import { Kategorija } from '../models/kategorija';
   providedIn: 'root'
 })
 export class KategorijeService {
-  kategorijaCollection: AngularFirestoreCollection<Kategorija>;
-  kategorije: Observable<Kategorija[]>;
+  categoriesCollection: AngularFirestoreCollection<Kategorija>;
+  categories: Observable<Kategorija[]>;
 
   constructor(public afs: AngularFirestore) {
-    this.kategorijaCollection = this.afs.collection('kategorija');
+    this.categoriesCollection = this.afs.collection('kategorija');
 
-    this.kategorije = this.kategorijaCollection
+    this.categories = this.categoriesCollection
       .snapshotChanges()
       .map((newData) => {
         return newData.map((d) => {
-          const kategorijaData = d.payload.doc.data() as Kategorija;
-          kategorijaData.katID = d.payload.doc.id;
-          return kategorijaData;
+          const categoryData = d.payload.doc.data() as Kategorija;
+          categoryData.katID = d.payload.doc.id;
+          return categoryData;
         });
       });
    }
 
    getKategorije() {
-    return this.kategorije;
+    return this.categories;
   }
-   addKategorija(kategorija: Kategorija) {
+   addKategorija(category: Kategorija) {
     let katID = this.afs.createId();
-    kategorija.katID = katID;
-    this.afs.collection('kategorija').doc(katID).set(kategorija).then();
+    category.katID = katID;
+    this.afs.collection('kategorija').doc(katID).set(category).then();
   }
 }
