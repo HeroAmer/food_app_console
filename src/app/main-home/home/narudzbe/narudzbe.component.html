@@ -35,6 +35,7 @@
         <input type="checkbox"  (change)="onChangeInput($event,order.orderID , i)">
         <span class="checkmark"></span>
       </label>
+      <!-- How to add five digits on one index of array we can see down below -->
       <td>{{(orders.length - i).toLocaleString().padStart('5', 0)}}</td>
       <td>{{order.fullName}}</td>
       <td>{{order.datum}}</td>
