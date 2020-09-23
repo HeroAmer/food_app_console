@@ -24,23 +24,23 @@ export class NarudzbeComponent implements OnInit {
   sevenDaysAgoOrders;
 
 /// Računanje datuma za posljednjih 7 dana
-  today = new Date().toLocaleDateString('en-GB');
-  yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
-  threeDaysAgo = new Date(Date.now() - 48 * 60 * 60 * 1000).toLocaleDateString(
-    'en-GB'
-  );
-  fourDaysAgo = new Date(Date.now() - 64 * 60 * 60 * 1000).toLocaleDateString(
-    'en-GB'
-  );
-  fiveDaysAgo = new Date(Date.now() - 96 * 60 * 60 * 1000).toLocaleDateString(
-    'en-GB'
-  );
-  sixDaysAgo = new Date(Date.now() - 120 * 60 * 60 * 1000).toLocaleDateString(
-    'en-GB'
-  );
-  sevenDaysAgo = new Date(Date.now() - 148 * 60 * 60 * 1000).toLocaleDateString(
-    'en-GB'
-  );
+  // today = new Date().toLocaleDateString('en-GB');
+  // yesterday = new Date(Date.now() - 864e5).toLocaleDateString('en-GB');
+  // threeDaysAgo = new Date(Date.now() - 48 * 60 * 60 * 1000).toLocaleDateString(
+  //   'en-GB'
+  // );
+  // fourDaysAgo = new Date(Date.now() - 64 * 60 * 60 * 1000).toLocaleDateString(
+  //   'en-GB'
+  // );
+  // fiveDaysAgo = new Date(Date.now() - 96 * 60 * 60 * 1000).toLocaleDateString(
+  //   'en-GB'
+  // );
+  // sixDaysAgo = new Date(Date.now() - 120 * 60 * 60 * 1000).toLocaleDateString(
+  //   'en-GB'
+  // );
+  // sevenDaysAgo = new Date(Date.now() - 148 * 60 * 60 * 1000).toLocaleDateString(
+  //   'en-GB'
+  // );
 
 
   constructor(
@@ -169,14 +169,7 @@ export class NarudzbeComponent implements OnInit {
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [
-          this.sevenDaysAgo,
-          this.sixDaysAgo,
-          this.fiveDaysAgo,
-          this.fourDaysAgo,
-          this.threeDaysAgo,
-          this.yesterday,
-          this.today,
+        labels: [1, 2, 3, 4, 5, 6, 7
         ],
         datasets: [
           {
