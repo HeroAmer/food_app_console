@@ -9,10 +9,6 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
   styleUrls: ['./register-popup.component.css']
 })
 export class RegisterPopupComponent implements OnInit {
-  @ViewChild('btnClose') btnClose: ElementRef;
-  zatvori() {
-    this.btnClose.nativeElement.click();
-  }
 
   constructor(public auth:AuthServiceService) { }
 

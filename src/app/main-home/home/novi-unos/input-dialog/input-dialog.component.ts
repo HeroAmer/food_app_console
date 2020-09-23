@@ -1,6 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-// import { ItemService } from '../../../../services/item-service.service';
+import { Component, OnInit } from '@angular/core';
 import { Hrana } from '../../../../models/hrana-unos';
 import { Kategorija } from '../../../../models/kategorija';
 import { finalize } from 'rxjs/operators';
@@ -10,7 +8,6 @@ import {
   AngularFireUploadTask,
 } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { HranaService } from 'src/app/services/hrana.service';
 import { KategorijeService } from 'src/app/services/kategorije.service';
@@ -36,11 +33,6 @@ export class InputDialogComponent implements OnInit {
   kategorije: Kategorija[];
 
   isDisabled = true;
-
-  // @ViewChild('btnClose') btnClose: ElementRef;
-  // zatvori() {
-  //   this.btnClose.nativeElement.click();
-  // }
 
   urlTest;
   hrana: Hrana = {

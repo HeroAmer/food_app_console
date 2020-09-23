@@ -3,13 +3,6 @@ import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HranaService } from '../../../services/hrana.service';
 import { Hrana } from '../../../models/hrana-unos';
-import { finalize } from 'rxjs/operators';
-import {
-  AngularFireStorage,
-  AngularFireStorageReference,
-  AngularFireUploadTask,
-} from '@angular/fire/storage';
-import { Observable } from 'rxjs';
 
 
 @Component({
@@ -18,9 +11,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./novi-unos.component.css'],
 })
 export class NoviUnosComponent implements OnInit {
-  /// Things below is for table content
-  hrana:Hrana[];
 
+  hrana:Hrana[];
 
   constructor(public dialog: MatDialog, public hranaService: HranaService) {}
   openDialog() {
@@ -29,10 +21,6 @@ export class NoviUnosComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
-  }
-
-  cl() {
-    alert('User has been edited!');
   }
 
   ngOnInit(): void {

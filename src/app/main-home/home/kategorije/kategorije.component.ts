@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { NovaKategorijaComponent } from './nova-kategorija/nova-kategorija.component';
 import  {Kategorija} from '../../../models/kategorija';
-import { ItemService } from 'src/app/services/item-service.service';
 import { KategorijeService } from 'src/app/services/kategorije.service';
 
 
@@ -16,7 +15,6 @@ export class KategorijeComponent implements OnInit {
 
   constructor(public dialog: MatDialog ,
     private kategorijeService : KategorijeService
-    //  private itemService : ItemService
      ) { }
   openDialog() {
     const dialogRef = this.dialog.open(NovaKategorijaComponent);

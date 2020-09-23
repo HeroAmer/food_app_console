@@ -18,7 +18,6 @@ export class AuthServiceService {
   newUser: any;
   currentUser;
   user$: Observable<Employee>;
-  juzer$: Observable<Employee>;
 
   usersCollection: AngularFirestoreCollection<Employee>;
   userr: Observable<Employee[]>;
