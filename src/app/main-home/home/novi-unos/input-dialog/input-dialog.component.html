@@ -12,16 +12,10 @@
       </div>
 
     </div>
-    <!-- <p>touched: {{nameControl.touched}}</p>
-    <p>valid: {{nameControl.valid}}</p> -->
     <div id="kategorija-parent">
       <div id="kategorija" class="text-unosa">
         <p class="text-label">KATEGORIJA</p>
       </div>
-      <!-- <div class="inputic">
-        <input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
-          [(ngModel)]="hrana.kategorija" name="kategorija">
-      </div> -->
       <mat-form-field appearance="fill" style="font-family: Montserrat, sans-serif !important">
         <mat-label style="color: #2699fb; font-family: Montserrat, sans-serif !important">Ponuda hrane</mat-label>
         <mat-select [(ngModel)]="hrana.kategorija" name="kategorija"
@@ -42,8 +36,6 @@
       </div>
       <div class="inputic-textarea" id="opis-textarea"
         [class.textarea-error]="opisControl.invalid && opisControl.touched">
-        <!-- <input type="text" autocomplete="off" placeholder="Obavezno polje"
-          class="input-field" [(ngModel)]="hrana.opis" name="opis"> -->
         <textarea name="opis" [(ngModel)]="hrana.opis" cols="50" rows="4" placeholder="Obavezno polje" wrap="soft"
           required #opisControl="ngModel">
         </textarea>

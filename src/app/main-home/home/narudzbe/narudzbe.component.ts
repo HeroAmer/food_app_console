@@ -1,26 +1,9 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Chart } from 'node_modules/chart.js';
-import { ViewChild } from '@angular/core';
 import { Narudzbe } from '../../../models/orders';
-import { ItemService } from '../../../services/item-service.service';
 import { OrdersService } from '../../../services/orders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from './order-details/order-details.component';
-import { ValueTransformer } from '@angular/compiler/src/util';
-
-export interface DialogData {
-  uid?: string;
-  phone: string;
-  fullName?: string;
-  orderAddress?: string;
-  orderTotal?: number;
-  status?: boolean;
-  orderCode: string;
-  orderJelo?: string;
-  orderKomentar?: string;
-  orderDoplata: number;
-  narudzba_id:string;
-}
 
 @Component({
   selector: 'app-narudzbe',

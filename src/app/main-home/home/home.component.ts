@@ -1,29 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
-import { ItemService } from 'src/app/services/item-service.service';
 import { NotifikacijeService } from 'src/app/services/notifikacije.service';
 import { OrdersService } from 'src/app/services/orders.service';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
 import { Employee } from 'src/app/models/employee';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
-
-export interface DialogData {
-  uid?: string;
-  phone: string;
-  fullName?: string;
-  orderAddress?: string;
-  orderTotal?: number;
-  status?: boolean;
-  orderCode: string;
-  orderJelo?: string;
-  orderKomentar?: string;
-  orderDoplata: number;
-}
-
 
 @Component({
   selector: 'app-home',
@@ -32,8 +16,6 @@ export interface DialogData {
 })
 export class HomeComponent implements OnInit {
   constructor(
-    // public itemService: ItemService,
-    private notifikacijeService: NotifikacijeService,
     private ordersService: OrdersService,
     private afAuth: AuthServiceService,
     private router: Router,
@@ -62,14 +44,6 @@ export class HomeComponent implements OnInit {
 
     console.log('Hey');
     this.povuciNotifikacije();
-    // this.notifications = this.itemService
-    //   .getNotifikacije()
-    //   .subscribe((notifikacije) => {
-    //     this.notifications = notifikacije;
-    //     this.numberOfOrders = notifikacije.length;
-    //     console.log('Number of orders' , this.numberOfOrders)
-    //   });
-
 
     this.afAuth.getAuth().subscribe((auth) => {
       if (auth) {
@@ -95,12 +69,6 @@ export class HomeComponent implements OnInit {
         this.isLoggedIn = false;
       }
     });
-
-
-
-    // this.afAuth.juzer$.subscribe(juzer => this.juzer = juzer);
-    // console.log(this.juzer);
-
   }
 
   onLogoutClick(uid ,numberOfNotifications, userEmail, userFullname ,role) {
@@ -156,10 +124,4 @@ export class HomeComponent implements OnInit {
 
     })
    }
-
-  // ngAfterViewInit(){
-  //   (document.querySelector('.active-link') as HTMLElement).style.color{
-
-  //   }
-  // }
 }

@@ -2,7 +2,7 @@ import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { OrdersService } from 'src/app/services/orders.service';
-import { DialogData } from '../narudzbe.component';
+import { DialogData } from "../OrderDetailsData";
 
 @Component({
   selector: 'app-order-details',

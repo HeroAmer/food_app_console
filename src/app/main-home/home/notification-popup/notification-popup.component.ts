@@ -1,7 +1,7 @@
 import { Inject } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DialogData } from '../home.component';
+import { DialogData } from "../NotificationsData";
 
 @Component({
   selector: 'app-notification-popup',
