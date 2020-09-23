@@ -13,29 +13,29 @@ import { Hrana } from '../models/hrana-unos';
 })
 export class HranaService {
 
-  hranaCollection: AngularFirestoreCollection<Hrana>;
-  hrana: Observable<Hrana[]>;
+  foodCollection: AngularFirestoreCollection<Hrana>;
+  food: Observable<Hrana[]>;
 
   constructor(public afs: AngularFirestore) {
 
-    this.hranaCollection = this.afs.collection('unos_hrane', (ref) => {
+    this.foodCollection = this.afs.collection('unos_hrane', (ref) => {
       return ref.orderBy('naziv', 'asc');
     });
 
-    this.hrana = this.hranaCollection.snapshotChanges().map((newData) => {
+    this.food = this.foodCollection.snapshotChanges().map((newData) => {
       return newData.map((b) => {
-        const hranaData = b.payload.doc.data() as Hrana;
+        const foodData = b.payload.doc.data() as Hrana;
         // hranaData.id = b.payload.doc.id;
-        return hranaData;
+        return foodData;
       });
     });
   }
 
   getFood() {
-    return this.hrana;
+    return this.food;
   }
-  addHrana(hrana: Hrana) {
-    this.hranaCollection.add(hrana).then(() => {
+  addHrana(food: Hrana) {
+    this.foodCollection.add(food).then(() => {
       alert('Uspjesan unos!');
     });
   }

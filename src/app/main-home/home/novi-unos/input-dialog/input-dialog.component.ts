@@ -34,7 +34,8 @@ export class InputDialogComponent implements OnInit {
 
   isDisabled = true;
 
-  urlTest;
+
+  inputImage;
   hrana: Hrana = {
     naziv: '',
     kategorija: '',
@@ -73,7 +74,7 @@ export class InputDialogComponent implements OnInit {
         finalize(() => {
           this.ref.getDownloadURL().subscribe((url) => {
             console.log(url);
-            this.urlTest = url; // <-- do what ever you want with the url..
+            this.inputImage = url; // <-- do what ever you want with the url..
             this.isDisabled = false;
           });
         })
@@ -82,7 +83,7 @@ export class InputDialogComponent implements OnInit {
   }
 
   saveFood(form: NgForm) {
-    this.hrana.imageURL = this.urlTest;
+    this.hrana.imageURL = this.inputImage;
     console.log(this.quantity);
     // this.kategorije.nazivKategorije = this.kategorije
     this.hranaService.addHrana(this.hrana);

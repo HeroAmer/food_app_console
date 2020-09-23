@@ -17,12 +17,12 @@
       <th>CIJENA</th>
       <th> </th>
     </tr>
-    <tr *ngFor="let jelo of hrana">
+    <tr *ngFor="let meal of food">
 
-      <td><img id="unos-slika" src="{{jelo.imageURL}}"></td>
-      <td>{{jelo.naziv}}</td>
-      <td>{{jelo.opis}}</td>
-      <td>{{jelo.cijena + ' KM'}}</td>
+      <td><img id="unos-slika" src="{{meal.imageURL}}"></td>
+      <td>{{meal.naziv}}</td>
+      <td>{{meal.opis}}</td>
+      <td>{{meal.cijena + ' KM'}}</td>
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>more_vert</mat-icon>
       </button>
