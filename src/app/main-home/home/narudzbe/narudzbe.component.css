@@ -4,6 +4,12 @@
   height: 400px;
   margin-left: 100px;
 }
+#chart2 {
+  display: block;
+  width: 650px;
+  height: 400px;
+  margin-left: 100px;
+}
 
 .container-narudzbe {
   display: flex;

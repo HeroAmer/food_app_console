@@ -4,6 +4,7 @@ import { Narudzbe } from '../../../models/orders';
 import { OrdersService } from '../../../services/orders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { BLACK_ON_WHITE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 
 @Component({
   selector: 'app-narudzbe',
@@ -25,6 +26,7 @@ export class NarudzbeComponent implements OnInit {
 
   ngOnInit(): void {
     this.napraviChart();
+    this.generateCircularChart();
   }
 
   onChangeInput(event, orderId, i){
@@ -47,15 +49,24 @@ export class NarudzbeComponent implements OnInit {
     var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [1, 2, 3, 4, 5, 6, 7
+        labels: [-1, 2, 3, 4, 5, 6, 7
         ],
         datasets: [
           {
-            data: [2,3,4,5,6,3,2
+            data: [-2,-5,4,-5,6,3,2
             ],
             label: 'Broj narudzbi',
+            borderWidth:6,
+            hoverBackgroundColor:'gray',
             borderColor: '#3e95cd',
             fill: false,
+          },
+          {
+            data: [-2,2,4,4,6,3,1
+            ],
+            label: 'Broj završenih narudzbi',
+            borderColor: 'lightgreen',
+            fill: true,
           },
         ],
       },
@@ -68,7 +79,7 @@ export class NarudzbeComponent implements OnInit {
           yAxes: [
             {
               ticks: {
-                display: false,
+                display: true,
               },
             },
           ],
@@ -80,6 +91,27 @@ export class NarudzbeComponent implements OnInit {
       console.log(orders);
       this.orders = orders;
     });
+  }
+
+  generateCircularChart(){
+    var ctx = 'myCircularChart';
+    var myPieChart = new Chart(ctx, {
+      type: 'doughnut',
+      data:  {
+        datasets: [{
+            data: [45, 21],
+            backgroundColor:['#3e95cd','#DCDCDC'],
+            borderWidth:0.5,
+            cutoutPercentage:90
+        }],
+
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+            'Završene',
+            'Na čekanju',
+        ]
+    },
+  });
   }
   openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma, narudzba_id) {
     const dialogRef = this.dialog.open(OrderDetailsComponent, {
