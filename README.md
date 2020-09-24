@@ -1,9 +1,9 @@
-# Zeljo - Admin panel which works in combination with a mobile food ordering application made using Flutter.
+# Zeljo - Admin panel
 
-This console allows you to track all orders, manipulate their state, add new admins ,add new types of food which is ordered by a user on the client side (mobile app) , add new categories and much more!
+## Project Description
+This console allows you to track all orders, manipulate their state, add new admins ,add new types of food which is ordered by a user on the client side (mobile app) ,add new categories and much more!
 
 ## How to run this project?
-
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Version 1.0.0
