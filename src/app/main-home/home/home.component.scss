@@ -6,6 +6,14 @@
   text-decoration: none;
 }
 
+// .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+//   color: white !important;
+// }
+.dark-mode {
+  display: flex;
+  // justify-content: space-between;
+}
+
 .example-container {
   width: 100%;
   height: 100%;
@@ -35,7 +43,7 @@ mat-toolbar a {
   color: rgb(59, 58, 58);
 }
 
-.notifikacije-button{
+.notifikacije-button {
   outline: none;
   margin-right: 15px;
 }
