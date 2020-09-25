@@ -9,7 +9,7 @@ import { RegisterPopupComponent } from './register-popup/register-popup.componen
 @Component({
   selector: 'app-postavke',
   templateUrl: './postavke.component.html',
-  styleUrls: ['./postavke.component.css'],
+  styleUrls: ['./postavke.component.scss'],
 })
 export class PostavkeComponent implements OnInit {
   employees:Employee[];

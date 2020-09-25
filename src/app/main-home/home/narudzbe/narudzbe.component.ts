@@ -9,7 +9,7 @@ import { BLACK_ON_WHITE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/h
 @Component({
   selector: 'app-narudzbe',
   templateUrl: './narudzbe.component.html',
-  styleUrls: ['./narudzbe.component.css'],
+  styleUrls: ['./narudzbe.component.scss'],
 })
 export class NarudzbeComponent implements OnInit {
   orders: Narudzbe[];
