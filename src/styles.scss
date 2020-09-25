@@ -46,6 +46,13 @@ a:link {
 // :host /deep/ .mat-select-value-text {
 //   color: green !important;
 // }
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #2699fb !important;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: white !important;
+}
 
 .mat-form-field-infix {
   color: red;
@@ -64,6 +71,7 @@ a:link {
   max-width: 800px !important;
   max-height: 600px !important;
 }
-.mat-menu-content{
+
+.mat-menu-content {
   overflow-x: hidden !important;
 }
