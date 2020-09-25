@@ -8,7 +8,7 @@ import { KategorijeService } from 'src/app/services/kategorije.service';
 @Component({
   selector: 'app-kategorije',
   templateUrl: './kategorije.component.html',
-  styleUrls: ['./kategorije.component.css']
+  styleUrls: ['./kategorije.component.scss']
 })
 export class KategorijeComponent implements OnInit {
   categories:Kategorija[];

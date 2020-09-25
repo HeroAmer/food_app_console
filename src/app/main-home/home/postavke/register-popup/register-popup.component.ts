@@ -6,7 +6,7 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
 @Component({
   selector: 'app-register-popup',
   templateUrl: './register-popup.component.html',
-  styleUrls: ['./register-popup.component.css']
+  styleUrls: ['./register-popup.component.scss']
 })
 export class RegisterPopupComponent implements OnInit {
 

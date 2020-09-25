@@ -8,7 +8,7 @@ import { Hrana } from '../../../models/hrana-unos';
 @Component({
   selector: 'app-novi-unos',
   templateUrl: './novi-unos.component.html',
-  styleUrls: ['./novi-unos.component.css'],
+  styleUrls: ['./novi-unos.component.scss'],
 })
 export class NoviUnosComponent implements OnInit {
 
