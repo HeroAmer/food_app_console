@@ -12,7 +12,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatBadgeModule } from '@angular/material/badge';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { MatSelectModule } from '@angular/material/select';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
@@ -38,6 +38,7 @@ import { MainNavComponent } from './main-home/home/main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { ToolbarComponent } from './main-home/home/toolbar/toolbar.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { ToolbarComponent } from './main-home/home/toolbar/toolbar.component';
     FlashMessagesModule.forRoot(),
     LayoutModule,
     MatListModule,
+    DragDropModule,
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],
