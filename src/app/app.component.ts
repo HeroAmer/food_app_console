@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import { AngularFirestore } from '@angular/fire/firestore';
 import {AngularFirestoreCollection} from '@angular/fire/firestore'
@@ -13,6 +13,17 @@ import {Observable} from 'rxjs';
 export class AppComponent {
   title = 'food-app-console';
   description = 'Angular-Zeljo';
+
+  // private isDark = false;
+
+  //  @HostBinding('class')
+  // get themeMode() {
+  //   return this.isDark ? 'dark-mode' : '';
+  // }
+
+  // onChangeDark(event) {
+  //   this.isDark = event.checked;
+  // }
 
   // itemValue = '';
   // items: Observable<any[]>;

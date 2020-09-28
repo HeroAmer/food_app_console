@@ -1,9 +1,9 @@
 <div class="container-narudzbe">
-  <div id="chart">
-    <canvas id="myChart"></canvas>
+  <div>
+    <google-chart id="google-chart" [data]="lineChart"></google-chart>
   </div>
-  <div id="chart2">
-    <canvas id="myCircularChart"></canvas>
+  <div>
+    <google-chart id="google-chart" [data]="pieChart"></google-chart>
   </div>
 </div>
 <div class="tabela">
@@ -20,7 +20,7 @@
     <tr>
       <th>
         <label class="container">
-          <input type="checkbox" >
+          <input type="checkbox">
           <span class="checkmark"></span>
         </label>
       </th>
@@ -35,7 +35,7 @@
     <tr *ngFor="let order of orders; let i = index;">
       <!-- <td><img id="unos-slika" src=""></td> -->
       <label class="container" id="drugi">
-        <input type="checkbox"  (change)="onChangeInput($event,order.orderID , i)">
+        <input type="checkbox" (change)="onChangeInput($event,order.orderID , i)">
         <span class="checkmark"></span>
       </label>
       <!-- How to add five digits on one index of array we can see down below -->

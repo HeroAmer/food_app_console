@@ -1,0 +1,28 @@
+
+      <div class="dark-mode">
+        <mat-icon style="margin-right: 13px;">brightness_4</mat-icon>
+        <mat-slide-toggle style="padding-bottom: 10px; color:#00CCF2;" (change)="onDarkModeSwitched($event)"></mat-slide-toggle>
+        <!-- <p class="dark-mode-text">Tamni mode</p> -->
+        <a *ngIf="isLoggedIn" (click)="onLogoutClick(iD,numberOfSeen,userEmail,userFullname,role )" href="#"><mat-icon>exit_to_app</mat-icon>
+        </a>
+        <button class="notifikacije-button" matBadge="{{numberOfNotifications}}" (click)="getSeenNotifications()"
+        mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>notifications</mat-icon>
+      </button>
+      </div>
+      <!-- <span class="material-icons"> notifications_none </span> -->
+     
+      <mat-menu #menu="matMenu" style="max-width: 600px;overflow-x: hidden;">
+        <table id="data">
+          <tr *ngFor="let notifikacija of notifications">
+            <td>{{notifikacija.fullName}} ordered at: {{notifikacija.orderAddress}} </td>
+            <button mat-icon-button aria-label="Example icon-button with a menu"
+              (click)="otvoriDetalje(notifikacija.orferCode, notifikacija.orderJelo, notifikacija.orderKomentar,notifikacija.fullName, notifikacija.orderAddress, notifikacija.phone, notifikacija.orderDoplata, notifikacija.orderTotal)">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+          </tr>
+
+        </table>
+      </mat-menu>
+
+      

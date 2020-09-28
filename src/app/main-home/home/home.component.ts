@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding, Input } from '@angular/core';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { NotifikacijeService } from 'src/app/services/notifikacije.service';
 import { OrdersService } from 'src/app/services/orders.service';
@@ -15,33 +15,47 @@ import { NotificationPopupComponent } from './notification-popup/notification-po
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
+  isDark = false;
+
+  @HostBinding('class')
+  get themeMode() {
+    return this.isDark ? 'dark-mode' : '';
+  }
+
+  // onChangeDark(event){
+  // this.isDark = event.checked;
+  // }
+
+  switchMode(isDarkMode: boolean) {
+    console.log(isDarkMode);
+    this.isDark = isDarkMode;
+  }
+
   constructor(
     private ordersService: OrdersService,
     private afAuth: AuthServiceService,
     private router: Router,
     private flashMessage: FlashMessagesService,
-    private afs:AngularFirestore,
+    private afs: AngularFirestore,
     public dialog: MatDialog
   ) {}
   notifications;
   numberOfNotifications;
-  numberOfOrders = 0 ;
+  numberOfOrders = 0;
 
-
-  iD:string;
+  iD: string;
   numberOfSeen;
   userEmail;
-  role:string;
-  userFullname:string;
+  role: string;
+  userFullname: string;
 
   isLoggedIn: boolean;
   loggedInUser: string;
   showRegister: boolean;
-  userDetails:Employee;
+  userDetails: Employee;
   showPostavke = false;
 
   ngOnInit(): void {
-
     console.log('Hey');
     this.povuciNotifikacije();
 
@@ -51,77 +65,47 @@ export class HomeComponent implements OnInit {
         this.loggedInUser = auth.email;
         this.iD = auth.uid;
         this.afAuth.getUserDetails(this.iD);
-    this.afAuth.getUser().subscribe(user =>{
-      this.role=user[0].role;
-      this.numberOfSeen= user[0].seenNotifications;
-      this.userEmail = user[0].email;
-      console.log(this.userEmail);
-      this.userFullname = user[0].fullname;
-      console.log('Seen notifications: ' +this.numberOfSeen)
-      console.log(user[0].role);
-      if(this.role == 'vlasnik'){
-        this.showPostavke = true;
-        console.log('lalalall');
-      }
-
-    })
+        this.afAuth.getUser().subscribe((user) => {
+          this.role = user[0].role;
+          this.numberOfSeen = user[0].seenNotifications;
+          this.userEmail = user[0].email;
+          console.log(this.userEmail);
+          this.userFullname = user[0].fullname;
+          console.log('Seen notifications: ' + this.numberOfSeen);
+          console.log(user[0].role);
+          if (this.role == 'vlasnik') {
+            this.showPostavke = true;
+            console.log('lalalall');
+          }
+        });
       } else {
         this.isLoggedIn = false;
       }
     });
   }
 
-  onLogoutClick(uid ,numberOfNotifications, userEmail, userFullname ,role) {
-    this.afAuth.logout(uid ,numberOfNotifications, userEmail, userFullname,role);
-    this.flashMessage.show(`You are now <strong>logged out!</strong>`, {
-      cssClass: 'alert alert-info',
-      timeout: 4000,
-    });
-    this.router.navigate(['/']);
-  }
+  onChangeTheme(event) {}
 
-  otvoriDetalje(code, jelo, komentar, name, adresa, orderphone, doplata, suma){
-    const dialogRef = this.dialog.open(NotificationPopupComponent, {
-      data:{
-        orderCode:code,
-        orderJelo:jelo,
-        orderKomentar:komentar,
-        fullName:name,
-        orderAddress:adresa,
-        phone:orderphone,
-        orderDoplata:doplata,
-        orderTotal:suma
-
-      }
-    });
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
-  getSeenNotifications(){
+  getSeenNotifications() {
     this.numberOfSeen = this.numberOfOrders;
     this.numberOfNotifications = this.numberOfOrders - this.numberOfSeen;
   }
 
-  povuciNotifikacije(){
+  povuciNotifikacije() {
     this.ordersService.selectAllOrders().subscribe((notifikaije) => {
       this.notifications = notifikaije;
       this.numberOfOrders = this.notifications.length;
-    })
-
+    });
   }
 
-   timerId = setInterval(() => {
+  timerId = setInterval(() => {
     this.numberOfNotifications = this.numberOfOrders - this.numberOfSeen;
-   }, 2000);
+  }, 2000);
 
-
-   getUserDetails(){
+  getUserDetails() {
     this.afAuth.getUserDetails(this.iD);
-    this.afAuth.getUser().subscribe(user =>{
+    this.afAuth.getUser().subscribe((user) => {
       console.log(user);
-
-    })
-   }
+    });
+  }
 }

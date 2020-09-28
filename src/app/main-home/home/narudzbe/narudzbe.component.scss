@@ -1,3 +1,7 @@
+// @import 'styles';
+@import "../../../../styles.scss";
+
+
 #chart {
   display: block;
   width: 650px;
@@ -13,6 +17,9 @@
 
 .container-narudzbe {
   display: flex;
+}
+google-chart{
+  @extend .dark-mode;
 }
 
 .radialProgressBar {
