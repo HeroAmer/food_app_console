@@ -1,5 +1,5 @@
 @import "../../../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-
+@import "../../../../../styles.scss";
 /* .container {} */
 .has-error {
   border-style: 1px solid;
@@ -74,6 +74,9 @@ input[type="file"] {
   outline: none;
 }
 
+#ngForm{
+  @extend .dark-mode;
+}
 .input-field {
   height: 29px;
   /* width: 100%; */

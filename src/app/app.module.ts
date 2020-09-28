@@ -13,22 +13,20 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { FlashMessagesModule } from 'angular2-flash-messages';
 import { MatSelectModule } from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
-
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { ItemService } from './services/item-service.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+
+import { AppComponent } from './app.component';
 import { HomeComponent } from './main-home/home/home.component';
 import { NarudzbeComponent } from './main-home/home/narudzbe/narudzbe.component';
 import { NoviUnosComponent } from './main-home/home/novi-unos/novi-unos.component';
 import { PostavkeComponent } from './main-home/home/postavke/postavke.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { InputDialogComponent } from './main-home/home/novi-unos/input-dialog/input-dialog.component';
 import { OrderDetailsComponent } from './main-home/home/narudzbe/order-details/order-details.component';
 import { LoginComponent } from './main-home/login/login.component';
@@ -36,6 +34,10 @@ import { RegisterPopupComponent } from './main-home/home/postavke/register-popup
 import { KategorijeComponent } from './main-home/home/kategorije/kategorije.component';
 import { NovaKategorijaComponent } from './main-home/home/kategorije/nova-kategorija/nova-kategorija.component';
 import { NotificationPopupComponent } from './main-home/home/notification-popup/notification-popup.component';
+import { MainNavComponent } from './main-home/home/main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatListModule } from '@angular/material/list';
+import { ToolbarComponent } from './main-home/home/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { NotificationPopupComponent } from './main-home/home/notification-popup/
     KategorijeComponent,
     NovaKategorijaComponent,
     NotificationPopupComponent,
+    MainNavComponent,
+    ToolbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,10 @@ import { NotificationPopupComponent } from './main-home/home/notification-popup/
     MatBadgeModule,
     MatSelectModule,
     MatFormFieldModule,
+    Ng2GoogleChartsModule,
     FlashMessagesModule.forRoot(),
+    LayoutModule,
+    MatListModule,
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],

@@ -5,6 +5,7 @@ import { OrdersService } from '../../../services/orders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { BLACK_ON_WHITE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
+import { GoogleChartInterface } from 'ng2-google-charts';
 
 @Component({
   selector: 'app-narudzbe',
@@ -15,105 +16,97 @@ export class NarudzbeComponent implements OnInit {
   orders: Narudzbe[];
   selectedOrders = [];
 
+  public lineChart: GoogleChartInterface = {
+    chartType: 'LineChart',
+    dataTable: [
+      ['Dani', 'Sales', 'Expenses', 'orders'],
+      ['Pon', 0, 0, 0],
+      ['Uto', 1000, 300, 2000],
+      ['Sri', 1170, 460, 2100],
+      ['Cet', 660, 1120, 1500],
+      ['Pet', 1030, 540, 1200],
+      ['Sub', 2000, 540, 160],
+      ['Ned', 1030, 540, 700],
+    ],
+    //firstRowIsData: true,
+    options: {
+      titleTextStyle: {
+       color: 'powderblue'
+      },
+      series: {
+        0: { color: 'lightblue', weight: 'bold', lineWidth: 4 },
+      },
+      title: 'Company Performance',
+      backgroundColor: 'transparent',
+      height: 400,
+      width: 650,
+      curveType: 'function',
+      legend: { position: 'bottom' },
+    },
+  };
+  public pieChart: GoogleChartInterface = {
+    chartType: 'PieChart',
+    dataTable: [
+      ['Status', 'Broj narudzbi'],
+      ['Zavrsene', 17],
+      ['Cekanje', 30],
+      ['Spremne', 20],
+    ],
+    //firstRowIsData: true,
+    options: {
+       titleTextStyle: {
+       color: 'powderblue'
+      },
+      title: 'Narudzbe',
+      height: 450,
+      backgroundColor: 'transparent',
+      width: 500,
+      pieHole: 0.4,
+      slices: {
+        0: { offset: 0.2, color: 'lightgreen' },
+        // 1: { offset: 0.3, color: 'grey' },
+        // 12: { offset: 0.3 },
+        // 14: { offset: 0.4 },
+        // 15: { offset: 0.5 },
+      },
+    },
+  };
 
-  constructor(
-    public ordersService: OrdersService,
-    public dialog: MatDialog) {}
+  constructor(public ordersService: OrdersService, public dialog: MatDialog) {}
 
   cl() {
     alert('User has been edited!');
   }
 
-  ngOnInit(): void {
-    this.napraviChart();
-    this.generateCircularChart();
-  }
+  ngOnInit(): void {}
 
-  onChangeInput(event, orderId, i){
-    if(event.target.checked){
-      this.selectedOrders.splice(i, 0 ,orderId);
+  onChangeInput(event, orderId, i) {
+    if (event.target.checked) {
+      this.selectedOrders.splice(i, 0, orderId);
       console.log(this.selectedOrders);
-    }else{
+    } else {
       this.selectedOrders.splice(i, 1);
       console.log(this.selectedOrders);
     }
   }
 
-  zavrsiMultipleOrders(selectedOrders){
+  zavrsiMultipleOrders(selectedOrders) {
     this.ordersService.zavrsiMultiple(selectedOrders);
   }
 
   ///Funkcija koja se poziva kada zelimo napraviti chart (pir loadanju komponente, ili primanja novih vrijednosti)
-  napraviChart() {
-    var ctx = 'myChart';
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: [-1, 2, 3, 4, 5, 6, 7
-        ],
-        datasets: [
-          {
-            data: [-2,-5,4,-5,6,3,2
-            ],
-            label: 'Broj narudzbi',
-            borderWidth:6,
-            hoverBackgroundColor:'gray',
-            borderColor: '#3e95cd',
-            fill: false,
-          },
-          {
-            data: [-2,2,4,4,6,3,1
-            ],
-            label: 'Broj završenih narudzbi',
-            borderColor: 'lightgreen',
-            fill: true,
-          },
-        ],
-      },
-      options: {
-        title: {
-          display: true,
-          text: 'Po danima',
-        },
-        scales: {
-          yAxes: [
-            {
-              ticks: {
-                display: true,
-              },
-            },
-          ],
-        },
-      },
-    });
 
-    this.ordersService.selectAllOrders().subscribe((orders) => {
-      console.log(orders);
-      this.orders = orders;
-    });
-  }
-
-  generateCircularChart(){
-    var ctx = 'myCircularChart';
-    var myPieChart = new Chart(ctx, {
-      type: 'doughnut',
-      data:  {
-        datasets: [{
-            data: [45, 21],
-            backgroundColor:['#3e95cd','#DCDCDC'],
-            borderWidth:0.5,
-            cutoutPercentage:90
-        }],
-
-        // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: [
-            'Završene',
-            'Na čekanju',
-        ]
-    },
-  });
-  }
-  openDetails(code, jelo, komentar, name, adresa, orderphone, doplata, suma, narudzba_id) {
+  openDetails(
+    code,
+    jelo,
+    komentar,
+    name,
+    adresa,
+    orderphone,
+    doplata,
+    suma,
+    narudzba_id
+  ) {
     const dialogRef = this.dialog.open(OrderDetailsComponent, {
       data: {
         orderCode: code,
@@ -124,7 +117,7 @@ export class NarudzbeComponent implements OnInit {
         phone: orderphone,
         orderDoplata: doplata,
         orderTotal: suma,
-        narudzba_id:narudzba_id
+        narudzba_id: narudzba_id,
       },
     });
 

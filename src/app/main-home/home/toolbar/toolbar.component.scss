@@ -1,0 +1,28 @@
+.dark-mode {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  a{
+    padding-left: 10px;
+    mat-icon{
+     color: white;
+     display: flex;
+    }
+    
+  }
+  // justify-content: space-between;
+}
+
+mat-toolbar a {
+  padding: 10px;
+}
+
+#notification {
+  margin-right: 15px;
+  color: rgb(59, 58, 58);
+}
+.notifikacije-button {
+  outline: none;
+  margin-right: 15px;
+}
