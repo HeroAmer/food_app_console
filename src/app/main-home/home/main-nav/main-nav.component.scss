@@ -50,6 +50,10 @@ mat-nav-list{
     &:hover{
       color: rgb(39, 95, 216);
     }
+    &:nth-child(odd){
+      padding-bottom: 0;
+      margin-bottom: 0;
+    }
   }
 
 }
