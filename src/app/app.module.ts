@@ -39,6 +39,7 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { ToolbarComponent } from './main-home/home/toolbar/toolbar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     FormsModule,
+    MatCardModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
