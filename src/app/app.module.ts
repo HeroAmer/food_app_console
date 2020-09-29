@@ -41,6 +41,8 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { MatListModule } from '@angular/material/list';
 import { ToolbarComponent } from './main-home/home/toolbar/toolbar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -84,9 +86,11 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     LayoutModule,
     MatListModule,
     DragDropModule,
+    MatInputModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],
   entryComponents: [InputDialogComponent, OrderDetailsComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

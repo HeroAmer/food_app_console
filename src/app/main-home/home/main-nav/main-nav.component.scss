@@ -24,7 +24,7 @@
 
 mat-toolbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   // position: relative;
 
   a {
@@ -43,13 +43,12 @@ mat-nav-list{
   align-items: center;
   justify-content: center;
   a{
-
-  color: #757373;
+    color: rgb(150, 165, 190);
     padding: 10px;
     font-weight: 800;
     margin: 5px 0;
     &:hover{
-      color: rgb(50, 135, 168);
+      color: rgb(39, 95, 216);
     }
   }
 

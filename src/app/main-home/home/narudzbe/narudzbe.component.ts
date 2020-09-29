@@ -1,10 +1,8 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
-import { Chart } from 'node_modules/chart.js';
+import { Component, OnInit } from '@angular/core';
 import { Narudzbe } from '../../../models/orders';
 import { OrdersService } from '../../../services/orders.service';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from './order-details/order-details.component';
-import { BLACK_ON_WHITE_CSS_CLASS } from '@angular/cdk/a11y/high-contrast-mode/high-contrast-mode-detector';
 import { GoogleChartInterface } from 'ng2-google-charts';
 
 @Component({
@@ -28,7 +26,6 @@ export class NarudzbeComponent implements OnInit {
       ['Sub', 2000, 540, 160],
       ['Ned', 1030, 540, 700],
     ],
-    //firstRowIsData: true,
     options: {
       titleTextStyle: {
        color: 'powderblue'
@@ -38,8 +35,8 @@ export class NarudzbeComponent implements OnInit {
       },
       title: 'Company Performance',
       backgroundColor: 'transparent',
-      height: 400,
-      width: 650,
+      height: 300,
+      width: 500,
       curveType: 'function',
       legend: { position: 'bottom' },
     },
@@ -52,22 +49,17 @@ export class NarudzbeComponent implements OnInit {
       ['Cekanje', 30],
       ['Spremne', 20],
     ],
-    //firstRowIsData: true,
     options: {
        titleTextStyle: {
        color: 'powderblue'
       },
       title: 'Narudzbe',
-      height: 450,
+      height: 300,
       backgroundColor: 'transparent',
-      width: 500,
+      width: 400,
       pieHole: 0.4,
       slices: {
         0: { offset: 0.2, color: 'lightgreen' },
-        // 1: { offset: 0.3, color: 'grey' },
-        // 12: { offset: 0.3 },
-        // 14: { offset: 0.4 },
-        // 15: { offset: 0.5 },
       },
     },
   };
