@@ -12,5 +12,19 @@
   </button>
 </form> -->
 <mat-card>
-  something
+  <h3>Unesite kategoriju</h3>
+  <input
+    mat-input
+    class="form-control"
+    type="text"
+    placeholder="Kategorija"
+    [(ngModel)]="category.nazivKategorije"
+    name="nazivKategorije"
+  /><br />
+  <div class="buttoncic">
+    <button mat-raised-button type="submit" color="primary">
+      Unesi kategoriju
+    </button>
+  </div>
+
 </mat-card>
