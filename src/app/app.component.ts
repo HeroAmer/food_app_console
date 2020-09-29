@@ -1,42 +1,38 @@
-import { Component, HostBinding } from '@angular/core';
-import {AngularFireDatabase} from '@angular/fire/database';
+import { Component, HostBinding , OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {AngularFirestoreCollection} from '@angular/fire/firestore'
-
-import {Observable} from 'rxjs';
+import { ItemService } from './services/item-service.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'food-app-console';
   description = 'Angular-Zeljo';
+  darkMode = false;
+  isDark = false;
 
-  // private isDark = false;
+  @HostBinding('class')
+  get themeMode() {
+    return this.isDark ? 'dark-mode' : 'light-mode';
+  }
 
-  //  @HostBinding('class')
-  // get themeMode() {
-  //   return this.isDark ? 'dark-mode' : '';
-  // }
+  constructor( private firestore: AngularFirestore,public itemService:ItemService ) {}
 
-  // onChangeDark(event) {
-  //   this.isDark = event.checked;
-  // }
+  ngOnInit(){
+    this.itemService.getNewMode().subscribe(newMode =>{
+      this.isDark = newMode;
+    })
+  }
 
-  // itemValue = '';
-  // items: Observable<any[]>;
 
-  // constructor(public db: AngularFireDatabase){
-  //   this.items = db.list('items').valueChanges();
-  // }
 
-  // onSubmit() {
-  //   this.db.list('items').push({content: this.itemValue});
-  //   this.itemValue = '';
-  // }
-  constructor( private firestore: AngularFirestore ) {}
+
+  getDark(){
+   this.darkMode =  this.itemService.getMode();
+    this.isDark = this.darkMode;
+  }
   exampleCreate(data){
     return new Promise<any>((resolve, reject) => {
        this.firestore

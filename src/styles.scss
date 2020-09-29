@@ -2,9 +2,13 @@
 @import "~@angular/material/theming";
 
 @include mat-core();
-$angular-primary: mat-palette($mat-blue-grey, 600);
+$angular-primary: mat-palette($mat-blue-grey, 900);
 $angular-accent: mat-palette($mat-pink, A200, A100, A400);
 $angular-warn: mat-palette($mat-red);
+
+$angular-primary-light: mat-palette($mat-light-blue);
+$angular-accent-light: mat-palette($mat-pink, A200, A100, A400);
+$angular-warn-light: mat-palette($mat-red);
 
 $angular-dark-theme: mat-dark-theme(
   (
@@ -16,13 +20,23 @@ $angular-dark-theme: mat-dark-theme(
   )
 );
 
-
+$angular-light-theme: mat-light-theme(
+  (
+    color: (
+      primary: $angular-primary-light,
+      accent: $angular-accent-light,
+      warn: $angular-warn-light,
+    ),
+  )
+);
 
 .dark-mode {
   @include angular-material-color($angular-dark-theme);
 }
 
-
+.light-mode{
+ @include angular-material-color($angular-light-theme);
+}
 
 
 html,

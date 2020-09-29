@@ -15,6 +15,7 @@ import { Router } from '@angular/router';
 import { FlashMessagesService } from 'angular2-flash-messages';
 import { Employee } from 'src/app/models/employee';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
+import { ItemService } from 'src/app/services/item-service.service';
 import { OrdersService } from 'src/app/services/orders.service';
 import { NotificationPopupComponent } from '../notification-popup/notification-popup.component';
 
@@ -46,6 +47,7 @@ export class ToolbarComponent implements OnInit {
   constructor(
     private ordersService: OrdersService,
     private afAuth: AuthServiceService,
+    private itemService: ItemService,
     public dialog: MatDialog,
     private flashMessage: FlashMessagesService,
     private router: Router
@@ -78,8 +80,7 @@ export class ToolbarComponent implements OnInit {
   }
 
   onDarkModeSwitched({ checked }: MatSlideToggleChange) {
-    this.darkModeSwitched.emit(checked);
-    console.log(this.darkModeSwitched);
+    this.itemService.changeMode(checked);
   }
   povuciNotifikacije() {
     this.ordersService.selectAllOrders().subscribe((notifikaije) => {
