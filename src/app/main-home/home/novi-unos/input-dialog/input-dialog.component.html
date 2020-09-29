@@ -1,22 +1,12 @@
 <div class="container">
   <h2>Novi unos</h2>
   <form #myForm="ngForm" (ngSubmit)="saveFood(myForm)" id="ngForm">
-    <span class="help-block" *ngIf="nameControl.invalid && nameControl.touched">*Naziv je obavezan</span>
-    <div class="parent">
-      <div class="text-unosa">
-        <p class="text-label">NAZIV UNOSA</p>
-      </div>
-      <div class="inputic" [class.has-error]="nameControl.invalid && nameControl.touched">
-        <input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field" [(ngModel)]="hrana.naziv"
-          required name="naziv" #nameControl="ngModel" />
-      </div>
-
-    </div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Naziv</mat-label>
+      <input [(ngModel)]="hrana.naziv" matInput placeholder="Unesite naziv" >
+    </mat-form-field>
     <div id="kategorija-parent">
-      <div id="kategorija" class="text-unosa">
-        <p class="text-label">KATEGORIJA</p>
-      </div>
-      <mat-form-field appearance="fill" style="font-family: Montserrat, sans-serif !important">
+      <mat-form-field class="example-full-width" appearance="fill" style="font-family: Montserrat, sans-serif !important">
         <mat-label style="color: #2699fb; font-family: Montserrat, sans-serif !important">Ponuda hrane</mat-label>
         <mat-select [(ngModel)]="hrana.kategorija" name="kategorija"
           style="color: #2699fb; font-family: Montserrat, sans-serif !important" required>
@@ -29,47 +19,23 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <span class="help-block" *ngIf="opisControl.invalid && opisControl.touched">*Opis je obavezan</span>
-    <div class="parent" id="opis-first">
-      <div class="text-unosa">
-        <p class="text-label">OPIS UNOSA</p>
-      </div>
-      <div class="inputic-textarea" id="opis-textarea"
-        [class.textarea-error]="opisControl.invalid && opisControl.touched">
-        <textarea name="opis" [(ngModel)]="hrana.opis" cols="50" rows="4" placeholder="Obavezno polje" wrap="soft"
-          required #opisControl="ngModel">
-        </textarea>
-      </div>
-    </div>
-    <span class="help-block" *ngIf="cijenaControl.invalid && cijenaControl.touched">*Cijena je obavezna</span>
-
+    <mat-form-field class="example-full-width">
+      <mat-label>Opis</mat-label>
+      <input [(ngModel)]="hrana.opis" matInput placeholder="Unesite opis">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Cijena</mat-label>
+      <input [(ngModel)]="hrana.cijena" matInput placeholder="Unesite cijenu">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Oznaka</mat-label>
+      <input [(ngModel)]="hrana.naziv" matInput placeholder="Unesite oznaku">
+    </mat-form-field>
     <div class="parent">
-      <div class="text-unosa">
-        <p class="text-label">CIJENA</p>
-      </div>
-      <div class="inputic" [class.has-error]="cijenaControl.invalid && cijenaControl.touched">
-        <input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
-          [(ngModel)]="hrana.cijena" name="cijena" required #cijenaControl="ngModel" />
-      </div>
-    </div>
-    <div class="parent">
-      <div class="text-unosa">
-        <p class="text-label">OZNAKA</p>
-      </div>
-      <div class="inputic">
-        <input type="text" autocomplete="off" placeholder="Nebavezno polje" class="input-field"
-          [(ngModel)]="hrana.oznaka" name="oznaka" />
-      </div>
-    </div>
-    <span class="help-block" *ngIf="kolicinaControl.invalid && kolicinaControl.touched">*Kolicina je obavezna</span>
-    <div class="parent">
-      <div class="text-unosa">
-        <p class="text-label">KOLIČINA</p>
-      </div>
-      <div id="kolicina" [class.has-error]="kolicinaControl.invalid && kolicinaControl.touched">
-        <input type="text" autocomplete="off" placeholder="Obavezno polje" class="input-field"
-          [(ngModel)]="hrana.kolicina" name="kolicina" required #kolicinaControl="ngModel" />
-      </div>
+      <mat-form-field class="kolicina-input">
+        <mat-label>Količina</mat-label>
+        <input [(ngModel)]="hrana.kolicina" matInput placeholder="npr. grama">
+      </mat-form-field>
       <mat-form-field id="drugi" appearance="fill" style="
           width: 15%;
           margin-left: 20px;
@@ -90,7 +56,7 @@
       </mat-form-field>
     </div>
     <br />
-    <button (click)="filePicker.click()" class="image-button" mat-fab
+    <button (click)="filePicker.click()" color="primary" class="image-button" mat-fab
       aria-label="Example icon button with a delete icon">
       <mat-icon>add</mat-icon>
     </button>
@@ -102,12 +68,12 @@
     <input type="file" (change)="upload($event)" #filePicker accept=".png, .jpeg, .jpg" />
     <br />
     <div class="buttons-container">
-      <button #btnClose mat-dialog-close (click)="closeDialog()" id="odustani-button">
+      <button #btnClose mat-button mat-dialog-close (click)="closeDialog()" id="odustani-button">
         ODUSTANI
       </button>
-      <button #btnClose form="ngForm" id="zavrsi-button" [disabled]="!myForm.valid || isDisabled" type="submit">
+      <button #btnClose mat-button form="ngForm" id="zavrsi-button" type="submit">
         ZAVRŠI
       </button>
-    </div>
+      </div>
   </form>
 </div>

@@ -119,6 +119,10 @@ input[type="file"] {
 
 }
 
+.example-full-width {
+  width: 100%;
+}
+
 #zavrsi-button[disabled] {
   border: 1px solid #999999;
   background-color: #cccccc;
@@ -138,7 +142,6 @@ input[type="file"] {
 .image-button {
   /* margin-left: 16px; */
   margin-right: 5px;
-  background-color: #2699FB;
   border-radius: 50%;
 
 }
@@ -214,6 +217,10 @@ mat-form-field {
   border: 1px solid #BCE0FD;
   /* height: 60px; */
   word-wrap: break-word;
+}
+
+.kolicina-input{
+  width: 85%
 }
 
 #opis-textarea {

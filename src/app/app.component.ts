@@ -1,4 +1,7 @@
-import { Component, HostBinding , OnInit } from '@angular/core';
+import { isDataSource } from '@angular/cdk/collections';
+import { OverlayContainer } from '@angular/cdk/overlay';
+import { DOCUMENT } from '@angular/common';
+import { Component, HostBinding , Inject, OnInit, Renderer2 } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ItemService } from './services/item-service.service';
 
@@ -13,26 +16,25 @@ export class AppComponent implements OnInit {
   darkMode = false;
   isDark = false;
 
-  @HostBinding('class')
-  get themeMode() {
-    return this.isDark ? 'dark-mode' : 'light-mode';
-  }
+  constructor( private firestore: AngularFirestore,public itemService:ItemService, @Inject(DOCUMENT) private document: Document, private renderer: Renderer2) {
 
-  constructor( private firestore: AngularFirestore,public itemService:ItemService ) {}
+  }
 
   ngOnInit(){
     this.itemService.getNewMode().subscribe(newMode =>{
       this.isDark = newMode;
+    const hostClass = this.isDark ? 'dark-mode' : 'light-mode';
+    this.renderer.setAttribute(this.document.body, 'class', hostClass);
     })
   }
 
 
-
-
-  getDark(){
-   this.darkMode =  this.itemService.getMode();
-    this.isDark = this.darkMode;
-  }
+  // getDark(){
+  //  this.darkMode =  this.itemService.getMode();
+  //   this.isDark = this.darkMode;
+  //   const hostClass = this.isDark ? 'dark-mode' : 'light-mode';
+  //   this.renderer.setAttribute(this.document.body, 'class', hostClass);
+  // }
   exampleCreate(data){
     return new Promise<any>((resolve, reject) => {
        this.firestore
