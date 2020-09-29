@@ -8,6 +8,7 @@ import { Employee } from 'src/app/models/employee';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
 import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
+import { ItemService } from 'src/app/services/item-service.service';
 
 @Component({
   selector: 'app-home',
@@ -15,21 +16,21 @@ import { NotificationPopupComponent } from './notification-popup/notification-po
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  isDark = false;
+  // isDark = false;
 
-  @HostBinding('class')
-  get themeMode() {
-    return this.isDark ? 'dark-mode' : '';
-  }
+  // @HostBinding('class')
+  // get themeMode() {
+  //   return this.isDark ? 'dark-mode' : '';
+  // }
 
   // onChangeDark(event){
   // this.isDark = event.checked;
   // }
 
-  switchMode(isDarkMode: boolean) {
-    console.log(isDarkMode);
-    this.isDark = isDarkMode;
-  }
+  // switchMode(isDarkMode: boolean) {
+  //   console.log(isDarkMode);
+  //   this.isDark = isDarkMode;
+  // }
 
   constructor(
     private ordersService: OrdersService,
@@ -37,7 +38,8 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private flashMessage: FlashMessagesService,
     private afs: AngularFirestore,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public itemService : ItemService
   ) {}
   notifications;
   numberOfNotifications;
@@ -54,9 +56,12 @@ export class HomeComponent implements OnInit {
   showRegister: boolean;
   userDetails: Employee;
   showPostavke = false;
+  currentMode;
 
   ngOnInit(): void {
     console.log('Hey');
+    // this.isDark = this.itemService.getMode();
+    // console.log(this.isDark);
     this.povuciNotifikacije();
 
     this.afAuth.getAuth().subscribe((auth) => {
