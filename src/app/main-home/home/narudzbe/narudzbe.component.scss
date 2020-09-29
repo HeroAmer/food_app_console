@@ -8,6 +8,7 @@
   height: 400px;
   margin-left: 100px;
 }
+
 #chart2 {
   display: block;
   width: 650px;
@@ -17,8 +18,16 @@
 
 .container-narudzbe {
   display: flex;
+  flex-wrap: wrap;
 }
-google-chart{
+
+@media (max-width: 768px) {
+  .container-narudzbe {
+    flex: 0 1 50%;
+  }
+}
+
+google-chart {
   @extend .dark-mode;
 }
 
@@ -63,13 +72,15 @@ table {
   box-shadow: 0px 3px 6px #272D3B33 !important;
 }
 
-mat-card{
+mat-card {
   padding: 0px;
 }
 
-.chartovi{
+.chartovi {
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
 
 .header>.title {

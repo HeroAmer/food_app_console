@@ -28,8 +28,14 @@ export class NarudzbeComponent implements OnInit {
     ],
     options: {
       titleTextStyle: {
-       color: 'powderblue'
+       color: 'orange'
       },
+      hAxis: {
+    textStyle:{color: 'orange'}
+},
+      vAxis: {
+    textStyle:{color: 'orange'}
+},
       series: {
         0: { color: 'lightblue', weight: 'bold', lineWidth: 4 },
       },
@@ -51,8 +57,14 @@ export class NarudzbeComponent implements OnInit {
     ],
     options: {
        titleTextStyle: {
-       color: 'powderblue'
+       color: 'orange'
       },
+      hAxis: {
+    textStyle:{color: 'lightblue'}
+},
+      legend: {
+        textStyle: { color: 'orange' }
+    },
       title: 'Narudzbe',
       height: 300,
       backgroundColor: 'transparent',
@@ -62,6 +74,57 @@ export class NarudzbeComponent implements OnInit {
         0: { offset: 0.2, color: 'lightgreen' },
       },
     },
+  };
+
+   public barChart: GoogleChartInterface = {
+    chartType: 'BarChart',
+    dataTable:[
+         ['Element', 'Density', { role: 'style' }],
+         ['Copper', 8.94, '#b87333'],            // RGB value
+         ['Silver', 10.49, 'silver'],            // English color name
+         ['Gold', 19.30, 'gold'],
+         ['Platinum', 21.45, 'color: #e5e4e2' ], // CSS-style declaration
+      ],
+    options: {
+      titleTextStyle: {
+       color: 'orange'
+      },
+      vAxis: {
+    textStyle:{color: 'orange'}
+      },
+      hAxis: {
+    textStyle:{color: 'orange'}
+      },
+      title: 'Elements statistics',
+      backgroundColor: 'transparent',
+      height: 300,
+      width: 500,
+      curveType: 'function',
+      legend: { position: 'bottom' },
+    },
+  };
+
+   public areaChart: GoogleChartInterface = {
+    chartType: 'AreaChart',
+    dataTable: [
+          ['Year', 'Sales', 'Expenses'],
+          ['2013',  1000,      400],
+          ['2014',  1170,      460],
+          ['2015',  660,       1120],
+          ['2016',  1030,      540]
+        ],
+    options: {
+
+          title: 'Company Performance',
+          titleTextStyle: {
+       color: 'orange'
+      },
+          hAxis: {title: 'Year',  textStyle: {color: 'orange'}},
+          vAxis: {minValue: 0, textStyle: {color: 'orange'}},
+      backgroundColor: 'transparent',
+      height: 300,
+      width: 500,
+        },
   };
 
   constructor(public ordersService: OrdersService, public dialog: MatDialog) {}
