@@ -21,6 +21,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { ItemService } from './services/item-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
+import {MatCardModule} from '@angular/material/card';
+
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main-home/home/home.component';
@@ -81,6 +83,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     LayoutModule,
     MatListModule,
     DragDropModule,
+    MatCardModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],

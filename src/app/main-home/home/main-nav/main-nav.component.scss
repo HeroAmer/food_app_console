@@ -2,13 +2,10 @@
 
 .sidenav-container {
   height: 100%;
-  // @extend .dark-mode
-  
 }
 
 .sidenav {
   width: 200px;
-  @extend .light-mode
 }
 
 .sidenav .mat-toolbar {
@@ -40,15 +37,19 @@ mat-toolbar {
 }
 
 mat-nav-list{
+  color: #333333;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   a{
+
+  color: #757373;
     padding: 10px;
+    font-weight: 800;
     margin: 5px 0;
     &:hover{
-      color: white;
+      color: rgb(50, 135, 168);
     }
   }
 

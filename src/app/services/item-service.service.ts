@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { Subject } from 'rxjs';
 import { OnInit } from '@angular/core';
 import {
   AngularFirestore,
@@ -16,10 +17,24 @@ export class ItemService implements OnInit {
   itemsCollection: AngularFirestoreCollection<Item>;
   items: Observable<Item[]>;
 
+  darkMode;
+  newMode = new Subject<boolean>();
 
   constructor(public afs: AngularFirestore) {
 }
   ngOnInit() {
+  }
+
+  changeMode(mode){
+    this.newMode.next(mode);
+  }
+
+  getNewMode(){
+    return this.newMode.asObservable();
+  }
+
+  getMode(){
+    return this.darkMode;
   }
 
   getItems() {

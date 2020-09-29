@@ -1,4 +1,4 @@
-<div class="tabela">
+<mat-card class="tabela">
   <div class="header">
     <div class="title">
       <h3>Kategorije</h3>
@@ -51,9 +51,9 @@
       </button>
     </ng-template>
   </mat-menu>
-</div>
-<div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-  <div class="example-box" *ngFor="let kategorija of categories" cdkDrag>
+</mat-card>
+<mat-card cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+  <mat-card class="example-box" *ngFor="let kategorija of categories" cdkDrag>
     {{ kategorija.nazivKategorije }}
-  </div>
-</div>
+  </mat-card>
+</mat-card>
