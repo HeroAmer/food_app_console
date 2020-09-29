@@ -66,6 +66,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AngularFireDatabaseModule,
     AngularFirestoreModule,
     FormsModule,
+    MatCardModule,
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
@@ -83,7 +84,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     LayoutModule,
     MatListModule,
     DragDropModule,
-    MatCardModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],
