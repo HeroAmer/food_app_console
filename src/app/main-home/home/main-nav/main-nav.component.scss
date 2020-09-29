@@ -3,11 +3,12 @@
 .sidenav-container {
   height: 100%;
   // @extend .dark-mode
+  
 }
 
 .sidenav {
   width: 200px;
-  background-color: #3f51b5;
+  @extend .light-mode
 }
 
 .sidenav .mat-toolbar {
@@ -26,11 +27,15 @@
 
 mat-toolbar {
   display: flex;
-  justify-content: space-between;
-  position: relative;
+  justify-content: flex-end;
+  // position: relative;
 
   a {
     padding: 10px;
+    // margin-right: 10px;
+  }
+  mat-slide-toggle{
+    margin-right: 10px;
   }
 }
 
