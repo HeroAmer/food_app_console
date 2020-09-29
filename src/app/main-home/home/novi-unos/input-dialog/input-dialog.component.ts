@@ -53,7 +53,6 @@ export class InputDialogComponent implements OnInit {
   downloadURL: Observable<string>;
   constructor(
     private afStorage: AngularFireStorage,
-    // private itemService: ItemService,
     private hranaService: HranaService,
     private kategorijeService : KategorijeService
   ) {}
@@ -73,8 +72,8 @@ export class InputDialogComponent implements OnInit {
       .pipe(
         finalize(() => {
           this.ref.getDownloadURL().subscribe((url) => {
-            console.log(url);
-            this.inputImage = url; // <-- do what ever you want with the url..
+            ///Once we get the firestorage img url, we can pass it down to cloud firestore
+            this.inputImage = url;
             this.isDisabled = false;
           });
         })
@@ -85,11 +84,7 @@ export class InputDialogComponent implements OnInit {
   saveFood(form: NgForm) {
     this.hrana.imageURL = this.inputImage;
     console.log(this.quantity);
-    // this.kategorije.nazivKategorije = this.kategorije
     this.hranaService.addHrana(this.hrana);
   }
 
-  closeDialog() {
-    console.log('Dialog closed!');
-  }
 }

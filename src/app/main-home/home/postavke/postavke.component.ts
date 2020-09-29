@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/employee';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
-// import { PeriodicElement } from './PeriodicElement';
 import { RegisterPopupComponent } from './register-popup/register-popup.component';
 
 

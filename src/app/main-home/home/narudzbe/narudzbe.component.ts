@@ -60,11 +60,9 @@ export class NarudzbeComponent implements OnInit {
        color: 'orange'
       },
       hAxis: {
-    textStyle:{color: 'lightblue'}
-},
+    textStyle:{color: 'lightblue'}},
       legend: {
-        textStyle: { color: 'orange' }
-    },
+        textStyle: { color: 'orange' }},
       title: 'Narudzbe',
       height: 300,
       backgroundColor: 'transparent',
@@ -100,7 +98,7 @@ export class NarudzbeComponent implements OnInit {
       height: 300,
       width: 500,
       curveType: 'function',
-      legend: { position: 'bottom' },
+      legend: { position: 'bottom' , color:'orange'},
     },
   };
 
@@ -115,7 +113,7 @@ export class NarudzbeComponent implements OnInit {
         ],
     options: {
 
-          title: 'Company Performance',
+          title: 'Sales last few years',
           titleTextStyle: {
        color: 'orange'
       },
@@ -124,6 +122,8 @@ export class NarudzbeComponent implements OnInit {
       backgroundColor: 'transparent',
       height: 300,
       width: 500,
+      legend: {
+        textStyle: { color: 'orange' }},
         },
   };
 
