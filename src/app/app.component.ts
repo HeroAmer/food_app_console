@@ -29,12 +29,6 @@ export class AppComponent implements OnInit {
   }
 
 
-  // getDark(){
-  //  this.darkMode =  this.itemService.getMode();
-  //   this.isDark = this.darkMode;
-  //   const hostClass = this.isDark ? 'dark-mode' : 'light-mode';
-  //   this.renderer.setAttribute(this.document.body, 'class', hostClass);
-  // }
   exampleCreate(data){
     return new Promise<any>((resolve, reject) => {
        this.firestore
