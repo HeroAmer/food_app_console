@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NovaKategorijaComponent } from './nova-kategorija.component';
 
 describe('NovaKategorijaComponent', () => {

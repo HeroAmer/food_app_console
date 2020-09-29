@@ -17,9 +17,7 @@ mat-card{
 
 .header>.title {
   display: flex;
-  /* position: absolute; */
   align-content: center;
-  /* align-items: center; */
   justify-content: flex-start;
   vertical-align: middle;
   float: left;
@@ -52,7 +50,6 @@ tr {
 
 .novi-unos {
   display: flex;
-  /* position: absolute; */
   align-items: center;
   justify-content: flex-end;
   padding: 10px;
@@ -80,7 +77,6 @@ tr:last-child {
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  /* float: right; */
 }
 
 .novi-unos>button:focus {

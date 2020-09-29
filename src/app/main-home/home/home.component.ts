@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { Employee } from 'src/app/models/employee';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { MatDialog } from '@angular/material/dialog';
-import { NotificationPopupComponent } from './notification-popup/notification-popup.component';
 import { ItemService } from 'src/app/services/item-service.service';
 
 @Component({
@@ -16,28 +15,10 @@ import { ItemService } from 'src/app/services/item-service.service';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
-  // isDark = false;
-
-  // @HostBinding('class')
-  // get themeMode() {
-  //   return this.isDark ? 'dark-mode' : '';
-  // }
-
-  // onChangeDark(event){
-  // this.isDark = event.checked;
-  // }
-
-  // switchMode(isDarkMode: boolean) {
-  //   console.log(isDarkMode);
-  //   this.isDark = isDarkMode;
-  // }
 
   constructor(
     private ordersService: OrdersService,
     private afAuth: AuthServiceService,
-    private router: Router,
-    private flashMessage: FlashMessagesService,
-    private afs: AngularFirestore,
     public dialog: MatDialog,
     public itemService : ItemService
   ) {}
@@ -59,11 +40,7 @@ export class HomeComponent implements OnInit {
   currentMode;
 
   ngOnInit(): void {
-    console.log('Hey');
-    // this.isDark = this.itemService.getMode();
-    // console.log(this.isDark);
     this.povuciNotifikacije();
-
     this.afAuth.getAuth().subscribe((auth) => {
       if (auth) {
         this.isLoggedIn = true;
@@ -80,7 +57,6 @@ export class HomeComponent implements OnInit {
           console.log(user[0].role);
           if (this.role == 'vlasnik') {
             this.showPostavke = true;
-            console.log('lalalall');
           }
         });
       } else {

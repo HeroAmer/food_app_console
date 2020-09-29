@@ -7,9 +7,7 @@
       <button mat-button (click)="openDialog()">Dodaj nove +</button>
     </div>
   </div>
-
   <table id="data" class="mat-elevation-z8">
-
     <tr>
       <th>Slika</th>
       <th>Ime uposlenika</th>
@@ -17,13 +15,10 @@
       <th>Pozicija uposlenika</th>
     </tr>
     <tr *ngFor="let employee of employees">
-
       <td>Slika treba da se ubaci</td>
       <td id="naziv">{{employee.fullname}}</td>
       <td id="naziv">{{employee.email}}</td>
       <td id="naziv">{{employee.role}}</td>
-      <!-- <td>{{jelo.opis}}</td>
-      <td>{{jelo.cijena + ' KM'}}</td> -->
       <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
         <mat-icon>more_vert</mat-icon>
       </button>
@@ -40,8 +35,6 @@
       </mat-menu>
     </tr>
   </table>
-
-
   <mat-menu #menu="matMenu">
     <ng-template matMenuContent let-aliasMenuItems="element">
       <button mat-menu-item (click)="cl(aliasMenuItems)">

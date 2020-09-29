@@ -37,7 +37,6 @@ export class ToolbarComponent implements OnInit {
   userEmail;
   role: string;
   userFullname: string;
-  // private isDark = false;
   @Input()
   isDark = false;
 

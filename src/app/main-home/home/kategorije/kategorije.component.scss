@@ -4,7 +4,6 @@
   width: 80%;
   margin: auto;
   box-shadow: 0px 3px 6px #272d3b33;
-  // border-radius: 20px;
 }
 mat-card {
   padding: 0px;
@@ -13,14 +12,11 @@ mat-card {
 table {
   width: 100%;
   box-shadow: 0px 3px 6px #272d3b33 !important;
-  // border-radius: 0 0 20px 20px !important;
 }
 
 .header > .title {
   display: flex;
-  /* position: absolute; */
   align-content: center;
-  /* align-items: center; */
   justify-content: flex-start;
   vertical-align: middle;
   float: left;
@@ -52,7 +48,6 @@ tr {
 
 .novi-unos {
   display: flex;
-  /* position: absolute; */
   align-items: center;
   justify-content: flex-end;
   padding: 10px;
@@ -79,7 +74,6 @@ tr:last-child {
   color: white;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  /* float: right; */
 }
 
 .novi-unos > button:focus {
@@ -118,20 +112,17 @@ tr:last-child {
   border-radius: 4px;
   overflow: hidden;
   margin: 0px auto;
-  // @extend .dark-mode;
 }
 
 .example-box {
   padding: 20px 10px;
   border-bottom: solid 1px #ccc;
-  // color: rgba(0, 0, 0, 0.87);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
   cursor: move;
-  // background: white;
   font-size: 14px;
 }
 

@@ -30,9 +30,7 @@ mat-card{
 
 .header>.title {
   display: flex;
-  /* position: absolute; */
   align-content: center;
-  /* align-items: center; */
   justify-content: flex-start;
   vertical-align: middle;
   float: left;
@@ -43,7 +41,6 @@ mat-card{
 
 .novi-unos {
   display: flex;
-  /* position: absolute; */
   align-items: center;
   justify-content: flex-end;
   padding: 10px;
@@ -61,7 +58,6 @@ mat-card{
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  /* float: right; */
 }
 
 .novi-unos>button:focus {
@@ -86,25 +82,3 @@ mat-card{
   border-radius: 15px;
   margin: 10px;
 }
-
-// .dark-mode{
-//   margin-left: 10%;
-//   margin-top: 20px;
-//   width: 80px;
-//   height: 110px;
-//   padding-left: 20px;
-//   padding-right: 15px;
-//   padding-top: 10px;
-//   padding-bottom: 10px;
-//   border:1.5px solid rgb(179, 166, 166);
-//   border-radius: 8px;
-//   box-shadow: 2px 2px 8px #888888;
-// }
-
-// .dark-mode img{
-//   padding-left: 10px;
-// }
-
-// .dark-mode-text{
-//   font-size: 12px;
-// }
