@@ -14,6 +14,8 @@ export class NarudzbeComponent implements OnInit {
   orders: Narudzbe[];
   selectedOrders = [];
 
+  
+
   public lineChart: GoogleChartInterface = {
     chartType: 'LineChart',
     dataTable: [
@@ -28,14 +30,14 @@ export class NarudzbeComponent implements OnInit {
     ],
     options: {
       titleTextStyle: {
-       color: 'orange'
+        color: 'orange',
       },
       hAxis: {
-    textStyle:{color: 'orange'}
-},
+        textStyle: { color: 'orange' },
+      },
       vAxis: {
-    textStyle:{color: 'orange'}
-},
+        textStyle: { color: 'orange' },
+      },
       series: {
         0: { color: 'lightblue', weight: 'bold', lineWidth: 4 },
       },
@@ -44,7 +46,7 @@ export class NarudzbeComponent implements OnInit {
       height: 300,
       width: 500,
       curveType: 'function',
-      legend: { position: 'bottom' },
+      legend: { position: 'bottom', textStyle: { color: 'orange' } },
     },
   };
   public pieChart: GoogleChartInterface = {
@@ -56,13 +58,15 @@ export class NarudzbeComponent implements OnInit {
       ['Spremne', 20],
     ],
     options: {
-       titleTextStyle: {
-       color: 'orange'
+      titleTextStyle: {
+        color: 'orange',
       },
       hAxis: {
-    textStyle:{color: 'lightblue'}},
+        textStyle: { color: 'lightblue' },
+      },
       legend: {
-        textStyle: { color: 'orange' }},
+        textStyle: { color: 'orange' },
+      },
       title: 'Narudzbe',
       height: 300,
       backgroundColor: 'transparent',
@@ -74,57 +78,58 @@ export class NarudzbeComponent implements OnInit {
     },
   };
 
-   public barChart: GoogleChartInterface = {
+  public barChart: GoogleChartInterface = {
     chartType: 'BarChart',
-    dataTable:[
-         ['Element', 'Density', { role: 'style' }],
-         ['Copper', 8.94, '#b87333'],            // RGB value
-         ['Silver', 10.49, 'silver'],            // English color name
-         ['Gold', 19.30, 'gold'],
-         ['Platinum', 21.45, 'color: #e5e4e2' ], // CSS-style declaration
-      ],
+    dataTable: [
+      ['Element', 'Density', { role: 'style' }],
+      ['Copper', 8.94, '#b87333'], // RGB value
+      ['Silver', 10.49, 'silver'], // English color name
+      ['Gold', 19.3, 'gold'],
+      ['Platinum', 21.45, 'color: #e5e4e2'], // CSS-style declaration
+    ],
     options: {
       titleTextStyle: {
-       color: 'orange'
+        color: 'orange',
       },
       vAxis: {
-    textStyle:{color: 'orange'}
+        textStyle: { color: 'orange' },
       },
       hAxis: {
-    textStyle:{color: 'orange'}
+        textStyle: { color: 'orange' },
       },
       title: 'Elements statistics',
       backgroundColor: 'transparent',
       height: 300,
       width: 500,
       curveType: 'function',
-      legend: { position: 'bottom' , color:'orange'},
+      legend: { position: 'none' },
     },
   };
 
-   public areaChart: GoogleChartInterface = {
+  public areaChart: GoogleChartInterface = {
     chartType: 'AreaChart',
     dataTable: [
-          ['Year', 'Sales', 'Expenses'],
-          ['2013',  1000,      400],
-          ['2014',  1170,      460],
-          ['2015',  660,       1120],
-          ['2016',  1030,      540]
-        ],
+      ['Year', 'Sales', 'Expenses'],
+      ['2013', 1000, 400],
+      ['2014', 1170, 460],
+      ['2015', 660, 1120],
+      ['2016', 1030, 540],
+    ],
     options: {
-
-          title: 'Sales last few years',
-          titleTextStyle: {
-       color: 'orange'
+      title: 'Sales last few years',
+      titleTextStyle: {
+        color: 'orange',
       },
-          hAxis: {title: 'Year',  textStyle: {color: 'orange'}},
-          vAxis: {minValue: 0, textStyle: {color: 'orange'}},
+      hAxis: { title: 'Year', textStyle: { color: 'orange' } },
+      vAxis: { minValue: 0, textStyle: { color: 'orange' } },
       backgroundColor: 'transparent',
       height: 300,
       width: 500,
       legend: {
-        textStyle: { color: 'orange' }},
-        },
+        position: 'none',
+        textStyle: { color: 'orange' },
+      },
+    },
   };
 
   constructor(public ordersService: OrdersService, public dialog: MatDialog) {}
