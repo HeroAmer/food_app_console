@@ -19,11 +19,15 @@
 .container-narudzbe {
   display: flex;
   flex-wrap: wrap;
+  flex-shrink: 2;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
   .container-narudzbe {
-    flex: 0 1 50%;
+    flex: 0 1 100%;
+    flex-shrink: 2;
+    width: 100%;
   }
 }
 
@@ -93,9 +97,7 @@ mat-card {
 
 }
 
-table {
-  margin-bottom: 50px;
-}
+
 
 table,
 th,
