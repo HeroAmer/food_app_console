@@ -22,6 +22,7 @@ import { ItemService } from './services/item-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import {MatCardModule} from '@angular/material/card';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 import { AppComponent } from './app.component';
@@ -86,7 +87,8 @@ import {MatInputModule} from '@angular/material/input';
     LayoutModule,
     MatListModule,
     DragDropModule,
-    MatInputModule
+    MatInputModule,
+    MatPaginatorModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],

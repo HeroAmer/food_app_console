@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HranaService } from '../../../services/hrana.service';
 import { Hrana } from '../../../models/hrana-unos';
+import {MatPaginator} from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 
 @Component({
@@ -11,22 +13,36 @@ import { Hrana } from '../../../models/hrana-unos';
   styleUrls: ['./novi-unos.component.scss'],
 })
 export class NoviUnosComponent implements OnInit {
+  displayedColumns: string[] = ['naziv', 'opis', 'cijena'];
+  food =[];
+  dataSource = new MatTableDataSource<Hrana>(this.food);
 
-  food:Hrana[];
+  @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
 
-  constructor(public dialog: MatDialog, public foodService: HranaService) {}
+
+  constructor(public dialog: MatDialog, public foodService: HranaService,private cdr: ChangeDetectorRef) {
+
+  }
+
+
+
+
   openDialog() {
     const dialogRef = this.dialog.open(InputDialogComponent);
-
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
   ngOnInit(): void {
-    this.foodService.getFood().subscribe(food => {
-      this.food = food;
-    })
+    this.foodService.getFood().subscribe(data => {
+      this.food = data;
+      this.dataSource.data = this.food;
+      this.dataSource.paginator = this.paginator;
+    });
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
 
 
