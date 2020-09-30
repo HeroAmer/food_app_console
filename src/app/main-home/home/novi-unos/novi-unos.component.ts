@@ -5,6 +5,7 @@ import { HranaService } from '../../../services/hrana.service';
 import { Hrana } from '../../../models/hrana-unos';
 import {MatPaginator} from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatSort} from '@angular/material/sort';
 
 
 @Component({
@@ -13,12 +14,12 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./novi-unos.component.scss'],
 })
 export class NoviUnosComponent implements OnInit {
-  displayedColumns: string[] = ['naziv', 'opis', 'cijena'];
+  displayedColumns: string[] = ['position','naziv', 'opis', 'cijena'];
   food =[];
   dataSource = new MatTableDataSource<Hrana>(this.food);
 
   @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
-
+  @ViewChild(MatSort, { static: false }) sort: MatSort;
 
   constructor(public dialog: MatDialog, public foodService: HranaService,private cdr: ChangeDetectorRef) {
 
@@ -43,6 +44,7 @@ export class NoviUnosComponent implements OnInit {
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
 
 
