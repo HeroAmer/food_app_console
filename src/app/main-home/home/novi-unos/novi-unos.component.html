@@ -1,55 +1,28 @@
-<mat-card class="tabela">
-  <div class="header">
-    <div class="title">
-      <h3>Unosi</h3>
-    </div>
-    <div class="novi-unos">
-      <button mat-button (click)="openDialog()">Novi unos</button>
-    </div>
-  </div>
 
-  <table id="data" class="mat-elevation-z8">
+<div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
-    <tr>
-      <th> </th>
-      <th>NAZIV</th>
-      <th>OPIS</th>
-      <th>CIJENA</th>
-      <th> </th>
-    </tr>
-    <tr *ngFor="let meal of food">
+  <!-- Naziv Column -->
+  <ng-container matColumnDef="naziv">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.naziv}} </td>
+  </ng-container>
 
-      <td><img id="unos-slika" src="{{meal.imageURL}}"></td>
-      <td>{{meal.naziv}}</td>
-      <td>{{meal.opis}}</td>
-      <td>{{meal.cijena + ' KM'}}</td>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-          <mat-icon>edit</mat-icon>
-          <span>Edit</span>
-        </button>
-        <button mat-menu-item disabled>
-          <mat-icon>delete</mat-icon>
-          <span>Delete</span>
-        </button>
+  <!-- Opis Column -->
+  <ng-container matColumnDef="opis">
+    <th mat-header-cell *matHeaderCellDef> Opis</th>
+    <td mat-cell *matCellDef="let element"> {{element.opis}} </td>
+  </ng-container>
 
-      </mat-menu>
-    </tr>
-  </table>
+  <!-- Cijena Column -->
+  <ng-container matColumnDef="cijena">
+    <th mat-header-cell *matHeaderCellDef> Cijena </th>
+    <td mat-cell *matCellDef="let element"> {{element.cijena}} </td>
+  </ng-container>
 
-  <mat-menu #menu="matMenu">
-    <ng-template matMenuContent let-aliasMenuItems="element">
-      <button mat-menu-item>
-        <mat-icon>edit</mat-icon>
-        <span>Edit</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>delete</mat-icon>
-        <span>Delete</span>
-      </button>
-    </ng-template>
-  </mat-menu>
-</mat-card>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
