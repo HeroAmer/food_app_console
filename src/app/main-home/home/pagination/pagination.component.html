@@ -1,0 +1,27 @@
+<div class="container" style="margin-top: '50px';">
+
+
+  <div class="text-center">
+    <button class="btn btn btn-info btn-sm float-left" (click)="prevPage()"
+      [disabled]="disable_prev || !(pagination_clicked_count>0)">Previous</button> <b>Page no:
+      {{pagination_clicked_count+1}}</b>
+    <button class="btn btn btn-info btn-sm float-right" (click)="nextPage()" [disabled]="disable_next">Next</button>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Place</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of tableData">
+        <td>{{item.naziv}}</td>
+        <td>{{item.opis}}</td>
+        <td>{{item.cijena}}</td>
+        <!-- <td>{{readableDate(item.timestamp)}}</td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

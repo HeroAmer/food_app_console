@@ -45,6 +45,7 @@ import { ToolbarComponent } from './main-home/home/toolbar/toolbar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import {MatInputModule} from '@angular/material/input';
+import { PaginationComponent } from './main-home/home/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {MatInputModule} from '@angular/material/input';
     NotificationPopupComponent,
     MainNavComponent,
     ToolbarComponent,
+    PaginationComponent,
   ],
   imports: [
     BrowserModule,
