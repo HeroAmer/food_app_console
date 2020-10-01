@@ -46,6 +46,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OverlayContainer } from '@angular/cdk/overlay';
 import {MatInputModule} from '@angular/material/input';
 import { PaginationComponent } from './main-home/home/pagination/pagination.component';
+import { TablePopupComponent } from './main-home/home/novi-unos/table-popup/table-popup.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { PaginationComponent } from './main-home/home/pagination/pagination.comp
     MainNavComponent,
     ToolbarComponent,
     PaginationComponent,
+    TablePopupComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,42 +1,73 @@
-import {AfterViewInit, Component, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ViewChild,
+  OnInit,
+  ChangeDetectorRef,
+} from '@angular/core';
 import { InputDialogComponent } from './input-dialog/input-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { HranaService } from '../../../services/hrana.service';
 import { Hrana } from '../../../models/hrana-unos';
-import {MatPaginator} from '@angular/material/paginator';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import {MatSort} from '@angular/material/sort';
+import { MatSort } from '@angular/material/sort';
+import { TablePopupComponent } from './table-popup/table-popup.component';
 
-
+export interface PopupData {
+  nazivPopup?: string;
+  opisPopup?: string;
+  cijenaPopup?: string;
+}
 @Component({
   selector: 'app-novi-unos',
   templateUrl: './novi-unos.component.html',
   styleUrls: ['./novi-unos.component.scss'],
 })
 export class NoviUnosComponent implements OnInit {
-  displayedColumns: string[] = ['position','naziv', 'opis', 'cijena'];
-  food =[];
+  displayedColumns: string[] = [
+    'position',
+    'naziv',
+    'opis',
+    'cijena',
+    'button',
+  ];
+  food = [];
   dataSource = new MatTableDataSource<Hrana>(this.food);
 
-  @ViewChild(MatPaginator, {static:false}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort: MatSort;
 
-  constructor(public dialog: MatDialog, public foodService: HranaService,private cdr: ChangeDetectorRef) {
+  constructor(
+    public dialog: MatDialog,
+    public foodService: HranaService,
+    private cdr: ChangeDetectorRef,
+    public popup: MatDialog
+  ) {}
 
+  openPopup(naziv, opis, cijena) {
+    console.log(naziv);
+    const popupRef = this.popup.open(TablePopupComponent, {
+      data: {
+        nazivPopup: naziv,
+        opisPopup: opis,
+        cijenaPopup: cijena,
+      },
+    });
+    popupRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
-
-
-
 
   openDialog() {
     const dialogRef = this.dialog.open(InputDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
   ngOnInit(): void {
-    this.foodService.getFood().subscribe(data => {
+    this.foodService.getFood().subscribe((data) => {
       this.food = data;
       this.dataSource.data = this.food;
       this.dataSource.paginator = this.paginator;
@@ -46,11 +77,4 @@ export class NoviUnosComponent implements OnInit {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
-
-
 }
-
-
-
-
-
