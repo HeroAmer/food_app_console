@@ -111,7 +111,7 @@ export class PaginationComponent implements OnInit {
     console.log('prvi put');
     this.disable_next = true;
     this.firestore
-      .collection('unose_hrane', (ref) =>
+      .collection('unos_hrane', (ref) =>
         ref.limit(5).startAfter(this.lastInResponse)
       )
       .get()
