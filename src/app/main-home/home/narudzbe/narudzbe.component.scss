@@ -30,15 +30,19 @@
     width: 100%;
   }
 
-google-chart {
-  width:100%;
-}
 
 }
-
-google-chart {
-  @extend .dark-mode;
+#new-chart{
+  // min-height: 450px;
+  border: 2px solid grey;
+  width: 100%;
 }
+// #curve_chart {
+//   width:950px;
+// }
+// google-chart {
+//   @extend .dark-mode;
+// }
 
 .radialProgressBar {
   border-radius: 50%;
