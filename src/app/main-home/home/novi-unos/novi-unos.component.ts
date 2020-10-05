@@ -155,6 +155,10 @@ loadItems() {
 
 
   pageChanged(event) {
+    let brojStranica = this.paginator.getNumberOfPages();
+    console.log(brojStranica);
+    let fetchingPageNumber = brojStranica - 1;
+    console.log('Broj kada se povlace items', fetchingPageNumber);
     console.log('Nestoooo');
     if (event.previousPageIndex > event.pageIndex) {
        // back button clicked
@@ -193,64 +197,73 @@ loadItems() {
       );
     } else {
       // next button clicked
-    console.log('prvi put');
-    this.disable_next = true;
-    this.firestore
-      .collection('unos_hrane', (ref) =>
-        ref.limit(5).startAfter(this.lastInResponse)
-      )
-      .get()
-      .subscribe(
-        (response) => {
-          if (!response.docs.length) {
-            this.disable_next = true;
-            return;
-          }
 
-          this.firstInResponse = response.docs[0];
+      let fetchingPageNumber = brojStranica - 2;
 
-          this.lastInResponse = response.docs[response.docs.length - 1];
+      console.log('Fetching page number is: ', fetchingPageNumber);
+      console.log('Trenutna stranica je ', event.pageIndex);
+      if(fetchingPageNumber == event.pageIndex){
+
+
+      console.log('prvi put');
+      this.disable_next = true;
+      this.firestore
+        .collection('unos_hrane', (ref) =>
+          ref.limit(5).startAfter(this.lastInResponse)
+        )
+        .get()
+        .subscribe(
+          (response) => {
+            if (!response.docs.length) {
+              this.disable_next = true;
+             return;
+           }
+
+            this.firstInResponse = response.docs[0];
+
+            this.lastInResponse = response.docs[response.docs.length - 1];
           // this.tableData = [];
-          for (let item of response.docs) {
-            this.tableData.push(item.data());
-            console.log(this.tableData.length);
+           for (let item of response.docs) {
+              this.tableData.push(item.data());
+              console.log(this.tableData.length);
+            }
+
+            console.log('after next',this.tableData);
+            this.cdr.detectChanges();
+            this.pagination_clicked_count++;
+
+            this.push_prev_startAt(this.firstInResponse);
+            this.cdr.detectChanges();
+            this.disable_next = false;
+          },
+          (error) => {
+            this.disable_next = false;
           }
+        );
+        console.log(this.tableData.length);
+      }
 
-          console.log('after next',this.tableData);
-          this.cdr.detectChanges();
-          this.pagination_clicked_count++;
+      this.dataSource.data = this.tableData;
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.cdr.detectChanges();
+      }
 
-          this.push_prev_startAt(this.firstInResponse);
-
-          this.disable_next = false;
-        },
-        (error) => {
-          this.disable_next = false;
-        }
-      );
-    console.log(this.tableData.length);
-
-    this.dataSource.data = this.tableData;
-    this.dataSource.paginator = this.paginator;
-  this.dataSource.paginator = this.paginator;
-  this.dataSource.sort = this.sort;
-    this.cdr.detectChanges();
     }
-  }
 
 
 
-  push_prev_startAt(prev_first_doc) {
-    this.prev_strt_at.push(prev_first_doc);
-  }
+    push_prev_startAt(prev_first_doc) {
+      this.prev_strt_at.push(prev_first_doc);
+   }
 
   //Remove not required document
-  pop_prev_startAt(prev_first_doc) {
-    this.prev_strt_at.forEach((element) => {
-      if (prev_first_doc.data().id == element.data().id) {
-        element = null;
-      }
-    });
+    pop_prev_startAt(prev_first_doc) {
+      this.prev_strt_at.forEach((element) => {
+        if (prev_first_doc.data().id == element.data().id) {
+          element = null;
+        }
+      });
   }
 
   //Return the Doc rem where previous page will startAt
