@@ -20,10 +20,12 @@ export class NarudzbeComponent implements OnInit {
   ngOnInit(): void {
     google.charts.load('current', { packages: ['corechart'] });
     google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawChartTwo);
+    google.charts.setOnLoadCallback(drawChartThree);
 
     function drawChart() {
       let data = google.visualization.arrayToDataTable([
-        ['Dani', 'Sales', 'Expenses', 'orders'],
+        ['Dani', 'Sales', 'Expenses', 'Orders'],
         ['Pon', 0, 0, 0],
         ['Uto', 1000, 300, 2000],
         ['Sri', 1170, 460, 2100],
@@ -58,6 +60,48 @@ export class NarudzbeComponent implements OnInit {
       );
       chart.draw(data, options);
       window.addEventListener('resize', drawChart, true);
+    }
+    function drawChartTwo() {
+      var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Zavrsene', 11],
+        ['Na cekanju', 2],
+        ['U pripremi', 2],
+  
+      ]);
+
+      var options = {
+        title: 'Narudzbe o dostavi',
+      };
+
+      var chart = new google.visualization.PieChart(
+        document.getElementById('piechart')
+      );
+
+      chart.draw(data, options);
+      window.addEventListener('resize', drawChartTwo, true);
+    }
+
+    function drawChartThree() {
+      var data = google.visualization.arrayToDataTable([
+        ['Year', 'Sales', 'Expenses'],
+        ['2013', 1000, 400],
+        ['2014', 1170, 460],
+        ['2015', 660, 1120],
+        ['2016', 1030, 540],
+      ]);
+
+      var options = {
+        title: 'Company Performance',
+        hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
+        vAxis: { minValue: 0 },
+      };
+
+      var chart = new google.visualization.AreaChart(
+        document.getElementById('areachart')
+      );
+      chart.draw(data, options);
+      window.addEventListener('resize', drawChartThree, true);
     }
   }
 
