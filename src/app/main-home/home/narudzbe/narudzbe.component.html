@@ -1,6 +1,12 @@
 <div id="new-chart">
   <div id="curve_chart"></div>
 </div>
+<div id="new-chart">
+  <div id="piechart"></div>
+</div>
+<div id="new-chart">
+  <div id="areachart"></div>
+</div>
 <div class="container-narudzbe">
   <div class="chartovi">
     <!-- <div>
@@ -43,10 +49,7 @@
     <tr *ngFor="let order of orders; let i = index">
       <!-- <td><img id="unos-slika" src=""></td> -->
       <label class="container" id="drugi">
-        <input
-          type="checkbox"
-          (change)="onChangeInput($event, order.orderID, i)"
-        />
+        <input type="checkbox" (change)="onChangeInput($event, order.orderID, i)" />
         <span class="checkmark"></span>
       </label>
       <!-- How to add five digits on one index of array we can see down below -->
@@ -56,10 +59,7 @@
       <td>{{ order.orderTotal }}</td>
       <td>{{ order.status }}</td>
       <td>{{ order.orderAddress }}</td>
-      <button
-        mat-icon-button
-        aria-label="Example icon-button with a menu"
-        (click)="
+      <button mat-icon-button aria-label="Example icon-button with a menu" (click)="
           openDetails(
             order.orderCode,
             order.orderJelo,
@@ -71,8 +71,7 @@
             order.orderTotal,
             order.orderID
           )
-        "
-      >
+        ">
         <mat-icon>more_vert</mat-icon>
       </button>
     </tr>
