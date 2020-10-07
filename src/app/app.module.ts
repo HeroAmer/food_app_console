@@ -21,10 +21,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ItemService } from './services/item-service.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-import {MatCardModule} from '@angular/material/card';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
-  
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main-home/home/home.component';
@@ -44,10 +43,10 @@ import { MatListModule } from '@angular/material/list';
 import { ToolbarComponent } from './main-home/home/toolbar/toolbar.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { OverlayContainer } from '@angular/cdk/overlay';
-import {MatInputModule} from '@angular/material/input';
-import { PaginationComponent } from './main-home/home/pagination/pagination.component';
+import { MatInputModule } from '@angular/material/input';
 import { TablePopupComponent } from './main-home/home/novi-unos/table-popup/table-popup.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MatDividerModule } from '@angular/material/divider';
 
 @NgModule({
   declarations: [
@@ -65,7 +64,6 @@ import { HttpClientModule } from '@angular/common/http';
     NotificationPopupComponent,
     MainNavComponent,
     ToolbarComponent,
-    PaginationComponent,
     TablePopupComponent,
   ],
   imports: [
@@ -96,11 +94,11 @@ import { HttpClientModule } from '@angular/common/http';
     MatInputModule,
     MatPaginatorModule,
     MatSortModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDividerModule,
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],
   entryComponents: [InputDialogComponent, OrderDetailsComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

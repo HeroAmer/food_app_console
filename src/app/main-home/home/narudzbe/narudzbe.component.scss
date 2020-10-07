@@ -34,7 +34,7 @@
 }
 #new-chart{
   // min-height: 450px;
-  border: 2px solid grey;
+  // border: 2px solid grey;
   width: 100%;
   margin-bottom: 15px;
 }
@@ -140,18 +140,17 @@ tr:last-child {
 
 }
 
-.novi-unos>button {
-  border: none;
-  width: 140px;
-  height: 40px;
-  background: #00CCF2 0% 0% no-repeat padding-box;
-  border-radius: 20px;
-  opacity: 1;
-  cursor: pointer;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-}
+// .novi-unos>button {
+//   border: none;
+//   width: 140px;
+//   height: 40px;
+//   border-radius: 20px;
+//   opacity: 1;
+//   cursor: pointer;
+//   color: white;
+//   font-family: 'Montserrat', sans-serif;
+//   font-weight: 600;
+// }
 
 .novi-unos>button:focus {
   outline: none;

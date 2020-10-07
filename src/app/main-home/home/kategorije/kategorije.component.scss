@@ -5,6 +5,7 @@
   margin: auto;
   box-shadow: 0px 3px 6px #272d3b33;
 }
+
 mat-card {
   padding: 0px;
 }
@@ -14,7 +15,7 @@ table {
   box-shadow: 0px 3px 6px #272d3b33 !important;
 }
 
-.header > .title {
+.header>.title {
   display: flex;
   align-content: center;
   justify-content: flex-start;
@@ -63,20 +64,9 @@ tr:last-child {
   border-radius: 50%;
 }
 
-.novi-unos > button {
-  border: none;
-  width: 140px;
-  height: 40px;
-  background: #00ccf2 0% 0% no-repeat padding-box;
-  border-radius: 20px;
-  opacity: 1;
-  cursor: pointer;
-  color: white;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-}
 
-.novi-unos > button:focus {
+
+.novi-unos>button:focus {
   outline: none;
 }
 
