@@ -1,4 +1,4 @@
-@import "../../../../../src/styles.scss";
+// @import "../../../../../src/styles.scss";
 
 .tabela {
   width: 80%;
@@ -14,9 +14,9 @@ table {
 
 mat-card{
   padding: 0px;
-  &[color="primary"]{
-    @include angular-material-color($angular-light-theme);
-  }
+  // &[color="primary"]{
+  //   @include angular-material-color($angular-light-theme);
+  // }
 }
 
 .mat-table {
@@ -52,18 +52,7 @@ mat-card{
 
 }
 
-.novi-unos>button {
-  border: none;
-  width: 140px;
-  height: 40px;
-  background: #00CCF2 0% 0% no-repeat padding-box;
-  border-radius: 20px;
-  opacity: 1;
-  cursor: pointer;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-}
+
 
 .novi-unos>button:focus {
   outline: none;

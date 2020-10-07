@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Employee } from 'src/app/models/employee';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
@@ -8,6 +8,7 @@ import { RegisterPopupComponent } from './register-popup/register-popup.componen
   selector: 'app-postavke',
   templateUrl: './postavke.component.html',
   styleUrls: ['./postavke.component.scss'],
+
 })
 export class PostavkeComponent implements OnInit {
   employees: Employee[];

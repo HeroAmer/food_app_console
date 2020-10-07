@@ -34,27 +34,29 @@ export class NarudzbeComponent implements OnInit {
         ['Sub', 2000, 540, 160],
         ['Ned', 1030, 540, 700],
       ]);
-      let options: {
+      let options = {
+
         titleTextStyle: {
-          color: 'orange';
-        };
+          color: 'orange'
+        },
         hAxis: {
-          textStyle: { color: 'orange' };
-        };
+          textStyle: { color: 'orange' }
+        },
         vAxis: {
-          textStyle: { color: 'orange' };
-          format: 'decimal';
-        };
+          textStyle: { color: 'orange' },
+          format: 'decimal'
+        },
         series: {
-          0: { color: 'lightblue'; weight: 'bold'; lineWidth: 4 };
-        };
-        title: 'Company Performance';
-        backgroundColor: 'transparent';
-        height: 400;
-        width: 950;
-        curveType: 'function';
-        legend: { position: 'bottom'; textStyle: { color: 'orange' } };
+          0: { color: 'lightblue', weight: 'bold', lineWidth: 4 }
+        },
+        title: 'Company Performance',
+        backgroundColor: 'transparent',
+        height: 400,
+        // width: 950,
+        curveType: 'function',
+        legend: { position: 'bottom', textStyle: { color: 'orange' } }
       };
+
       let chart = new google.visualization.LineChart(
         document.getElementById('curve_chart')
       );
@@ -71,6 +73,8 @@ export class NarudzbeComponent implements OnInit {
 
       var options = {
         title: 'Narudzbe o dostavi',
+        backgroundColor: 'transparent',
+
       };
 
       var chart = new google.visualization.PieChart(
@@ -92,6 +96,7 @@ export class NarudzbeComponent implements OnInit {
 
       var options = {
         title: 'Uspjesnost kompanije',
+        backgroundColor: 'transparent',
         hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
         vAxis: { minValue: 0 },
       };

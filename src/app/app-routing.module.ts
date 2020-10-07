@@ -7,7 +7,6 @@ import { PostavkeComponent } from './main-home/home/postavke/postavke.component'
 import { LoginComponent } from './main-home/login/login.component';
 import { AngularFireAuthGuard, hasCustomClaim, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/auth-guard';
 import { KategorijeComponent } from './main-home/home/kategorije/kategorije.component';
-import { PaginationComponent } from './main-home/home/pagination/pagination.component';
 
 
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['']);
@@ -37,10 +36,7 @@ const routes: Routes = [
         path: 'kategorije',
         component: KategorijeComponent , canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
       },
-      {
-        path: 'pagination',
-        component: PaginationComponent , canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin }
-      },
+
     ]
   },
 

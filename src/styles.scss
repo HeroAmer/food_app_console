@@ -76,15 +76,13 @@ $angular-dark-theme: mat-dark-theme((color: (primary: $angular-primary-dark,
     ),
   ));
 
-$angular-light-theme: mat-light-theme((
-  color: (primary: $angular-primary-light,
+$angular-light-theme: mat-light-theme((color: (primary: $angular-primary-light,
       accent: $angular-accent-light,
       warn: $angular-warn-light,
     ),
     background: (primary: $angular-primary-light,
       accent: $angular-accent-light,
-      warn: $angular-warn-light,)
-  ));
+      warn: $angular-warn-light, )));
 
 .dark-mode {
   @include angular-material-color($angular-dark-theme);
@@ -142,9 +140,9 @@ a:link {
 // :host /deep/ .mat-select-value-text {
 //   color: green !important;
 // }
-.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
-  background-color: #2699fb !important;
-}
+// .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+//   background-color: #2699fb !important;
+// }
 
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
   background-color: white !important;

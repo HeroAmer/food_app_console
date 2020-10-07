@@ -17,9 +17,9 @@
   font-size: 42px;
   display: inline;
 }
-mat-card{
-  @extend .dark-mode
-}
+// mat-card{
+//   @extend .dark-mode
+// }
 
 .buttoncic{
   text-align: center;
@@ -27,5 +27,4 @@ mat-card{
 button{
   padding:10px 20px !important;
   border-radius: 5px;
-  background-color: #03a9f4 !important;
 }
