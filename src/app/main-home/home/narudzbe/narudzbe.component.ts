@@ -67,7 +67,6 @@ export class NarudzbeComponent implements OnInit {
         ['Zavrsene', 11],
         ['Na cekanju', 2],
         ['U pripremi', 2],
-  
       ]);
 
       var options = {
@@ -92,7 +91,7 @@ export class NarudzbeComponent implements OnInit {
       ]);
 
       var options = {
-        title: 'Company Performance',
+        title: 'Uspjesnost kompanije',
         hAxis: { title: 'Year', titleTextStyle: { color: '#333' } },
         vAxis: { minValue: 0 },
       };

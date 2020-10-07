@@ -1,0 +1,50 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$md-mcgpalette0: (
+    50 : #eef8ea,
+    100 : #d4eeca,
+    200 : #b8e2a6,
+    300 : #9cd682,
+    400 : #86ce68,
+    500 : #71c54d,
+    600 : #69bf46,
+    700 : #5eb83d,
+    800 : #54b034,
+    900 : #42a325,
+    A100 : #e7ffe1,
+    A200 : #bfffae,
+    A400 : #97ff7b,
+    A700 : #83ff62,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+$custom-primary: mat-palette($md-mcgpalette0, 500);
+$custom-accent:  mat-palette($md-mcgpalette0, A200, A100, A400);
+$custom-warn:    mat-palette($md-mcgpalette0, A700);
+
+$custom-theme: mat-light-theme((
+  color: (
+    primary: $custom-primary,
+    accent: $custom-accent,
+    warn: $custom-warn,  
+  )
+));
+
+
+@include angular-material-theme($custom-theme);

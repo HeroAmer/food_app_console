@@ -4,14 +4,13 @@ import { Employee } from 'src/app/models/employee';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { RegisterPopupComponent } from './register-popup/register-popup.component';
 
-
 @Component({
   selector: 'app-postavke',
   templateUrl: './postavke.component.html',
   styleUrls: ['./postavke.component.scss'],
 })
 export class PostavkeComponent implements OnInit {
-  employees:Employee[];
+  employees: Employee[];
   displayedColumns: string[] = [
     'image',
     'Ime',
@@ -20,11 +19,16 @@ export class PostavkeComponent implements OnInit {
     'execute',
   ];
 
-  constructor(public dialog: MatDialog , private authService: AuthServiceService) {}
+  constructor(
+    public dialog: MatDialog,
+    private authService: AuthServiceService,
+  ) {
+
+  }
   openDialog() {
     const dialogRef = this.dialog.open(RegisterPopupComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
   }
@@ -33,10 +37,10 @@ export class PostavkeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log('postavke')
-    this.authService.getEmployees().subscribe(uposlenici => {
+    console.log('postavke');
+    this.authService.getEmployees().subscribe((uposlenici) => {
       this.employees = uposlenici;
       console.log(uposlenici);
-    })
+    });
   }
 }

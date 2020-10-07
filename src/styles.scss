@@ -1,43 +1,100 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/theming";
+// @import "./custom-theme.scss";
 
 @include mat-core();
-$angular-primary: mat-palette($mat-blue-grey, 900);
-$angular-accent: mat-palette($mat-pink, A200, A100, A400);
-$angular-warn: mat-palette($mat-red);
+$md-mcgpalette0: (50 : #eef8ea,
+  100 : #d4eeca,
+  200 : #b8e2a6,
+  300 : #9cd682,
+  400 : #86ce68,
+  500 : #71c54d,
+  600 : #69bf46,
+  700 : #5eb83d,
+  800 : #54b034,
+  900 : #42a325,
+  A100 : #e7ffe1,
+  A200 : #bfffae,
+  A400 : #97ff7b,
+  A700 : #83ff62,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  ));
+$md-mcgpalette1: (50 : #eae2e6,
+  100 : #c9b8c1,
+  200 : #a68898,
+  300 : #82586e,
+  400 : #67354f,
+  500 : #4c1130,
+  600 : #450f2b,
+  700 : #3c0c24,
+  800 : #330a1e,
+  900 : #240513,
+  A100 : #ff609c,
+  A200 : #ff2d7c,
+  A400 : #f9005e,
+  A700 : #e00054,
+  contrast: (50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  ));
 
-$angular-primary-light: mat-palette($mat-light-blue);
+$angular-primary-dark: mat-palette($md-mcgpalette1, 700);
+$angular-accent-dark: mat-palette($mat-pink, A200, A100, A400);
+$angular-warn-dark: mat-palette($mat-red);
+
+$angular-primary-light: mat-palette($md-mcgpalette0, A400);
 $angular-accent-light: mat-palette($mat-pink, A200, A100, A400);
 $angular-warn-light: mat-palette($mat-red);
 
-$angular-dark-theme: mat-dark-theme(
-  (
-    color: (
-      primary: $angular-primary,
-      accent: $angular-accent,
-      warn: $angular-warn,
+$angular-dark-theme: mat-dark-theme((color: (primary: $angular-primary-dark,
+      accent: $angular-accent-dark,
+      warn: $angular-warn-dark,
     ),
-  )
-);
+  ));
 
-$angular-light-theme: mat-light-theme(
-  (
-    color: (
-      primary: $angular-primary-light,
+$angular-light-theme: mat-light-theme((
+  color: (primary: $angular-primary-light,
       accent: $angular-accent-light,
       warn: $angular-warn-light,
     ),
-  )
-);
+    background: (primary: $angular-primary-light,
+      accent: $angular-accent-light,
+      warn: $angular-warn-light,)
+  ));
 
 .dark-mode {
   @include angular-material-color($angular-dark-theme);
 }
 
-.light-mode{
- @include angular-material-color($angular-light-theme);
+.light-mode {
+  @include angular-material-color($angular-light-theme);
+  background-color: mat-color($angular-primary-light) !important;
+  // @include angular-material-color($custom-theme);
 }
-
 
 html,
 body {
@@ -67,15 +124,15 @@ a:link {
 }
 
 .mat-form-field-appearance-legacy .mat-form-field-underline {
-  background-color: #2698FA !important;
+  background-color: #2698fa !important;
 }
 
 .mat-form-field-ripple {
-  background-color: #2698FA;
+  background-color: #2698fa;
 }
 
 .mat-form-field.mat-focused .mat-form-field-ripple {
-  background-color: #2698FA;
+  background-color: #2698fa;
 }
 
 .not-empty-select.mat-selected {

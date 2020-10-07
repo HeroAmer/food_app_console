@@ -1,4 +1,9 @@
+@import "../styles.scss";
+:host {
+  height: 100vh;
+  display: block;
+}
+
 #flash {
   text-align: center;
 }
-

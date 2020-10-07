@@ -24,7 +24,7 @@ import { Ng2GoogleChartsModule } from 'ng2-google-charts';
 import {MatCardModule} from '@angular/material/card';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
-
+  
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './main-home/home/home.component';
@@ -47,6 +47,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 import {MatInputModule} from '@angular/material/input';
 import { PaginationComponent } from './main-home/home/pagination/pagination.component';
 import { TablePopupComponent } from './main-home/home/novi-unos/table-popup/table-popup.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -94,7 +95,8 @@ import { TablePopupComponent } from './main-home/home/novi-unos/table-popup/tabl
     DragDropModule,
     MatInputModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    HttpClientModule
   ],
   providers: [ItemService],
   bootstrap: [AppComponent],
